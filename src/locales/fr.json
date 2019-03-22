@@ -1,0 +1,18 @@
+{
+  "start": "Commencer",
+  "about": "À propos",
+  "page": {
+    "about": {
+      "title": "Une expérience du Lab de notrehistoire.ch",
+      "buildBy": "Conçu et développé par:",
+      "univers": {
+        "title": "Découvrez nos autres univers:",
+        "archive": "L'archive",
+        "mag": "Le Mag",
+        "lab": "Le Lab"
+      },
+      "copyright": "© Fonsart - 2019",
+      "slogan": "« Des histoires d’archives »"
+    }
+  }
+}
