@@ -5,7 +5,14 @@ import store from "./store/store";
 import "./registerServiceWorker";
 import axios from "axios";
 
+/* Plugin */
+
 import i18n from "./plugins/i18n-setup";
+
+import VueStatic from "vue-static";
+Vue.use(VueStatic);
+
+/* API */
 
 Vue.config.productionTip = process.env.NODE_ENV === "production";
 

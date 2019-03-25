@@ -13,10 +13,8 @@
 <script>
 export default {
   props: ["name"],
-  data: function() {
+  static() {
     return {
-      selected: this.$store.state.lang,
-      value: "",
       langs: [
         {
           abbr: "fr",
@@ -27,6 +25,12 @@ export default {
           text: "English"
         }
       ]
+    };
+  },
+  data: function() {
+    return {
+      selected: this.$store.state.lang,
+      value: ""
     };
   },
   methods: {
