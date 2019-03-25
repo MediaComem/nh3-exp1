@@ -1,7 +1,7 @@
 <template>
   <div class="fullBG flex flex-col justify-between">
     <h1 class="pt-32">Date My Romandie</h1>
-    <div class="flex pt-12 justify-center">
+    <div class="flex pt-12 justify-center relative">
       <transition name="fade">
         <router-link
           v-if="!loading"
@@ -10,18 +10,22 @@
           class="btn btn--main"
           >{{ $t("start") }}</router-link
         >
-        <semipolar-spinner
-          v-show="loading"
-          :animation-duration="2000"
-          :size="65"
-          color="#fff"
-        />
+      </transition>
+      <transition name="fade">
+        <div class="absolute pin-b">
+          <semipolar-spinner
+            v-show="loading"
+            :animation-duration="2000"
+            :size="65"
+            color="#fff"
+          />
+        </div>
       </transition>
     </div>
     <section class="flex justify-between">
-      <router-link to="/about" tag="button" class="btn">
-        {{ $t("about") }}
-      </router-link>
+      <router-link to="/about" tag="button" class="btn">{{
+        $t("about")
+      }}</router-link>
       <SelectLang />
     </section>
   </div>
