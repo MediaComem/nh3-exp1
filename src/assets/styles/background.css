@@ -1,5 +1,5 @@
 :root {
-    --url: url("");
+    --url: url('');
 }
 
 .fullBG {
@@ -7,31 +7,19 @@
     width: 100%;
     min-height: 100%;
     height: auto;
-    padding: 5%;
-}
-
-.fullBG {
-    background: rgb(51, 9, 22);
-    background: linear-gradient( 0deg, rgba(87, 0, 31, 1) 0%, rgba(255, 0, 90, 1) 100%), var(--url);
+    padding: 1em;
     background-blend-mode: multiply;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% auto;
+    background-image: linear-gradient(0deg,
+        config('colors.red-dark') 0%,
+        config('colors.red-light') 100%);
 }
 
-.fullPlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    /* If you need to support browser without CSS var support (<= IE11) */
-    height: calc(100vh - var(--vh-offset, 0px));
-    /* enable vh fix */
-    overflow: hidden;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
+.fullBG--home {
+    background-image: linear-gradient(0deg,
+        config('colors.red-dark') 0%,
+        config('colors.red-light') 100%),
+        var(--url);
 }

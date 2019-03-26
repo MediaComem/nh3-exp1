@@ -40,7 +40,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="postcss">
 .about p,
 .about h3 {
   @apply mb-4;
@@ -51,16 +51,16 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  h3 {
+  & h3 {
     text-align: center;
     border: 2px solid #fff;
     border-right: none;
     padding: 0.4em 0.3em;
-    a {
+    & a {
       text-decoration: none;
     }
   }
-  li:last-child h3 {
+  & li:last-child h3 {
     border: 2px solid #fff;
   }
 }
@@ -88,7 +88,7 @@
   content: " ";
   height: 24px;
   width: 2px;
-  background-color: rgba(255, 0, 90, 1);
+  @apply bg-red-light;
 }
 
 .btn--close:before {

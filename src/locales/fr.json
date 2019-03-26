@@ -1,6 +1,11 @@
 {
   "start": "Commencer",
   "about": "À propos",
+  "navigation": {
+    "goBack": "Retour",
+    "stop": "Arrêter",
+    "nextImage": "Image suivante"
+  },
   "page": {
     "about": {
       "title": "Une expérience du Lab de notrehistoire.ch",
@@ -13,6 +18,17 @@
       },
       "copyright": "© Fonsart - 2019",
       "slogan": "« Des histoires d’archives »"
+    },
+    "play": {
+      "introduction": {
+        "title": "But:",
+        "description": "Dater le plus d’images en 60 secondes",
+        "steps": [
+          "Glisser l’image vers le bas",
+          "Changer la date en la déplaçant de gauche à droite.",
+          "Relâcher pour valider."
+        ]
+      }
     }
   }
 }
