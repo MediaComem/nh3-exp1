@@ -33,6 +33,10 @@
       "timesUp": "Temps écoulé...",
       "summary": {
         "timeBonus": "Bonus de temps:"
+      },
+      "finish": {
+        "title": "Bravo !",
+        "description": "Vous avez daté toutes les images"
       }
     }
   }
