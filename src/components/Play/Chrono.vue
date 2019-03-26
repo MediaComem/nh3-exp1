@@ -19,6 +19,8 @@ export default {
       if (!this.play.chrono.started) {
         this.$store.commit("START_CHRONO", true);
 
+        // Remove at init 1 second to hurry up the user
+        this.$store.commit("SETINTERVAL_CHRONO");
         let instance = window.setInterval(() => {
           this.$store.commit("SETINTERVAL_CHRONO");
           this.checkTimesUp();

@@ -6,6 +6,7 @@ const About = () => import("./views/About.vue");
 const Play = () => import("./views/Play/Play.vue");
 const Summary = () => import("./views/Play/Summary.vue");
 const TimesUp = () => import("./views/Play/TimesUp.vue");
+const Finish = () => import("./views/Play/Finish.vue");
 
 Vue.use(Router);
 
@@ -33,9 +34,20 @@ export default new Router({
       component: Summary
     },
     {
-      path: "/play/:id/timesup",
+      path: "/play/timesup",
       name: "timesup",
-      component: TimesUp
+      component: TimesUp,
+      beforeEnter: (to, from, next) => {
+        from.name != "play" ? next("/") : next();
+      }
+    },
+    {
+      path: "/play/finish",
+      name: "finish",
+      component: Finish,
+      beforeEnter: (to, from, next) => {
+        from.name != "play" ? next("/") : next();
+      }
     }
   ]
 });

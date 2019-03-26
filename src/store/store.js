@@ -20,11 +20,21 @@ const getDefaultState = () => {
         selected: 0
       },
       chrono: {
-        init: 60, //sec
+        init: 15, //sec
         currentVal: 0, //sec
         timesUp: false,
         started: false,
         instance: null
+      },
+      currentImg: {
+        author: null,
+        title: null,
+        year: null,
+        rights: null,
+        id: null,
+        image: {
+          id: null
+        }
       }
     },
     imagesSet: [],
@@ -39,12 +49,12 @@ export default new Vuex.Store({
   getters: {
     imagesDone: state => {
       return state.imagesSet.filter(image =>
-        state.imagesScore.find(score => score._id === image._id)
+        state.imagesScore.find(score => score.id === image.id)
       );
     },
     imagesToDo: state => {
       return state.imagesSet.filter(
-        image => !state.imagesScore.find(score => score._id === image._id)
+        image => !state.imagesScore.find(score => score.id === image.id)
       );
     }
   },
@@ -84,6 +94,9 @@ export default new Vuex.Store({
     },
     [types.SET_FIRSTTIME](state, payload) {
       state.firstTime = payload;
+    },
+    [types.SET_CURRENTIMG](state, payload) {
+      state.play.currentImg = payload;
     }
   },
   actions: {
@@ -107,6 +120,8 @@ export default new Vuex.Store({
       let res = await axios.post("/collections/get/exp1_images", {
         simple: 1,
         fields: {
+          _id: 0,
+          id: 1,
           title: 1,
           year: 1,
           author: 1,
@@ -121,16 +136,5 @@ export default new Vuex.Store({
       commit("LOAD_IMAGES", await res.data);
     }
   },
-  plugins: [
-    new VuexPersistence({
-      reducer: state => ({
-        lang: state.lang,
-        username: state.username,
-        firstTime: state.firstTime,
-        imagesSet: state.imagesSet,
-        imagesScore: state.imagesScore
-      }),
-      storage: window.localStorage
-    }).plugin
-  ]
+  plugins: [new VuexPersistence({ storage: window.localStorage }).plugin]
 });

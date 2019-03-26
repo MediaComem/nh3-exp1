@@ -7,6 +7,8 @@ export const SET_FIRSTTIME = "SET_FIRSTTIME";
 export const SET_YEAR_SELECTED = "SET_YEAR_SELECTED";
 export const RESET_PLAYSTATE = "RESET_PLAYSTATE";
 
+export const SET_CURRENTIMG = "SET_CURRENTIMG";
+
 // Game - Chrono
 
 export const INIT_CHRONO = "INIT_CHRONO";

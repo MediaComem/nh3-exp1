@@ -1,4 +1,5 @@
 {
+  "title": "Date My Romandie",
   "start": "Commencer",
   "about": "À propos",
   "navigation": {
@@ -28,6 +29,10 @@
           "Changer la date en la déplaçant de gauche à droite.",
           "Relâcher pour valider."
         ]
+      },
+      "timesUp": "Temps écoulé...",
+      "summary": {
+        "timeBonus": "Bonus de temps:"
       }
     }
   }

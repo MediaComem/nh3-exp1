@@ -1,8 +1,8 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <img src="@/assets/117252.jpg" class="dragImg" />
+    <img :src="getCurrentImgUrl" class="dragImg" />
     <div class="wrapperBackgroundImg">
-      <img src="@/assets/117252.jpg" class="backgroundImg" />
+      <img :src="getCurrentImgUrl" class="backgroundImg" />
     </div>
     <slot></slot>
   </div>
@@ -20,7 +20,13 @@ export default {
       dragInit: false
     };
   },
-  computed: mapState(["firstTime"]),
+  computed: {
+    ...mapState(["firstTime", "play"]),
+    getCurrentImgUrl() {
+      let imgId = this.play.currentImg["image"]["_id"];
+      return this.generateImgUrl(imgId);
+    }
+  },
   mounted() {
     interact(".dragImg").draggable({
       // enable inertial throwing
@@ -97,7 +103,7 @@ export default {
 .backgroundImg {
   z-index: 2;
   max-width: 100%;
-  filter: opacity(0.5);
+  filter: opacity(0.7);
   user-select: none;
   touch-action: none;
 }
@@ -111,5 +117,13 @@ export default {
   touch-action: none;
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
+}
+/* For portrait images */
+.dragImg,
+.backgroundImg,
+.imageFit {
+  max-height: 50vh;
+  width: 100%;
+  object-fit: contain;
 }
 </style>

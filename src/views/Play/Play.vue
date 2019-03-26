@@ -24,7 +24,8 @@
 
 <script>
 import vhCheck from "vh-check";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
+import utilities from "@/mixins/utilities";
 
 const Chrono = () => import("@/components/Play/Chrono.vue");
 const Introduction = () => import("@/components/Play/Introduction.vue");
@@ -32,17 +33,33 @@ const DragImg = () => import("@/components/Play/DragImg.vue");
 const ShowYears = () => import("@/components/Play/ShowYears.vue");
 
 export default {
+  computed: {
+    ...mapState(["firstTime", "play"]),
+    ...mapGetters(["imagesToDo"])
+  },
+  mixins: [utilities],
   components: {
     Chrono,
     Introduction,
     DragImg,
     ShowYears
   },
-  computed: mapState(["firstTime", "play"]),
-  mounted() {
-    vhCheck();
+  created() {
     this.$store.commit("RESET_PLAYSTATE");
     this.$store.commit("INIT_CHRONO");
+
+    // Check if there are still images to do
+    if (this.imagesToDo.length == 0) {
+      this.$router.push({ name: "finish" });
+    }
+
+    // Choose an image
+    let randImageId = this.getRandomIntInclusive(0, this.imagesToDo.length);
+    let currentImg = this.imagesToDo[randImageId];
+    this.$store.commit("SET_CURRENTIMG", currentImg);
+  },
+  mounted() {
+    vhCheck();
   },
   methods: {
     startPlay() {
@@ -54,9 +71,14 @@ export default {
     stopPlay() {
       this.$refs.chrono.stop();
 
-      this.$router.push({ name: "summary", params: { id: "123" } });
+      this.$router.replace({
+        name: "summary",
+        params: { id: this.play.currentImg.id }
+      });
     },
-    timesUp() {}
+    timesUp() {
+      this.$router.replace({ name: "timesup" });
+    }
   }
 };
 </script>

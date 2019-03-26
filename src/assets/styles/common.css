@@ -66,9 +66,3 @@ body,
 *:focus:not(.focus-visible) {
     outline: none;
 }
-
-.wrapperImg {
-    position: relative;
-    flex-basis: 100%;
-    z-index: 4;
-}

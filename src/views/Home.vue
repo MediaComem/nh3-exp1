@@ -1,6 +1,6 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col justify-between">
-    <h1 class="pt-32">Date My Romandie</h1>
+    <h1 class="pt-32">{{ $t("title") }}</h1>
     <div class="flex pt-12 justify-center relative">
       <transition name="fade">
         <router-link
@@ -61,11 +61,7 @@ export default {
   },
   computed: {
     ...mapState(["imagesSet", "loading"]),
-    ...mapGetters([
-      "imagesDone",
-      "imagesToDo"
-      // ...
-    ])
+    ...mapGetters(["imagesDone", "imagesToDo"])
   }
 };
 </script>
