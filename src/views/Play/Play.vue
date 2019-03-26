@@ -14,12 +14,8 @@
       <Chrono ref="chrono" @timesUp="timesUp" />
     </header>
 
-    <DragImg
-      :withIntroduction="introduction"
-      @dragStart="startPlay"
-      @dragEnd="stopPlay"
-    >
-      <Introduction v-if="introduction" />
+    <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
+      <Introduction v-if="this.firstTime" />
     </DragImg>
 
     <ShowYears />
@@ -36,24 +32,13 @@ const DragImg = () => import("@/components/Play/DragImg.vue");
 const ShowYears = () => import("@/components/Play/ShowYears.vue");
 
 export default {
-  props: {
-    withIntroduction: {
-      default: true,
-      type: Boolean
-    }
-  },
-  data: function() {
-    return {
-      introduction: this.withIntroduction
-    };
-  },
   components: {
     Chrono,
     Introduction,
     DragImg,
     ShowYears
   },
-  computed: mapState(["play"]),
+  computed: mapState(["firstTime", "play"]),
   mounted() {
     vhCheck();
     this.$store.commit("RESET_PLAYSTATE");
@@ -61,7 +46,9 @@ export default {
   },
   methods: {
     startPlay() {
-      this.introduction = false;
+      if (this.firstTime) {
+        this.$store.commit("SET_FIRSTTIME", false);
+      }
       this.$refs.chrono.start();
     },
     stopPlay() {

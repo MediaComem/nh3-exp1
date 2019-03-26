@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="wrapperImg"
-    :class="{ 'wrapperImg--timeline': !withIntroduction }"
-  >
+  <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
     <img src="@/assets/117252.jpg" class="dragImg" />
     <div class="wrapperBackgroundImg">
       <img src="@/assets/117252.jpg" class="backgroundImg" />
@@ -14,15 +11,16 @@
 <script>
 import utilities from "@/mixins/utilities";
 import interact from "interactjs";
+import { mapState } from "vuex";
 
 export default {
-  props: ["withIntroduction"],
   mixins: [utilities],
   data: function() {
     return {
       dragInit: false
     };
   },
+  computed: mapState(["firstTime"]),
   mounted() {
     interact(".dragImg").draggable({
       // enable inertial throwing

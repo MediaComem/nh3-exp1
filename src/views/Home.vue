@@ -5,7 +5,7 @@
       <transition name="fade">
         <router-link
           v-if="!loading"
-          :to="{ name: 'play', props: { withIntroduction: true } }"
+          to="/play"
           tag="button"
           class="btn btn--main"
           >{{ $t("start") }}</router-link
@@ -23,9 +23,9 @@
       </transition>
     </div>
     <section class="flex justify-between">
-      <router-link to="/about" tag="button" class="btn">
-        {{ $t("about") }}
-      </router-link>
+      <router-link to="/about" tag="button" class="btn">{{
+        $t("about")
+      }}</router-link>
       <SelectLang />
     </section>
   </div>

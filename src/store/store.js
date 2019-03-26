@@ -29,7 +29,8 @@ const getDefaultState = () => {
     },
     imagesSet: [],
     imagesScore: [],
-    loading: false
+    loading: false,
+    firstTime: true
   };
 };
 
@@ -80,6 +81,9 @@ export default new Vuex.Store({
     },
     [types.SET_GLOBAL_LOADING](state, payload) {
       state.loading = payload;
+    },
+    [types.SET_FIRSTTIME](state, payload) {
+      state.firstTime = payload;
     }
   },
   actions: {
@@ -120,6 +124,9 @@ export default new Vuex.Store({
   plugins: [
     new VuexPersistence({
       reducer: state => ({
+        lang: state.lang,
+        username: state.username,
+        firstTime: state.firstTime,
         imagesSet: state.imagesSet,
         imagesScore: state.imagesScore
       }),

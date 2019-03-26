@@ -3,6 +3,7 @@ export const SET_GLOBAL_LOADING = "SET_GLOBAL_LOADING";
 
 // Game
 
+export const SET_FIRSTTIME = "SET_FIRSTTIME";
 export const SET_YEAR_SELECTED = "SET_YEAR_SELECTED";
 export const RESET_PLAYSTATE = "RESET_PLAYSTATE";
 
