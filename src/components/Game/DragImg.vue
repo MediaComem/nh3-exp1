@@ -21,9 +21,9 @@ export default {
     };
   },
   computed: {
-    ...mapState(["firstTime", "play"]),
+    ...mapState(["firstTime", "round"]),
     getCurrentImgUrl() {
-      let imgId = this.play.currentImg["image"]["_id"];
+      let imgId = this.round.image.image._id;
       return this.generateImgUrl(imgId);
     }
   },
@@ -73,8 +73,8 @@ export default {
     updateSelectedYear(elBBOX) {
       let yearSelected = this.convertRange(
         this.clamp(elBBOX.x, 0, window.innerWidth - elBBOX.width),
-        this.$store.state.play.year.end,
-        this.$store.state.play.year.begin,
+        this.$store.state.round.year.end,
+        this.$store.state.round.year.begin,
         window.innerWidth - elBBOX.width,
         0
       );
@@ -117,13 +117,5 @@ export default {
   touch-action: none;
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
-}
-/* For portrait images */
-.dragImg,
-.backgroundImg,
-.imageFit {
-  max-height: 50vh;
-  width: 100%;
-  object-fit: contain;
 }
 </style>

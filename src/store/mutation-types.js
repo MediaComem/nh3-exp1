@@ -1,21 +1,47 @@
+// Global
+
 export const SET_LANG = "SET_LANG";
 export const SET_GLOBAL_LOADING = "SET_GLOBAL_LOADING";
 
+// User
+
+export const SET_USER_ID = "SET_USER_ID";
+
+// Imageset
+
+export const LOAD_IMAGES = "LOAD_IMAGES";
+
 // Game
 
-export const SET_FIRSTTIME = "SET_FIRSTTIME";
-export const SET_YEAR_SELECTED = "SET_YEAR_SELECTED";
-export const RESET_PLAYSTATE = "RESET_PLAYSTATE";
+export const SET_NEW_GAME = "SET_NEW_GAME";
+export const SET_GAME_STATE = "SET_GAME_STATE";
+export const SET_FIRST_TIME = "SET_FIRST_TIME";
 
-export const SET_CURRENTIMG = "SET_CURRENTIMG";
+// Chrono
 
-// Game - Chrono
-
+export const RESET_CHRONO = "RESET_CHRONO";
 export const INIT_CHRONO = "INIT_CHRONO";
-export const START_CHRONO = "START_CHRONO";
-export const SETINTERVAL_CHRONO = "SETINTERVAL_CHRONO";
+export const SET_CHRONO_RUNNING = "SET_CHRONO_RUNNING";
+export const SET_INTERVAL_CHRONO = "SET_INTERVAL_CHRONO";
 export const STORE_CHRONO = "STORE_CHRONO"; //Store instance to easily clear it after
 export const TIMESUP = "TIMESUP";
 
-// Imageset
-export const LOAD_IMAGES = "LOAD_IMAGES";
+// Round
+
+export const RESET_ROUND = "RESET_ROUND";
+export const SET_ROUND_IMAGE = "SET_ROUND_IMAGE";
+export const SET_YEAR_SELECTED = "SET_YEAR_SELECTED";
+
+// Round Score
+
+export const SET_ROUND_STAT = "SET_ROUND_STAT";
+export const ADD_CHRONO_BONUS = "ADD_CHRONO_BONUS";
+export const ADD_CHRONO_PENALTY = "ADD_CHRONO_PENALTY";
+
+// Game Score
+
+export const SET_LAST_GAME_SCORE = "SET_LAST_GAME_SCORE";
+
+// Ranking
+
+export const SET_TOP10 = "SET_TOP10";

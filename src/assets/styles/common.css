@@ -61,6 +61,10 @@ body,
     height: 100%;
 }
 
+.flex-basis-100 {
+    flex-basis: 100%;
+}
+
 /* Source: https://css-tricks.com/keyboard-only-focus-styles/ */
 
 *:focus:not(.focus-visible) {

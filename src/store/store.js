@@ -1,7 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import * as types from "./mutation-types";
 import VuexPersistence from "vuex-persist";
+
+import getters from "./getters";
+import actions from "./actions";
+import * as types from "./mutation-types";
 import axios from "axios";
 import { app } from "../main";
 
@@ -12,52 +15,54 @@ const getDefaultState = () => {
     // By default check navigator lang
     lang:
       navigator.language.split("-")[0] || navigator.userLanguage.split("-")[0],
-    username: null,
-    play: {
+    user: {
+      name: null,
+      id: null
+    },
+    loading: false,
+    firstTime: true,
+    round: {
       year: {
         begin: new Date().getFullYear() - 200,
         end: new Date().getFullYear(),
         selected: 0
       },
-      chrono: {
-        init: 15, //sec
-        currentVal: 0, //sec
-        timesUp: false,
-        started: false,
-        instance: null
-      },
-      currentImg: {
+      image: {
         author: null,
         title: null,
         year: null,
         rights: null,
-        id: null,
+        id: null, //id is from nh3 not from cockpit _id
         image: {
           id: null
         }
       }
     },
+    game: {
+      running: false,
+      number: 0,
+      chrono: {
+        init: 10, //sec
+        bonus: 1, //sec
+        penalty: -1, //sec
+        penaltyCoefficient: 10,
+        currentVal: 0, //sec
+        currentBonusPenalty: 0, //sec
+        timesUp: false,
+        running: false,
+        instance: null
+      }
+    },
     imagesSet: [],
-    imagesScore: [],
-    loading: false,
-    firstTime: true
+    roundDone: [],
+    lastScore: null,
+    ranking: []
   };
 };
 
 export default new Vuex.Store({
   state: getDefaultState(),
-  getters: {
-    imagesDone: state => {
-      return state.imagesSet.filter(image =>
-        state.imagesScore.find(score => score.id === image.id)
-      );
-    },
-    imagesToDo: state => {
-      return state.imagesSet.filter(
-        image => !state.imagesScore.find(score => score.id === image.id)
-      );
-    }
-  },
+  getters: getters,
   mutations: {
     [types.SET_LANG](state, payload) {
       state.lang = payload;
@@ -65,76 +70,69 @@ export default new Vuex.Store({
       axios.defaults.headers.common["Accept-Language"] = payload;
       document.querySelector("html").setAttribute("lang", payload);
     },
-    [types.SET_YEAR_SELECTED](state, payload) {
-      state.play.year.selected = payload;
+    [types.SET_GLOBAL_LOADING](state, payload) {
+      state.loading = payload;
     },
-    [types.INIT_CHRONO](state) {
-      state.play.chrono.currentVal = state.play.chrono.init;
-    },
-    [types.START_CHRONO](state, payload) {
-      state.play.chrono.started = payload;
-    },
-    [types.SETINTERVAL_CHRONO](state) {
-      state.play.chrono.currentVal -= 1;
-    },
-    [types.STORE_CHRONO](state, payload) {
-      state.play.chrono.instance = payload;
-    },
-    [types.TIMESUP](state, payload) {
-      state.play.chrono.timesUp = payload;
-    },
-    [types.RESET_PLAYSTATE](state) {
-      state.play = getDefaultState().play;
+    [types.SET_USER_ID](state, payload) {
+      state.user.id = payload;
     },
     [types.LOAD_IMAGES](state, payload) {
       state.imagesSet = payload;
     },
-    [types.SET_GLOBAL_LOADING](state, payload) {
-      state.loading = payload;
-    },
-    [types.SET_FIRSTTIME](state, payload) {
+    [types.SET_FIRST_TIME](state, payload) {
       state.firstTime = payload;
     },
-    [types.SET_CURRENTIMG](state, payload) {
-      state.play.currentImg = payload;
-    }
-  },
-  actions: {
-    async setLang({ commit }, payload) {
-      if (payload in app.$i18n.messages) {
-        commit("SET_LANG", payload);
-      } else {
-        try {
-          const res = await import(`../locales/${payload}.json`);
-          app.$i18n.setLocaleMessage(payload, res.default);
-          commit("SET_LANG", payload);
-        } catch (e) {
-          // eslint-disable-next-line
-          console.log(e);
-        }
-      }
+    [types.SET_GAME_STATE](state, payload) {
+      state.game.running = payload;
     },
-    async loadImages({ commit }) {
-      commit("SET_GLOBAL_LOADING", true);
-
-      let res = await axios.post("/collections/get/exp1_images", {
-        simple: 1,
-        fields: {
-          _id: 0,
-          id: 1,
-          title: 1,
-          year: 1,
-          author: 1,
-          rights: 1,
-          image: 1
-        },
-        limit: 100,
-        skip: 0,
-        lang: "fr"
-      });
-
-      commit("LOAD_IMAGES", await res.data);
+    [types.SET_NEW_GAME](state) {
+      state.game.number += 1;
+    },
+    [types.RESET_CHRONO](state) {
+      state.game.chrono = getDefaultState().game.chrono;
+    },
+    [types.INIT_CHRONO](state) {
+      state.game.chrono.currentVal = state.game.chrono.init;
+    },
+    [types.SET_CHRONO_RUNNING](state, payload) {
+      state.game.chrono.running = payload;
+    },
+    [types.SET_INTERVAL_CHRONO](state) {
+      state.game.chrono.currentVal -= 1;
+    },
+    [types.STORE_CHRONO](state, payload) {
+      state.game.chrono.instance = payload;
+    },
+    [types.TIMESUP](state, payload) {
+      state.game.chrono.timesUp = payload;
+    },
+    [types.RESET_ROUND](state) {
+      state.round = getDefaultState().round;
+    },
+    [types.SET_ROUND_IMAGE](state, payload) {
+      state.round.image = payload;
+    },
+    [types.SET_YEAR_SELECTED](state, payload) {
+      state.round.year.selected = payload;
+    },
+    [types.SET_ROUND_STAT](state, payload) {
+      state.roundDone.push(payload);
+    },
+    [types.ADD_CHRONO_BONUS](state) {
+      state.game.chrono.currentBonusPenalty = state.game.chrono.bonus;
+      state.game.chrono.currentVal += state.game.chrono.bonus;
+    },
+    [types.ADD_CHRONO_PENALTY](state, penalty) {
+      state.game.chrono.currentBonusPenalty = penalty;
+      state.game.chrono.currentVal += penalty;
+    },
+    [types.SET_LAST_GAME_SCORE](state, score) {
+      state.lastScore = score;
+    },
+    [types.SET_TOP10](state, payload) {
+      state.ranking = payload;
     }
   },
+  actions: actions,
   plugins: [new VuexPersistence({ storage: window.localStorage }).plugin]
 });

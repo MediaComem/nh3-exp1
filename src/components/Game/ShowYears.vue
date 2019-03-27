@@ -1,23 +1,23 @@
 <template>
-  <div class="years">
-    <p>{{ play.year.begin }}</p>
+  <footer class="years">
+    <p>{{ round.year.begin }}</p>
     <p
       class="dragYear fadeFrom0"
       :class="{
-        'fadeFrom0--active': play.year.selected > 0
+        'fadeFrom0--active': round.year.selected > 0
       }"
     >
-      {{ play.year.selected }}
+      {{ round.year.selected }}
     </p>
-    <p>{{ play.year.end }}</p>
-  </div>
+    <p>{{ round.year.end }}</p>
+  </footer>
 </template>
 
 <script>
 import { mapState } from "vuex";
 
 export default {
-  computed: mapState(["play"])
+  computed: mapState(["round"])
 };
 </script>
 
@@ -28,8 +28,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-sizing: border-box;
-  padding: 1em;
   background: #fff;
   color: #000;
 }

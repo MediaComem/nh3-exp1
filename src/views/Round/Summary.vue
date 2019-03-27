@@ -8,12 +8,12 @@
         v-if="comeFromPlay"
         >{{ $t("navigation.stop") }}</router-link
       >
-      <router-link to="/" tag="button" v-if="!comeFromPlay">
-        {{ $t("navigation.goBack") }}
-      </router-link>
+      <router-link to="/" tag="button" v-if="!comeFromPlay">{{
+        $t("navigation.goBack")
+      }}</router-link>
       <Chrono ref="chrono" v-if="comeFromPlay" />
       <router-link
-        to="/play"
+        to="/round"
         tag="button"
         class="btn--highlighted"
         v-if="comeFromPlay"
@@ -23,25 +23,26 @@
 
     <div class="wrapperImg">
       <a
-        :href="'https://www.notrehistoire.ch/medias/' + play.currentImg.id"
+        :href="'https://www.notrehistoire.ch/medias/' + round.image.id"
         target="_blank"
         rel="noopener noreferrer"
       >
         <img :src="getCurrentImgUrl" class="imageFit" />
         <p class="imgRights">
-          {{ play.currentImg.author }} - {{ play.currentImg.rights }}
+          {{ round.image.author }} - {{ round.image.rights }}
         </p>
         <p class="imgDesc">
-          <time :datetime="play.currentImg.year">
-            {{ play.currentImg.year }}
-          </time>
-          {{ play.currentImg.title }}
+          <time :datetime="round.image.year">{{ round.image.year }}</time>
+          {{ round.image.title }}
         </p>
       </a>
     </div>
 
     <div class="flex justify-center" v-if="comeFromPlay">
-      <h3 class="text-red">{{ $t("page.play.summary.timeBonus") }} 0</h3>
+      <h3 class="text-red">
+        {{ $t("game.summary.timeBonus") }}
+        {{ game.chrono.currentBonusPenalty }}s
+      </h3>
     </div>
 
     <ShowYears v-if="comeFromPlay" />
@@ -49,25 +50,24 @@
 </template>
 
 <script>
-import vhCheck from "vh-check";
 import utilities from "@/mixins/utilities";
 import { mapState, mapGetters } from "vuex";
-import axios from "axios";
 
-const Chrono = () => import("@/components/Play/Chrono.vue");
-const ShowYears = () => import("@/components/Play/ShowYears.vue");
+const Chrono = () => import("@/components/Game/Chrono.vue");
+const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
   data: function() {
     return {
-      comeFromPlay: true
+      comeFromPlay: true,
+      bonus: 0
     };
   },
   computed: {
-    ...mapState(["play"]),
+    ...mapState(["round", "game", "lang"]),
     ...mapGetters(["imagesDone"]),
     getCurrentImgUrl() {
-      let imgId = this.play.currentImg["image"]["_id"];
+      let imgId = this.round.image.image._id;
       return this.generateImgUrl(imgId);
     }
   },
@@ -78,29 +78,10 @@ export default {
   },
   created() {
     // If the user is not coming from play get the image from the server
-    if (
-      this.play.currentImg["image"]["_id"] === null ||
-      this.play.year.selected === 0
-    ) {
+    if (this.round.image.image._id === null || this.round.year.selected === 0) {
       this.comeFromPlay = false;
-      axios
-        .post("/collections/get/exp1_images", {
-          filter: { id: this.$route.params.id },
-          simple: 1,
-          fields: {
-            title: 1,
-            year: 1,
-            author: 1,
-            rights: 1,
-            image: 1
-          },
-          lang: "fr"
-        })
-        .then(res => this.$store.commit("SET_CURRENTIMG", res.data[0]));
+      this.$store.dispatch("getSummaryTempImg", this.$route.params.id);
     }
-  },
-  mounted() {
-    vhCheck();
   }
 };
 </script>

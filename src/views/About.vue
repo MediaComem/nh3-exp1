@@ -3,7 +3,7 @@
     <div class="relative">
       <router-link to="/" tag="button" class="btn btn--close"></router-link>
     </div>
-    <h2>{{ $t("page.about.title") }}</h2>
+    <h2>{{ $t("page.about.mainTitle") }}</h2>
     <section>
       <h3>{{ $t("page.about.buildBy") }}</h3>
       <p>

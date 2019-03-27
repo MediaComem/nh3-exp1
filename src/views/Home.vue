@@ -4,11 +4,18 @@
     <div class="flex pt-12 justify-center relative">
       <transition name="fade">
         <router-link
-          v-if="!loading"
-          to="/play"
+          v-if="!loading && !game.running"
+          to="/round"
           tag="button"
           class="btn btn--main"
-          >{{ $t("start") }}</router-link
+          >{{ $t("navigation.start") }}</router-link
+        >
+        <router-link
+          v-if="!loading && game.running"
+          to="/round"
+          tag="button"
+          class="btn btn--main"
+          >{{ $t("navigation.continue") }}</router-link
         >
       </transition>
       <transition name="fade">
@@ -24,7 +31,7 @@
     </div>
     <section class="flex justify-between">
       <router-link to="/about" tag="button" class="btn">{{
-        $t("about")
+        $t("page.about.title")
       }}</router-link>
       <SelectLang />
     </section>
@@ -40,28 +47,30 @@ import utilities from "@/mixins/utilities";
 import BGImg from "@/mixins/BGImg";
 
 export default {
+  computed: {
+    ...mapState(["imagesSet", "loading", "game", "user"]),
+    ...mapGetters(["imagesDone", "imagesToDo"])
+  },
   mixins: [utilities, BGImg],
   components: {
     SelectLang,
     SemipolarSpinner
   },
   mounted() {
-    // Load images if there is no cache
-    if (this.imagesSet.length === 0) {
-      this.$store.dispatch("loadImages").then(() => {
-        this.$store.commit("SET_GLOBAL_LOADING", false);
-        this.startBGImg();
-      });
-    } else {
+    /* --- Load Images --- */
+
+    this.$store.dispatch("loadImages").then(() => {
+      this.$store.commit("SET_GLOBAL_LOADING", false);
       this.startBGImg();
+    });
+
+    /* --- Create User Id --- */
+    if (this.user.id === null) {
+      this.$store.dispatch("createUserId");
     }
   },
   beforeDestroy() {
     this.clearBGImg();
-  },
-  computed: {
-    ...mapState(["imagesSet", "loading"]),
-    ...mapGetters(["imagesDone", "imagesToDo"])
   }
 };
 </script>

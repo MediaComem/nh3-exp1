@@ -1,15 +1,41 @@
 {
   "title": "Date My Romandie",
-  "start": "Commencer",
-  "about": "À propos",
   "navigation": {
+    "start": "Commencer",
+    "continue": "Continuer",
     "goBack": "Retour",
     "stop": "Arrêter",
-    "nextImage": "Image suivante"
+    "nextImage": "Image suivante",
+    "restart": "Recommencer",
+    "ranking": "Classement",
+    "viewScore": "Voir le score"
+  },
+  "game": {
+    "introduction": {
+      "title": "But:",
+      "description": "Dater le plus d’images en 60 secondes",
+      "steps": [
+        "Glisser l’image vers le bas",
+        "Changer la date en la déplaçant de gauche à droite.",
+        "Relâcher pour valider."
+      ]
+    },
+    "timesUp": "Temps écoulé...",
+    "summary": {
+      "timeBonus": "Bonus de temps:"
+    },
+    "finish": {
+      "finalScore": "Ton score:"
+    },
+    "noMore": {
+      "title": "Bravo !",
+      "description": "Vous avez daté toutes les images"
+    }
   },
   "page": {
     "about": {
-      "title": "Une expérience du Lab de notrehistoire.ch",
+      "title": "À propos",
+      "mainTitle": "Une expérience du Lab de notrehistoire.ch",
       "buildBy": "Conçu et développé par:",
       "univers": {
         "title": "Découvrez nos autres univers:",
@@ -19,25 +45,6 @@
       },
       "copyright": "© Fonsart - 2019",
       "slogan": "« Des histoires d’archives »"
-    },
-    "play": {
-      "introduction": {
-        "title": "But:",
-        "description": "Dater le plus d’images en 60 secondes",
-        "steps": [
-          "Glisser l’image vers le bas",
-          "Changer la date en la déplaçant de gauche à droite.",
-          "Relâcher pour valider."
-        ]
-      },
-      "timesUp": "Temps écoulé...",
-      "summary": {
-        "timeBonus": "Bonus de temps:"
-      },
-      "finish": {
-        "title": "Bravo !",
-        "description": "Vous avez daté toutes les images"
-      }
     }
   }
 }
