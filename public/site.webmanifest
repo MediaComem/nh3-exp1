@@ -1,20 +1,20 @@
 {
-    "name": "Date My Romandie",
-    "short_name": "Date My Romandie",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#c8003a",
-    "background_color": "#c8003a",
-    "display": "standalone",
-    "orientation": "portrait"
+  "name": "Date&#x2007;My&#x2007;Romandie",
+  "short_name": "Date&#x2007;My&#x2007;Romandie",
+  "icons": [
+    {
+      "src": "./img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#c8003a",
+  "background_color": "#c8003a",
+  "display": "standalone",
+  "orientation": "portrait"
 }
