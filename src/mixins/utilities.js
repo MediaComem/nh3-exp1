@@ -23,7 +23,7 @@ var utilities = {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    generateImgUrl(imgId, options) {
+    generateImgSrc(imgId, options) {
       let urlParams = this.encodeURLParams({
         ...this.defaultImgParams,
         ...options
@@ -31,6 +31,18 @@ var utilities = {
       return `${
         process.env.VUE_APP_API_URL
       }/cockpit/image/?${urlParams}&src=${imgId}`;
+    },
+    generateImgSrcSet(imgId, xDescArr, options) {
+      return xDescArr
+        .map(
+          xDesc =>
+            `${this.generateImgSrc(
+              imgId,
+              { w: window.innerWidth * xDesc },
+              options
+            )} ${xDesc}x`
+        )
+        .join(",");
     },
     encodeURLParams(obj) {
       return Object.entries(obj)

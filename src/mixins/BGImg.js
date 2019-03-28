@@ -8,7 +8,7 @@ var BGImg = {
     setBGImg() {
       let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
       let imgId = this.imagesSet[randImageId]["image"]["_id"];
-      let imgUrl = this.generateImgUrl(imgId, { f: "desaturate" });
+      let imgUrl = this.generateImgSrc(imgId, { f: "desaturate" });
 
       this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
     },

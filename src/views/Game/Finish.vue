@@ -1,12 +1,12 @@
 <template>
   <div class="gameUI">
     <header>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">{{
-        $t("navigation.ranking")
-      }}</router-link>
-      <router-link to="/round" tag="button" class="btn--highlighted">
-        {{ $t("navigation.restart") }}
+      <router-link to="/ranking" tag="button" class="btn--highlighted">
+        {{ $t("navigation.ranking") }}
       </router-link>
+      <router-link to="/round" tag="button" class="btn--highlighted">{{
+        $t("navigation.restart")
+      }}</router-link>
     </header>
 
     <main class="wrapperImg">
@@ -17,7 +17,11 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img :src="generateImgUrl(el.image._id)" class="imageFit" />
+            <img
+              :src="generateImgSrc(el.image._id)"
+              :srcset="generateImgSrcSet(el.image._id, this.dpiRange)"
+              class="imageFit"
+            />
             <p class="imgRights">{{ el.author }} - {{ el.rights }}</p>
             <p class="imgDesc">
               <time :datetime="el.year">{{ el.year }}</time>

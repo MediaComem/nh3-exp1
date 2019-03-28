@@ -8,9 +8,9 @@
         v-if="comeFromPlay"
         >{{ $t("navigation.stop") }}</router-link
       >
-      <router-link to="/" tag="button" v-if="!comeFromPlay">
-        {{ $t("navigation.goBack") }}
-      </router-link>
+      <router-link to="/" tag="button" v-if="!comeFromPlay">{{
+        $t("navigation.goBack")
+      }}</router-link>
       <Chrono ref="chrono" v-if="comeFromPlay" />
       <router-link
         to="/round"
@@ -28,7 +28,8 @@
         rel="noopener noreferrer"
       >
         <img
-          :src="generateImgUrl(this.round.media.image._id)"
+          :src="generateImgSrc(this.round.media.image._id)"
+          :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
           class="imageFit"
         />
         <p class="imgRights">

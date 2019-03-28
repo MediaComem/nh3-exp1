@@ -1,9 +1,14 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <img :src="generateImgUrl(this.round.media.image._id)" class="dragImg" />
+    <img
+      :src="generateImgSrc(this.round.media.image._id)"
+      :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
+      class="dragImg"
+    />
     <div class="wrapperBackgroundImg">
       <img
-        :src="generateImgUrl(this.round.media.image._id)"
+        :src="generateImgSrc(this.round.media.image._id)"
+        :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
         class="backgroundImg"
       />
     </div>
@@ -24,7 +29,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["firstTime", "round"])
+    ...mapState(["firstTime", "round", "dpiRange"])
   },
   mounted() {
     interact(".dragImg").draggable({

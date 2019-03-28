@@ -42,7 +42,7 @@ const getDefaultState = () => {
       running: false,
       number: 0,
       chrono: {
-        init: 10, //sec
+        init: 60, //sec
         bonus: 1, //sec
         penalty: -1, //sec
         penaltyCoefficient: 10,
@@ -56,7 +56,8 @@ const getDefaultState = () => {
     imagesSet: [],
     roundDone: [],
     lastScore: null,
-    ranking: []
+    ranking: [],
+    dpiRange: [1, 1.5, 2, 2.5, 3, 4]
   };
 };
 
