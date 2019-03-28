@@ -1,26 +1,30 @@
 var BGImg = {
-  static() {
-    return {
-      BGImgInstance: null
-    };
-  },
   methods: {
-    setBGImg(imgUrl) {
-      document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
-    },
-    preloadAndSetIMG() {
+    setBGImg() {
       let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
       let imgId = this.imagesSet[randImageId]["image"]["_id"];
       let imgUrl = this.generateImgUrl(imgId, { f: "desaturate" });
 
-      // preload img
-      let preload_img = new Image();
-      preload_img.src = imgUrl;
-      preload_img.addEventListener("load", this.setBGImg(imgUrl));
+      this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
+    },
+    preloadImg(url) {
+      return new Promise(function(resolve, reject) {
+        let img = new Image();
+        img.onload = function() {
+          resolve(url);
+        };
+        img.onerror = function() {
+          reject(url);
+        };
+        img.src = url;
+      });
+    },
+    changeBGURL(imgUrl) {
+      document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
     },
     startBGImg() {
-      this.preloadAndSetIMG();
-      this.BGImgInstance = window.setInterval(this.preloadAndSetIMG, 8000);
+      this.setBGImg();
+      this.BGImgInstance = window.setInterval(this.setBGImg, 8000);
     },
     clearBGImg() {
       clearInterval(this.BGImgInstance);
