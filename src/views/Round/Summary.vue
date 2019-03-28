@@ -8,9 +8,9 @@
         v-if="comeFromPlay"
         >{{ $t("navigation.stop") }}</router-link
       >
-      <router-link to="/" tag="button" v-if="!comeFromPlay">{{
-        $t("navigation.goBack")
-      }}</router-link>
+      <router-link to="/" tag="button" v-if="!comeFromPlay">
+        {{ $t("navigation.goBack") }}
+      </router-link>
       <Chrono ref="chrono" v-if="comeFromPlay" />
       <router-link
         to="/round"
@@ -68,7 +68,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["round", "game", "lang"])
+    ...mapState(["round", "game", "lang", "dpiRange"])
   },
   mixins: [utilities],
   components: {

@@ -1,12 +1,12 @@
 <template>
   <div class="gameUI">
     <header>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">
-        {{ $t("navigation.ranking") }}
-      </router-link>
-      <router-link to="/round" tag="button" class="btn--highlighted">{{
-        $t("navigation.restart")
+      <router-link to="/ranking" tag="button" class="btn--highlighted">{{
+        $t("navigation.ranking")
       }}</router-link>
+      <router-link to="/round" tag="button" class="btn--highlighted">
+        {{ $t("navigation.restart") }}
+      </router-link>
     </header>
 
     <main class="wrapperImg">
@@ -48,7 +48,7 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   computed: {
-    ...mapState(["round", "game", "lastScore"]),
+    ...mapState(["round", "game", "lastScore", "dpiRange"]),
     ...mapGetters(["imagesDoneLastGame"])
   },
   mixins: [utilities],
