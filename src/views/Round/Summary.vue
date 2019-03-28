@@ -28,8 +28,8 @@
         rel="noopener noreferrer"
       >
         <img
-          :src="generateImgSrc(this.round.media.image._id)"
-          :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
+          :src="generateImgSrc(round.media.image._id)"
+          :srcset="generateImgSrcSet(round.media.image._id, dpiRange)"
           class="imageFit"
         />
         <p class="imgRights">

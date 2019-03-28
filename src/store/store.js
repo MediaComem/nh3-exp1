@@ -42,7 +42,7 @@ const getDefaultState = () => {
       running: false,
       number: 0,
       chrono: {
-        init: 60, //sec
+        init: 10, //sec
         bonus: 1, //sec
         penalty: -1, //sec
         penaltyCoefficient: 10,

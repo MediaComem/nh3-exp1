@@ -1,14 +1,14 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
     <img
-      :src="generateImgSrc(this.round.media.image._id)"
-      :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
+      :src="generateImgSrc(round.media.image._id)"
+      :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
       class="dragImg"
     />
     <div class="wrapperBackgroundImg">
       <img
-        :src="generateImgSrc(this.round.media.image._id)"
-        :srcset="generateImgSrcSet(this.round.media.image._id, this.dpiRange)"
+        :src="generateImgSrc(round.media.image._id)"
+        :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
         class="backgroundImg"
       />
     </div>

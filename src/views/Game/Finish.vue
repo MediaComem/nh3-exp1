@@ -19,7 +19,7 @@
           >
             <img
               :src="generateImgSrc(el.image._id)"
-              :srcset="generateImgSrcSet(el.image._id, this.dpiRange)"
+              :srcset="generateImgSrcSet(el.image._id, dpiRange)"
               class="imageFit"
             />
             <p class="imgRights">{{ el.author }} - {{ el.rights }}</p>
