@@ -56,6 +56,7 @@ export default {
     SelectLang,
     SemipolarSpinner
   },
+
   mounted() {
     /* --- Load Images --- */
 
@@ -71,6 +72,10 @@ export default {
   },
   beforeDestroy() {
     this.clearBGImg();
+  },
+  beforeRouteLeave(to, from, next) {
+    this.clearBGImg();
+    next();
   }
 };
 </script>
