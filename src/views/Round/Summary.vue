@@ -23,17 +23,20 @@
 
     <main class="wrapperImg">
       <a
-        :href="'https://www.notrehistoire.ch/medias/' + round.image.idnh"
+        :href="'https://www.notrehistoire.ch/medias/' + round.media.image.idnh"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img :src="generateImgUrl(round.image.image._id)" class="imageFit" />
+        <img
+          :src="generateImgUrl(this.round.media.image._id)"
+          class="imageFit"
+        />
         <p class="imgRights">
-          {{ round.image.author }} - {{ round.image.rights }}
+          {{ round.media.author }} - {{ round.media.rights }}
         </p>
         <p class="imgDesc">
-          <time :datetime="round.image.year">{{ round.image.year }}</time>
-          <span>{{ round.image.title }}</span>
+          <time :datetime="round.media.year">{{ round.media.year }}</time>
+          <span>{{ round.media.title }}</span>
         </p>
       </a>
     </main>
@@ -73,7 +76,7 @@ export default {
   },
   created() {
     // If the user is not coming from play get the image from the server
-    if (this.round.image.image._id === null || this.round.year.selected === 0) {
+    if (this.round.media.image._id === null || this.round.year.selected === 0) {
       this.comeFromPlay = false;
       this.$store.dispatch("getSummaryTempImg", this.$route.params.idnh);
     }

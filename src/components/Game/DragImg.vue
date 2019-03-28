@@ -1,8 +1,11 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <img :src="generateImgUrl(round.image.image._id)" class="dragImg" />
+    <img :src="generateImgUrl(this.round.media.image._id)" class="dragImg" />
     <div class="wrapperBackgroundImg">
-      <img :src="generateImgUrl(round.image.image._id)" class="backgroundImg" />
+      <img
+        :src="generateImgUrl(this.round.media.image._id)"
+        class="backgroundImg"
+      />
     </div>
     <slot></slot>
   </div>

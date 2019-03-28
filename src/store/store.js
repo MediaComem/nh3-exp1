@@ -27,7 +27,7 @@ const getDefaultState = () => {
         end: new Date().getFullYear(),
         selected: 0
       },
-      image: {
+      media: {
         author: null,
         title: null,
         year: null,
@@ -110,7 +110,7 @@ export default new Vuex.Store({
       state.round = getDefaultState().round;
     },
     [types.SET_ROUND_IMAGE](state, payload) {
-      state.round.image = payload;
+      state.round.media = payload;
     },
     [types.SET_YEAR_SELECTED](state, payload) {
       state.round.year.selected = payload;

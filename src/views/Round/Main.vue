@@ -34,16 +34,7 @@ const ShowYears = () => import("@/components/Game/ShowYears.vue");
 export default {
   computed: {
     ...mapState(["firstTime", "game", "round", "user"]),
-    ...mapGetters(["imagesToDo"]),
-    yearsDiffCoeff() {
-      return Math.round(
-        Math.abs(this.round.image.year - this.round.year.selected) /
-          this.game.chrono.penaltyCoefficient
-      );
-    },
-    penalty() {
-      return this.game.chrono.penalty * this.yearsDiffCoeff;
-    }
+    ...mapGetters(["imagesToDo"])
   },
   mixins: [utilities],
   components: {
@@ -92,21 +83,30 @@ export default {
     },
     storeRoundStat() {
       this.$store.dispatch("storeRoundStat", {
-        idnh: this.round.image.idnh,
+        idnh: this.round.media.idnh,
         yearSelected: this.round.year.selected,
         gameNumber: this.game.number,
         userId: this.user.id,
         userName: this.user.name
       });
     },
+    yearsDiffCoeff() {
+      return Math.round(
+        Math.abs(this.round.media.year - this.round.year.selected) /
+          this.game.chrono.penaltyCoefficient
+      );
+    },
+    penalty() {
+      return this.game.chrono.penalty * this.yearsDiffCoeff();
+    },
     calcBonus() {
       /* --- Bonus / Penalty --- */
 
-      if (parseInt(this.round.image.year) === this.round.year.selected) {
+      if (parseInt(this.round.media.year) === this.round.year.selected) {
         this.$store.commit("ADD_CHRONO_BONUS");
       } else {
         // Penalty
-        this.$store.commit("ADD_CHRONO_PENALTY", this.penalty);
+        this.$store.commit("ADD_CHRONO_PENALTY", this.penalty());
       }
 
       /* --- TimesUp / Continue --- */
@@ -116,7 +116,7 @@ export default {
       } else {
         this.$router.replace({
           name: "roundsummary",
-          params: { idnh: this.round.image.idnh }
+          params: { idnh: this.round.media.idnh }
         });
       }
     },
