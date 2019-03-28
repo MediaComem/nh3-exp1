@@ -17,20 +17,11 @@
 
 <script>
 import utilities from "@/mixins/utilities";
-import { mapState, mapGetters } from "vuex";
 
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
 const Chrono = () => import("@/components/Game/Chrono.vue");
 
 export default {
-  computed: {
-    ...mapState(["round"]),
-    ...mapGetters(["imagesDone"]),
-    getCurrentImgUrl() {
-      let imgId = this.round.image.image._id;
-      return this.generateImgUrl(imgId);
-    }
-  },
   mixins: [utilities],
   components: {
     Chrono,

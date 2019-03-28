@@ -8,9 +8,9 @@
         v-if="comeFromPlay"
         >{{ $t("navigation.stop") }}</router-link
       >
-      <router-link to="/" tag="button" v-if="!comeFromPlay">{{
-        $t("navigation.goBack")
-      }}</router-link>
+      <router-link to="/" tag="button" v-if="!comeFromPlay">
+        {{ $t("navigation.goBack") }}
+      </router-link>
       <Chrono ref="chrono" v-if="comeFromPlay" />
       <router-link
         to="/round"
@@ -27,7 +27,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img :src="getCurrentImgUrl" class="imageFit" />
+        <img :src="generateImgUrl(round.image.image._id)" class="imageFit" />
         <p class="imgRights">
           {{ round.image.author }} - {{ round.image.rights }}
         </p>
@@ -64,11 +64,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["round", "game", "lang"]),
-    getCurrentImgUrl() {
-      let imgId = this.round.image.image._id;
-      return this.generateImgUrl(imgId);
-    }
+    ...mapState(["round", "game", "lang"])
   },
   mixins: [utilities],
   components: {

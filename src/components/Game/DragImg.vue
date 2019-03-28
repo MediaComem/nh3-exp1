@@ -1,8 +1,8 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <img :src="getCurrentImgUrl" class="dragImg" />
+    <img :src="generateImgUrl(round.image.image._id)" class="dragImg" />
     <div class="wrapperBackgroundImg">
-      <img :src="getCurrentImgUrl" class="backgroundImg" />
+      <img :src="generateImgUrl(round.image.image._id)" class="backgroundImg" />
     </div>
     <slot></slot>
   </div>
@@ -21,11 +21,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["firstTime", "round"]),
-    getCurrentImgUrl() {
-      let imgId = this.round.image.image._id;
-      return this.generateImgUrl(imgId);
-    }
+    ...mapState(["firstTime", "round"])
   },
   mounted() {
     interact(".dragImg").draggable({
