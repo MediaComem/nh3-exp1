@@ -38,7 +38,7 @@ var utilities = {
           xDesc =>
             `${this.generateImgSrc(
               imgId,
-              { w: window.innerWidth * xDesc },
+              { w: Math.floor(window.innerWidth * xDesc) },
               options
             )} ${xDesc}x`
         )

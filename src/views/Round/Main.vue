@@ -50,12 +50,6 @@ export default {
       this.noMore();
     }
 
-    /* --- First Game --- */
-
-    if (this.firstTime) {
-      this.$store.commit("SET_FIRST_TIME", false);
-    }
-
     /* --- New Game --- */
     if (!this.game.running) {
       this.$store.commit("RESET_CHRONO");
@@ -74,7 +68,13 @@ export default {
   },
   methods: {
     startPlay() {
+      this.isFirstTimeEver();
       this.$refs.chrono.start();
+    },
+    isFirstTimeEver() {
+      if (this.firstTime) {
+        this.$store.commit("SET_FIRST_TIME", false);
+      }
     },
     stopPlay() {
       this.$refs.chrono.stop();

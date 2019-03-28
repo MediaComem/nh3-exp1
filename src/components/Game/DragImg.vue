@@ -1,6 +1,7 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <img
+    <v-lazy-image
+      :src-placeholder="generateImgSrc(round.media.image._id, { w: 10, q: 20 })"
       :src="generateImgSrc(round.media.image._id)"
       :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
       class="dragImg"
@@ -121,5 +122,12 @@ export default {
   touch-action: none;
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
+}
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 0.7s;
+}
+.v-lazy-image-loaded {
+  filter: blur(0);
 }
 </style>

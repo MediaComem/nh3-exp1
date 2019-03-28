@@ -57,7 +57,7 @@ const getDefaultState = () => {
     roundDone: [],
     lastScore: null,
     ranking: [],
-    dpiRange: [1, 1.5, 2, 2.5, 3, 4]
+    dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4]
   };
 };
 
