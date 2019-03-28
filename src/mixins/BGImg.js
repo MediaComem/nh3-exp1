@@ -1,4 +1,9 @@
 var BGImg = {
+  static() {
+    return {
+      BGImgInstance: null
+    };
+  },
   methods: {
     setBGImg() {
       let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
