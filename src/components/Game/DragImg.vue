@@ -123,6 +123,7 @@ export default {
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
+/* purgecss start ignore */
 .v-lazy-image {
   filter: blur(10px);
   transition: filter 0.7s;
@@ -130,4 +131,5 @@ export default {
 .v-lazy-image-loaded {
   filter: blur(0);
 }
+/* purgecss end ignore */
 </style>
