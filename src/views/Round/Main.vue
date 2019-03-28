@@ -1,5 +1,5 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI">
     <header>
       <router-link
         to="/"
@@ -92,7 +92,7 @@ export default {
     },
     storeRoundStat() {
       this.$store.dispatch("storeRoundStat", {
-        id: this.round.image.id,
+        idnh: this.round.image.idnh,
         yearSelected: this.round.year.selected,
         gameNumber: this.game.number,
         userId: this.user.id,
@@ -116,7 +116,7 @@ export default {
       } else {
         this.$router.replace({
           name: "roundsummary",
-          params: { id: this.round.image.id }
+          params: { idnh: this.round.image.idnh }
         });
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI">
     <header>
       <router-link to="/ranking" tag="button" class="btn--highlighted">
         {{ $t("navigation.ranking") }}
@@ -9,22 +9,24 @@
       }}</router-link>
     </header>
 
-    <swiper class="wrapperImg">
-      <swiper-slide v-for="(el, index) in imagesDoneLastGame" :key="index">
-        <a
-          :href="'https://www.notrehistoire.ch/medias/' + el.id"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img :src="generateImgUrl(el.image._id)" class="imageFit" />
-          <p class="imgRights">{{ el.author }} - {{ el.rights }}</p>
-          <p class="imgDesc">
-            <time :datetime="el.year">{{ el.year }}</time>
-            {{ el.title }}
-          </p>
-        </a>
-      </swiper-slide>
-    </swiper>
+    <main class="wrapperImg">
+      <swiper>
+        <swiper-slide v-for="(el, index) in imagesDoneLastGame" :key="index">
+          <a
+            :href="'https://www.notrehistoire.ch/medias/' + el.idnh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img :src="generateImgUrl(el.image._id)" class="imageFit" />
+            <p class="imgRights">{{ el.author }} - {{ el.rights }}</p>
+            <p class="imgDesc">
+              <time :datetime="el.year">{{ el.year }}</time>
+              <span>{{ el.title }}</span>
+            </p>
+          </a>
+        </swiper-slide>
+      </swiper>
+    </main>
 
     <footer class="flex justify-center">
       <h3 class="text-red">
@@ -73,10 +75,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.playUI header {
+.gameUI header {
   grid-template-columns: 1fr 1fr;
 }
-.playUI header *:nth-child(2) {
+.gameUI header *:nth-child(2) {
   justify-self: end;
 }
 .imageFit {

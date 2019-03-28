@@ -24,7 +24,7 @@ export default {
       simple: 1,
       fields: {
         _id: 0,
-        id: 1,
+        idnh: 1,
         title: 1,
         year: 1,
         author: 1,
@@ -50,7 +50,7 @@ export default {
   },
   async getSummaryTempImg({ commit, state }, imgId) {
     let res = await axios.post("/collections/get/exp1_images", {
-      filter: { id: imgId },
+      filter: { idnh: imgId },
       simple: 1,
       fields: {
         title: 1,

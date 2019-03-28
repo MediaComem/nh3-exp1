@@ -1,19 +1,19 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI gameUI--scroll">
     <header>
       <router-link to="/game/finish" tag="button" class="btn--highlighted">{{
         $t("navigation.goBack")
       }}</router-link>
     </header>
 
-    <div class="flex p-4">
+    <main class="flex p-4">
       <dl>
         <template v-for="rank in ranking">
           <dt :key="rank.username">{{ rank.username }}</dt>
           <dd :key="rank.score">{{ rank.score }}</dd>
         </template>
       </dl>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.playUI {
+.gameUI {
   justify-content: start;
 }
 dl {

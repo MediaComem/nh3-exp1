@@ -1,5 +1,5 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI">
     <header>
       <router-link
         to="/"
@@ -21,9 +21,9 @@
       >
     </header>
 
-    <div class="wrapperImg">
+    <main class="wrapperImg">
       <a
-        :href="'https://www.notrehistoire.ch/medias/' + round.image.id"
+        :href="'https://www.notrehistoire.ch/medias/' + round.image.idnh"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -33,10 +33,10 @@
         </p>
         <p class="imgDesc">
           <time :datetime="round.image.year">{{ round.image.year }}</time>
-          {{ round.image.title }}
+          <span>{{ round.image.title }}</span>
         </p>
       </a>
-    </div>
+    </main>
 
     <div class="flex justify-center" v-if="comeFromPlay">
       <h3 class="text-red">
@@ -51,7 +51,7 @@
 
 <script>
 import utilities from "@/mixins/utilities";
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 const Chrono = () => import("@/components/Game/Chrono.vue");
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
@@ -65,7 +65,6 @@ export default {
   },
   computed: {
     ...mapState(["round", "game", "lang"]),
-    ...mapGetters(["imagesDone"]),
     getCurrentImgUrl() {
       let imgId = this.round.image.image._id;
       return this.generateImgUrl(imgId);
@@ -80,7 +79,7 @@ export default {
     // If the user is not coming from play get the image from the server
     if (this.round.image.image._id === null || this.round.year.selected === 0) {
       this.comeFromPlay = false;
-      this.$store.dispatch("getSummaryTempImg", this.$route.params.id);
+      this.$store.dispatch("getSummaryTempImg", this.$route.params.idnh);
     }
   }
 };

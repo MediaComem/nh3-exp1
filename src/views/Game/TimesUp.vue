@@ -1,5 +1,5 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI">
     <header>
       <Chrono ref="chrono" />
       <router-link to="/game/finish" tag="button" class="btn--highlighted">
@@ -7,9 +7,9 @@
       </router-link>
     </header>
 
-    <div class="flex justify-center items-center flex-basis-100">
+    <main class="flex justify-center items-center flex-basis-100">
       <h3 class="text-red">{{ $t("game.timesUp") }}</h3>
-    </div>
+    </main>
 
     <ShowYears />
   </div>
@@ -40,10 +40,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.playUI .chrono {
+.gameUI .chrono {
   grid-column: 2;
 }
-.playUI header *:nth-child(2) {
+.gameUI header *:nth-child(2) {
   justify-self: end;
 }
 </style>

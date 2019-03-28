@@ -1,5 +1,5 @@
 <template>
-  <div class="playUI">
+  <div class="gameUI">
     <header>
       <router-link to="/" tag="button" class="btn--highlighted">
         {{ $t("navigation.stop") }}
@@ -14,7 +14,7 @@
 </template>
 
 <style lang="postcss" scoped>
-.playUI {
+.gameUI {
   justify-content: start;
 }
 </style>

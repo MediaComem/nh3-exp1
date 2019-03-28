@@ -34,7 +34,7 @@ export default new Router({
       component: RoundMain
     },
     {
-      path: "/round/:id/summary",
+      path: "/round/:idnh/summary",
       name: "roundsummary",
       component: RoundSummary
     },

@@ -32,9 +32,9 @@ const getDefaultState = () => {
         title: null,
         year: null,
         rights: null,
-        id: null, //id is from nh3 not from cockpit _id
+        idnh: null,
         image: {
-          id: null
+          _id: null
         }
       }
     },
