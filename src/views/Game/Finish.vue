@@ -1,12 +1,12 @@
 <template>
   <div class="gameUI">
     <header>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">
-        {{ $t("navigation.ranking") }}
-      </router-link>
-      <router-link to="/round" tag="button" class="btn--highlighted">{{
-        $t("navigation.restart")
+      <router-link to="/ranking" tag="button" class="btn--highlighted">{{
+        $t("navigation.ranking")
       }}</router-link>
+      <router-link to="/round" tag="button" class="btn--highlighted">
+        {{ $t("navigation.restart") }}
+      </router-link>
     </header>
 
     <main class="wrapperImg">
@@ -40,7 +40,6 @@
 import utilities from "@/mixins/utilities";
 import { mapState, mapGetters } from "vuex";
 
-import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
