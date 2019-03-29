@@ -30,9 +30,9 @@
       </transition>
     </div>
     <section class="flex justify-between">
-      <router-link to="/about" tag="button" class="btn">
-        {{ $t("page.about.title") }}
-      </router-link>
+      <router-link to="/about" tag="button" class="btn">{{
+        $t("page.about.title")
+      }}</router-link>
       <SelectLang />
     </section>
   </div>

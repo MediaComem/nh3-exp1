@@ -46,7 +46,7 @@ module.exports = {
           /^(?!(|.*?:)cursor-move).+-move$/,
           /^router-link(|-exact)-active$/
         ],
-        whitelistPatternsChildren: [/swiper/]
+        whitelistPatternsChildren: [/swiper/, /spinner/]
       }),
     require("autoprefixer")()
   ]
