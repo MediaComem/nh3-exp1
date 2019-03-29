@@ -12,9 +12,6 @@ import i18n from "./plugins/i18n-setup";
 import VueStatic from "vue-static";
 Vue.use(VueStatic);
 
-import { VLazyImagePlugin } from "v-lazy-image";
-Vue.use(VLazyImagePlugin);
-
 /* API */
 
 Vue.config.productionTip = process.env.NODE_ENV === "production";

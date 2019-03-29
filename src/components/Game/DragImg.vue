@@ -20,6 +20,8 @@
 <script>
 import utilities from "@/mixins/utilities";
 import interact from "interactjs";
+require("intersection-observer");
+import VLazyImage from "v-lazy-image";
 import { mapState } from "vuex";
 
 export default {
@@ -28,6 +30,9 @@ export default {
     return {
       dragInit: false
     };
+  },
+  components: {
+    VLazyImage
   },
   computed: {
     ...mapState(["firstTime", "round", "dpiRange"])
