@@ -6,11 +6,13 @@ var BGImg = {
   },
   methods: {
     setBGImg() {
-      let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
-      let imgId = this.imagesSet[randImageId]["image"]["_id"];
-      let imgUrl = this.generateImgSrc(imgId, { f: "desaturate" });
+      if (this.imagesSet.length > 0) {
+        let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
+        let imgId = this.imagesSet[randImageId]["image"]["_id"];
+        let imgUrl = this.generateImgSrc(imgId, { f: "desaturate" });
 
-      this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
+        this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
+      }
     },
     changeBGURL(imgUrl) {
       document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
