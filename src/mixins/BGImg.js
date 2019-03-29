@@ -12,18 +12,6 @@ var BGImg = {
 
       this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
     },
-    preloadImg(url) {
-      return new Promise(function(resolve, reject) {
-        let img = new Image();
-        img.onload = function() {
-          resolve(url);
-        };
-        img.onerror = function() {
-          reject(url);
-        };
-        img.src = url;
-      });
-    },
     changeBGURL(imgUrl) {
       document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
     },

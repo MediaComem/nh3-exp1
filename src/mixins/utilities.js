@@ -23,6 +23,18 @@ var utilities = {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
+    preloadImg(url) {
+      return new Promise(function(resolve, reject) {
+        let img = new Image();
+        img.onload = function() {
+          resolve(url);
+        };
+        img.onerror = function() {
+          reject(url);
+        };
+        img.src = url;
+      });
+    },
     generateImgSrc(imgId, options) {
       let urlParams = this.encodeURLParams({
         ...this.defaultImgParams,

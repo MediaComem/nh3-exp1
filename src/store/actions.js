@@ -62,7 +62,7 @@ export default {
       lang: state.lang
     });
 
-    commit("SET_ROUND_IMAGE", await res.data[0]);
+    commit("SET_ROUND_MEDIA", await res.data[0]);
   },
   async getTop10({ commit }) {
     let res = await axios.post("/collections/get/exp1_classement", {

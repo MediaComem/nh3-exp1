@@ -29,7 +29,7 @@ export const TIMESUP = "TIMESUP";
 // Round
 
 export const RESET_ROUND = "RESET_ROUND";
-export const SET_ROUND_IMAGE = "SET_ROUND_IMAGE";
+export const SET_ROUND_MEDIA = "SET_ROUND_MEDIA";
 export const SET_YEAR_SELECTED = "SET_YEAR_SELECTED";
 
 // Round Score

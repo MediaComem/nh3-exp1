@@ -110,7 +110,7 @@ export default new Vuex.Store({
     [types.RESET_ROUND](state) {
       state.round = getDefaultState().round;
     },
-    [types.SET_ROUND_IMAGE](state, payload) {
+    [types.SET_ROUND_MEDIA](state, payload) {
       state.round.media = payload;
     },
     [types.SET_YEAR_SELECTED](state, payload) {

@@ -61,10 +61,14 @@ export default {
     /* --- New Round --- */
 
     this.$store.commit("RESET_ROUND");
-    // Choose an image
+    // Choose a media
     let randImageId = this.getRandomIntInclusive(0, this.imagesToDo.length);
     let currentImg = this.imagesToDo[randImageId];
-    this.$store.commit("SET_ROUND_IMAGE", currentImg);
+    this.$store.commit("SET_ROUND_MEDIA", currentImg);
+    // Preload thumb
+    this.preloadImg(
+      this.generateImgSrc(this.round.media.image._id, { w: 30, q: 40 })
+    );
   },
   methods: {
     startPlay() {
