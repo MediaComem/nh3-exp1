@@ -22,9 +22,9 @@
       </transition>
     </div>
     <section class="flex justify-between">
-      <router-link to="/about" tag="button" class="btn">{{
-        $t("page.about.title")
-      }}</router-link>
+      <router-link to="/about" tag="button" class="btn">
+        {{ $t("page.about.title") }}
+      </router-link>
       <SelectLang />
     </section>
   </div>
@@ -39,7 +39,7 @@ import BGImg from "@/mixins/BGImg";
 
 export default {
   computed: {
-    ...mapState(["imagesSet", "loading", "game", "user"]),
+    ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
     ...mapGetters(["imagesDone", "imagesToDo"])
   },
   mixins: [utilities, BGImg],
@@ -47,6 +47,13 @@ export default {
     SelectLang
   },
   beforeMount() {
+    /* --- iOS: Ask to install --- */
+    /* Source: https://www.netguru.com/codestories/few-tips-that-will-make-your-pwa-on-ios-feel-like-native */
+
+    if (this.firstTime) {
+      this.showAskToInstallIos();
+    }
+
     /* --- Load Images --- */
 
     this.$store.dispatch("loadImages").then(() => {
@@ -64,6 +71,21 @@ export default {
   beforeRouteLeave(to, from, next) {
     this.clearBGImg();
     next();
+  },
+  showAskToInstallIos() {
+    // Detects if device is on iOS
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    // Detects if device is in standalone mode
+    const isInStandaloneMode = () =>
+      "standalone" in window.navigator && window.navigator.standalone;
+
+    // Checks if should display install popup notification:
+    if (isIos() && !isInStandaloneMode()) {
+      this.setState({ showInstallMessage: true });
+    }
   }
 };
 </script>
