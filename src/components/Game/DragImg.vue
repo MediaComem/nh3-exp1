@@ -1,7 +1,7 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
     <v-lazy-image
-      :src-placeholder="generateImgSrc(round.media.image._id, { w: 10, q: 20 })"
+      :src-placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :src="generateImgSrc(round.media.image._id)"
       :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
       class="dragImg"
