@@ -8,6 +8,9 @@ var BGImg = {
     setBGImg() {
       if (this.imagesSet.length > 0) {
         let randImageId = this.getRandomIntInclusive(0, this.imagesSet.length);
+        console.log("randImageId", randImageId);
+        console.log("image", this.imagesSet[randImageId]["image"]);
+        console.log("image_id", this.imagesSet[randImageId]["image"]["_id"]);
         let imgId = this.imagesSet[randImageId]["image"]["_id"];
         let imgUrl = this.generateImgSrc(imgId, { f: "desaturate" });
 
