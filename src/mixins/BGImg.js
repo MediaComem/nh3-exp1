@@ -27,8 +27,14 @@ var BGImg = {
     changeBGURL(imgUrl) {
       document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
     },
+    isBGURLEmpty() {
+      return document.documentElement.style.getPropertyValue("--url") === "";
+    },
     startBGImg() {
-      this.setBGImg();
+      if (this.isBGURLEmpty()) {
+        this.setBGImg();
+      }
+
       this.BGImgInstance = window.setInterval(this.setBGImg, 8000);
     },
     clearBGImg() {
