@@ -1,8 +1,8 @@
 {
   "title": "Date My Romandie",
   "navigation": {
-    "start": "Test Commencer",
-    "continue": "Test Continuer",
+    "start": "Commencer",
+    "continue": "Continuer",
     "goBack": "Retour",
     "stop": "Arrêter",
     "nextImage": "Image suivante",
