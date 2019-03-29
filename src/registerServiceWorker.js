@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === "production") {
     },
     updated(registration) {
       console.log("New content is available; please refresh.");
+      console.log(i18n.$t("pages.home.meta.title"));
       let confirmationResult = confirm(
         "New content found! Do you want to reload the app?"
       );
