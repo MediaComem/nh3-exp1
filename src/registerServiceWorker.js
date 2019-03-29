@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
 import { register } from "register-service-worker";
-import i18n from "./plugins/i18n-setup";
 
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
@@ -22,10 +21,7 @@ if (process.env.NODE_ENV === "production") {
     },
     updated(registration) {
       console.log("New content is available; please refresh.");
-      console.log(i18n.$t("pages.home.meta.title"));
-      let confirmationResult = confirm(
-        "New content found! Do you want to reload the app?"
-      );
+      let confirmationResult = confirm("Mise à jour disponible");
       if (confirmationResult)
         registration.waiting.postMessage({ action: "skipWaiting" });
     },
