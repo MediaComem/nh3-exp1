@@ -9,16 +9,15 @@
         :class="{
           'fadeFrom100--active': game.chrono.started
         }"
-        >{{ $t("navigation.goBack") }}</router-link
-      >
-      <Chrono ref="chrono" @timesUp="timesUp" />
+      >{{ $t("navigation.goBack") }}</router-link>
+      <Chrono ref="chrono" @timesUp="timesUp"/>
     </header>
 
     <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
-      <Introduction v-if="this.firstTime" />
+      <Introduction v-if="this.firstTime"/>
     </DragImg>
 
-    <ShowYears />
+    <ShowYears/>
   </div>
 </template>
 
