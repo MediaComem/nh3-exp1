@@ -54,7 +54,6 @@ export default {
     if (!this.game.running) {
       this.$store.commit("RESET_CHRONO");
       this.$store.commit("INIT_CHRONO");
-      this.$store.commit("SET_NEW_GAME");
       this.$store.commit("SET_GAME_STATE", true);
     }
 
@@ -130,6 +129,7 @@ export default {
     timesUp() {
       this.$router.replace({ name: "gametimesup" });
       this.$store.commit("SET_GAME_STATE", false);
+      this.$store.commit("SET_NEW_GAME");
     }
   }
 };
