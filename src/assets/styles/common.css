@@ -78,3 +78,39 @@ body {
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
 }
+
+:root {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+}
+
+
+.btn--close {
+    position: absolute;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+}
+
+.btn--close:hover {
+    opacity: 1;
+}
+
+.btn--close:before,
+.btn--close:after {
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    content: " ";
+    height: 24px;
+    width: 2px;
+    @apply bg-red-light;
+}
+
+.btn--close:before {
+    transform: rotate(45deg);
+}
+
+.btn--close:after {
+    transform: rotate(-45deg);
+}

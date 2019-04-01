@@ -1,5 +1,5 @@
 <template>
-  <div class="fullBG flex flex-col justify-between text-center about">
+  <div class="fullBG flex flex-col justify-between text-center">
     <div class="relative">
       <router-link to="/" tag="button" class="btn btn--close"></router-link>
     </div>
@@ -8,7 +8,7 @@
       <h3>{{ $t("page.about.buildBy") }}</h3>
       <p>
         <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
-        <br />
+        <br>
         <a href="https://heig-vd.ch">HEIG-VD</a>
       </p>
       <p>2019</p>
@@ -40,9 +40,9 @@
   </div>
 </template>
 
-<style lang="postcss">
-.about p,
-.about h3 {
+<style lang="postcss" scoped>
+p,
+h3 {
   @apply mb-4;
 }
 .nh3-univers {
@@ -68,34 +68,7 @@
   font-style: italic;
 }
 
-.btn--close {
-  position: absolute;
-  right: 0;
-  width: 32px;
-  height: 32px;
-  background: #fff;
-}
-
-.btn--close:hover {
-  opacity: 1;
-}
-
-.btn--close:before,
-.btn--close:after {
-  position: absolute;
-  top: 4px;
-  left: 15px;
-  content: " ";
-  height: 24px;
-  width: 2px;
-  @apply bg-red-light;
-}
-
-.btn--close:before {
-  transform: rotate(45deg);
-}
-
-.btn--close:after {
-  transform: rotate(-45deg);
+footer {
+  margin-top: 0;
 }
 </style>

@@ -1,15 +1,14 @@
 <template>
-  <div class="fullBG fullBG--home flex flex-col justify-between">
+  <div class="fullBG fullBG--home flex flex-col">
     <h1 class="pt-32">{{ $t("title") }}</h1>
-    <div class="flex pt-12 justify-center relative">
+    <main class="flex pt-12 justify-center relative">
       <transition name="fade">
         <router-link
           v-if="!loading && !game.running"
           to="/round"
           tag="button"
           class="btn btn--main"
-          >{{ $t("navigation.start") }}</router-link
-        >
+        >{{ $t("navigation.start") }}</router-link>
       </transition>
       <transition name="fade">
         <router-link
@@ -17,16 +16,13 @@
           to="/round"
           tag="button"
           class="btn btn--main"
-          >{{ $t("navigation.continue") }}</router-link
-        >
+        >{{ $t("navigation.continue") }}</router-link>
       </transition>
-    </div>
-    <section class="flex justify-between">
-      <router-link to="/about" tag="button" class="btn">
-        {{ $t("page.about.title") }}
-      </router-link>
-      <SelectLang />
-    </section>
+    </main>
+    <footer class="flex justify-between">
+      <router-link to="/about" tag="button" class="btn">{{ $t("page.about.title") }}</router-link>
+      <SelectLang/>
+    </footer>
   </div>
 </template>
 
@@ -68,10 +64,18 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .btn--main {
   border: 2px solid #fff;
   padding: 0.5em 1.5em;
   text-transform: uppercase;
+}
+@media (orientation: landscape) {
+  h1 {
+    @apply pt-24;
+  }
+  main {
+    @apply pt-6;
+  }
 }
 </style>

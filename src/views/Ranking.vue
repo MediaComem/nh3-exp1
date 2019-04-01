@@ -1,9 +1,11 @@
 <template>
   <div class="gameUI gameUI--scroll">
     <header>
-      <router-link to="/game/finish" tag="button" class="btn--highlighted">{{
+      <router-link to="/game/finish" tag="button" class="btn--highlighted">
+        {{
         $t("navigation.goBack")
-      }}</router-link>
+        }}
+      </router-link>
     </header>
 
     <main class="flex p-4">
@@ -35,9 +37,8 @@ export default {
   justify-content: start;
 }
 dl {
-  @apply font-serif;
+  @apply font-serif text-grey;
   font-size: 1.2em;
-  color: #000;
   display: flex;
   flex-wrap: wrap;
   width: 100%;

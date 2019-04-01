@@ -6,40 +6,28 @@
         tag="button"
         class="btn--highlighted"
         v-if="comeFromPlay"
-        >{{ $t("navigation.stop") }}</router-link
-      >
-      <router-link to="/" tag="button" v-if="!comeFromPlay">
-        {{ $t("navigation.goBack") }}
-      </router-link>
-      <Chrono ref="chrono" v-if="comeFromPlay" />
+      >{{ $t("navigation.stop") }}</router-link>
+      <router-link to="/" tag="button" v-if="!comeFromPlay">{{ $t("navigation.goBack") }}</router-link>
+      <Chrono ref="chrono" v-if="comeFromPlay"/>
       <router-link
         to="/round"
         tag="button"
         class="btn--highlighted"
         v-if="comeFromPlay"
-        >{{ $t("navigation.nextImage") }}</router-link
-      >
+      >{{ $t("navigation.nextImage") }}</router-link>
     </header>
 
-    <main class="wrapperImg">
-      <a
-        :href="'https://www.notrehistoire.ch/medias/' + round.media.image.idnh"
-        target="_blank"
-        rel="noopener noreferrer"
+    <main class="wrapperImg wrapperImg--finish">
+      <img
+        :src="generateImgSrc(round.media.image._id)"
+        :srcset="generateImgSrcSet(round.media.image._id, dpiRange)"
+        class="imageFit"
       >
-        <img
-          :src="generateImgSrc(round.media.image._id)"
-          :srcset="generateImgSrcSet(round.media.image._id, dpiRange)"
-          class="imageFit"
-        />
-        <p class="imgRights">
-          {{ round.media.author }} - {{ round.media.rights }}
-        </p>
-        <p class="imgDesc">
-          <time :datetime="round.media.year">{{ round.media.year }}</time>
-          <span>{{ round.media.title }}</span>
-        </p>
-      </a>
+      <p class="imgRights">{{ round.media.author }} - {{ round.media.rights }}</p>
+      <p class="imgDesc">
+        <time :datetime="round.media.year">{{ round.media.year }}</time>
+        <span>{{ round.media.title }}</span>
+      </p>
     </main>
 
     <div class="flex justify-center" v-if="comeFromPlay">
@@ -49,7 +37,7 @@
       </h3>
     </div>
 
-    <ShowYears v-if="comeFromPlay" />
+    <ShowYears v-if="comeFromPlay"/>
   </div>
 </template>
 

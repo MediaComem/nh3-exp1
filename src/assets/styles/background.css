@@ -1,28 +1,28 @@
 :root {
-  --url: url('');
+    --url: url('');
 }
 
 .fullBG {
-  @apply absolute p-4;
-  width: 100%;
-  min-height: 100%;
-  height: auto;
-  background-blend-mode: multiply;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% auto;
-  background-image: linear-gradient(
-    0deg,
-    config('colors.red-dark') 0%,
-    config('colors.red-light') 100%
-  );
+    @apply absolute p-4;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    background-image: linear-gradient(0deg,
+        config('colors.red-dark') 0%,
+        config('colors.red-light') 100%);
+
+    & footer {
+        margin-top: auto;
+    }
 }
 
 .fullBG--home {
-  background-image: linear-gradient(
-      0deg,
-      config('colors.red-dark') 0%,
-      config('colors.red-light') 100%
-    ),
-    var(--url);
+    background-image: linear-gradient(0deg,
+        config('colors.red-dark') 0%,
+        config('colors.red-light') 100%),
+        var(--url);
 }

@@ -1,17 +1,17 @@
 <template>
   <div class="gameUI">
     <header>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">{{
+      <router-link to="/ranking" tag="button" class="btn--highlighted">
+        {{
         $t("navigation.ranking")
-      }}</router-link>
-      <router-link to="/round" tag="button" class="btn--highlighted">
-        {{ $t("navigation.restart") }}
+        }}
       </router-link>
+      <router-link to="/round" tag="button" class="btn--highlighted">{{ $t("navigation.restart") }}</router-link>
     </header>
 
     <main class="wrapperImg">
       <swiper>
-        <swiper-slide v-for="(el, index) in imagesDoneLastGame" :key="index">
+        <swiper-slide v-for="(el, index) in imagesDoneLastGame.slice().reverse()" :key="index">
           <a
             :href="'https://www.notrehistoire.ch/medias/' + el.idnh"
             target="_blank"
@@ -21,7 +21,7 @@
               :src="generateImgSrc(el.image._id)"
               :srcset="generateImgSrcSet(el.image._id, dpiRange)"
               class="imageFit"
-            />
+            >
             <p class="imgRights">{{ el.author }} - {{ el.rights }}</p>
             <p class="imgDesc">
               <time :datetime="el.year">{{ el.year }}</time>
@@ -33,9 +33,7 @@
     </main>
 
     <footer class="flex justify-center">
-      <h3 class="text-red">
-        {{ $t("game.finish.finalScore") }} {{ lastScore }}
-      </h3>
+      <h3 class="text-red">{{ $t("game.finish.finalScore") }} {{ lastScore }}</h3>
     </footer>
   </div>
 </template>
