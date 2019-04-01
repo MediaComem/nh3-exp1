@@ -21,9 +21,6 @@ if (process.env.NODE_ENV === "production") {
     },
     updated(registration) {
       console.log("New content is available; please refresh.");
-      let confirmationResult = confirm("Mise à jour disponible");
-      if (confirmationResult)
-        registration.waiting.postMessage({ action: "skipWaiting" });
     },
     offline() {
       console.log(
@@ -35,10 +32,4 @@ if (process.env.NODE_ENV === "production") {
     }
   });
 
-  let refreshing;
-  navigator.serviceWorker.addEventListener("controllerchange", () => {
-    if (refreshing) return;
-    window.location.reload();
-    refreshing = true;
-  });
 }
