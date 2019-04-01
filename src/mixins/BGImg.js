@@ -10,16 +10,16 @@ var BGImg = {
         0,
         this.imagesSet.length - 1
       );
-      let imgId = this.imagesSet[randImageId]["image"]["_id"];
-      let imgUrl = this.generateImgSrc(imgId, { f: "desaturate" });
+      let imgId = this.imagesSet[randImageId]['image']['_id'];
+      let imgUrl = this.generateImgSrc(imgId, { f: 'desaturate' });
 
       this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
     },
     changeBGURL(imgUrl) {
-      document.documentElement.style.setProperty("--url", `url(${imgUrl})`);
+      document.documentElement.style.setProperty('--url', `url(${imgUrl})`);
     },
     isBGURLEmpty() {
-      return document.documentElement.style.getPropertyValue("--url") === "";
+      return document.documentElement.style.getPropertyValue('--url') === '';
     },
     startBGImg() {
       if (this.isBGURLEmpty()) {
