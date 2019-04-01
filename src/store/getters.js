@@ -1,7 +1,7 @@
 export default {
   imagesDoneLastGame: state => {
     return state.roundDone
-      .filter(image => image.gameNumber === state.game.number)
+      .filter(image => image.gameNumber === state.game.number - 1)
       .map(a => ({
         ...state.imagesSet.find(b => a.idnh === b.idnh),
         ...a
