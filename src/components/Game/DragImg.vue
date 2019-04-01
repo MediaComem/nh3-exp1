@@ -7,7 +7,8 @@
       class="dragImg"
     />
     <div class="wrapperBackgroundImg">
-      <img
+      <v-lazy-image
+        :src-placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :src="generateImgSrc(round.media.image._id)"
         :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
         class="backgroundImg"
@@ -128,13 +129,16 @@ export default {
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
+
 /* purgecss start ignore */
 .v-lazy-image {
-  filter: blur(10px);
-  transition: filter 0.7s;
+  filter: blur(5px);
+  opacity: 0.5;
+  transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out;
 }
 .v-lazy-image-loaded {
   filter: blur(0);
+  opacity: 1;
 }
 /* purgecss end ignore */
 </style>
