@@ -48,6 +48,8 @@ export default {
     this.$store.dispatch("loadImages").then(() => {
       this.$store.commit("SET_GLOBAL_LOADING");
       this.startBGImg();
+      // Preload thumb
+      this.preloadAllThumb({ w: 30, q: 40 });
     });
     /* --- Create User Id --- */
     if (this.user.id === null) {

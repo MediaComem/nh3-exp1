@@ -6,7 +6,7 @@ var utilities = {
         w: window.innerWidth,
         q: 70,
         o: true,
-        m: "bestFit"
+        m: 'bestFit'
       }
     };
   },
@@ -35,6 +35,11 @@ var utilities = {
         img.src = url;
       });
     },
+    preloadAllThumb(options) {
+      this.imagesToDo.forEach(media =>
+        this.preloadImg(this.generateImgSrc(media.image._id, options))
+      );
+    },
     generateImgSrc(imgId, options) {
       let urlParams = this.encodeURLParams({
         ...this.defaultImgParams,
@@ -54,12 +59,12 @@ var utilities = {
               options
             )} ${xDesc}x`
         )
-        .join(",");
+        .join(',');
     },
     encodeURLParams(obj) {
       return Object.entries(obj)
         .map(([key, val]) => `${key}=${val}`)
-        .join("&");
+        .join('&');
     }
   }
 };

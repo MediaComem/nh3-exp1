@@ -1,15 +1,15 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
     <LazyImage
-      :placholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
-      :src="generateImgSrc(round.media.image._id)"
+      :placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
+      :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
       class="dragImg lazy"
     />
     <div class="wrapperBackgroundImg">
       <LazyImage
-        :placholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
-        :src="generateImgSrc(round.media.image._id)"
+        :placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
+        :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
         class="backgroundImg lazy"
       />
@@ -130,16 +130,4 @@ export default {
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
-
-/* purgecss start ignore */
-.v-lazy-image {
-  filter: blur(5px);
-  opacity: 0.5;
-  transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out;
-}
-.v-lazy-image-loaded {
-  filter: blur(0);
-  opacity: 1;
-}
-/* purgecss end ignore */
 </style>

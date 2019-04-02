@@ -1,7 +1,7 @@
 <template>
   <img
-    :alt="alt"
     :src="placeholder"
+    :alt="alt"
     :data-src="src"
     :data-srcset="srcset"
     :data-sizes="sizes"
@@ -30,4 +30,22 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+img {
+  opacity: 0;
+  &:not([src]) {
+    visibility: hidden;
+  }
+  &:not(.initial) {
+    transition: opacity 1s;
+  }
+  &.initial,
+  &.loaded,
+  &.error {
+    opacity: 1;
+  }
+}
+</style>
+
 
