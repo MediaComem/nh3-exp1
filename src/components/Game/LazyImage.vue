@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+/* purgecss start ignore */
 img {
   opacity: 0;
   &:not([src]) {
@@ -46,6 +47,7 @@ img {
     opacity: 1;
   }
 }
+/* purgecss end ignore */
 </style>
 
 
