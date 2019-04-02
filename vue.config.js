@@ -5,19 +5,10 @@ module.exports = {
       fallbackLocale: 'fr',
       localeDir: 'locales',
       enableInSFC: false
-    },
-    prerenderSpa: {
-      registry: undefined,
-      renderRoutes: [
-        '/'
-      ],
-      useRenderEvent: true,
-      headless: true,
-      onlyProduction: true
     }
   },
   pwa: {
-    workboxPluginMode: "GenerateSW",
+    workboxPluginMode: 'GenerateSW',
     workboxOptions: {
       skipWaiting: true
     }
