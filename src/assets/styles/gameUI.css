@@ -23,7 +23,7 @@
   }
 
   & footer {
-    @apply p-4 pt-2 pb-2;
+    @apply p-4;
     box-sizing: border-box;
     margin-top: auto;
   }
