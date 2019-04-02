@@ -1,16 +1,16 @@
-import axios from "axios";
-import { app } from "../main";
-import unidid from "uniqid";
+import axios from 'axios';
+import { app } from '../main';
+import unidid from 'uniqid';
 
 export default {
   async setLang({ commit }, payload) {
     if (payload in app.$i18n.messages) {
-      commit("SET_LANG", payload);
+      commit('SET_LANG', payload);
     } else {
       try {
         const res = await import(`../locales/${payload}.json`);
         app.$i18n.setLocaleMessage(payload, res.default);
-        commit("SET_LANG", payload);
+        commit('SET_LANG', payload);
       } catch (e) {
         // eslint-disable-next-line
         console.log(e);
@@ -18,9 +18,9 @@ export default {
     }
   },
   async loadImages({ commit, state }) {
-    commit("SET_GLOBAL_LOADING", true);
+    commit('SET_GLOBAL_LOADING', true);
 
-    let res = await axios.post("/collections/get/exp1_images", {
+    let res = await axios.post('/collections/get/exp1_images', {
       simple: 1,
       fields: {
         _id: 0,
@@ -36,20 +36,28 @@ export default {
       lang: state.lang
     });
 
-    commit("LOAD_IMAGES", await res.data);
+    commit('LOAD_IMAGES', await res.data);
   },
-  storeRoundStat({ commit }, payload) {
-    commit("SET_ROUND_STAT", payload);
+  async getStats({ commit, state }) {
+    let res = await axios.post('/collections/get/exp1_stats', {
+      simple: 1,
+      filter: { idnh: state.round.media.idnh }
+    });
 
-    axios.post("/collections/save/exp1_stats", {
+    commit('SET_ROUND_STATS', await res.data);
+  },
+  storeRoundDone({ commit }, payload) {
+    commit('ADD_ROUND_DONE', payload);
+
+    axios.post('/collections/save/exp1_stats', {
       data: payload
     });
   },
   createUserId({ commit }) {
-    commit("SET_USER_ID", unidid());
+    commit('SET_USER_ID', unidid());
   },
   async getSummaryTempImg({ commit, state }, imgId) {
-    let res = await axios.post("/collections/get/exp1_images", {
+    let res = await axios.post('/collections/get/exp1_images', {
       filter: { idnh: imgId },
       simple: 1,
       fields: {
@@ -62,15 +70,15 @@ export default {
       lang: state.lang
     });
 
-    commit("SET_ROUND_MEDIA", await res.data[0]);
+    commit('SET_ROUND_MEDIA', await res.data[0]);
   },
   async getTop10({ commit }) {
-    let res = await axios.post("/collections/get/exp1_classement", {
+    let res = await axios.post('/collections/get/exp1_classement', {
       simple: 1,
       limit: 10,
       sort: { score: -1 }
     });
 
-    commit("SET_TOP10", await res.data);
+    commit('SET_TOP10', await res.data);
   }
 };

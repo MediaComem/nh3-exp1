@@ -69,6 +69,8 @@ export default {
       this.comeFromPlay = false;
       this.$store.dispatch("getSummaryTempImg", this.$route.params.idnh);
     }
+
+    this.$store.dispatch("getStats");
   }
 };
 </script>

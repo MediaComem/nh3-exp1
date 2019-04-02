@@ -1,12 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import VuexPersistence from "vuex-persist";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
 
-import getters from "./getters";
-import actions from "./actions";
-import * as types from "./mutation-types";
-import axios from "axios";
-import { app } from "../main";
+import getters from './getters';
+import actions from './actions';
+import * as types from './mutation-types';
+import axios from 'axios';
+import { app } from '../main';
 
 Vue.use(Vuex);
 
@@ -14,7 +14,7 @@ const getDefaultState = () => {
   return {
     // By default check navigator lang
     lang:
-      navigator.language.split("-")[0] || navigator.userLanguage.split("-")[0],
+      navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
     user: {
       name: null,
       id: null
@@ -36,7 +36,8 @@ const getDefaultState = () => {
         image: {
           _id: null
         }
-      }
+      },
+      stat: {}
     },
     game: {
       running: false,
@@ -68,8 +69,8 @@ export default new Vuex.Store({
     [types.SET_LANG](state, payload) {
       state.lang = payload;
       app.$i18n.locale = payload;
-      axios.defaults.headers.common["Accept-Language"] = payload;
-      document.querySelector("html").setAttribute("lang", payload);
+      axios.defaults.headers.common['Accept-Language'] = payload;
+      document.querySelector('html').setAttribute('lang', payload);
     },
     [types.SET_GLOBAL_LOADING](state, payload) {
       state.loading = payload;
@@ -116,7 +117,10 @@ export default new Vuex.Store({
     [types.SET_YEAR_SELECTED](state, payload) {
       state.round.year.selected = payload;
     },
-    [types.SET_ROUND_STAT](state, payload) {
+    [types.SET_ROUND_STATS](state, payload) {
+      state.round.stat = payload;
+    },
+    [types.ADD_ROUND_DONE](state, payload) {
       state.roundDone.push(payload);
     },
     [types.ADD_CHRONO_BONUS](state) {

@@ -73,11 +73,11 @@ export default {
     },
     stopPlay() {
       this.$refs.chrono.stop();
-      this.storeRoundStat();
+      this.storeRoundDone();
       this.calcBonus();
     },
-    storeRoundStat() {
-      this.$store.dispatch("storeRoundStat", {
+    storeRoundDone() {
+      this.$store.dispatch("storeRoundDone", {
         idnh: this.round.media.idnh,
         yearSelected: this.round.year.selected,
         gameNumber: this.game.number,
