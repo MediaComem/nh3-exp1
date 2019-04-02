@@ -1,17 +1,17 @@
 <template>
   <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
-    <v-lazy-image
-      :src-placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
+    <LazyImage
+      :placholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :src="generateImgSrc(round.media.image._id)"
       :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
-      class="dragImg"
+      class="dragImg lazy"
     />
     <div class="wrapperBackgroundImg">
-      <v-lazy-image
-        :src-placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
+      <LazyImage
+        :placholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :src="generateImgSrc(round.media.image._id)"
         :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
-        class="backgroundImg"
+        class="backgroundImg lazy"
       />
     </div>
     <slot></slot>
@@ -21,8 +21,9 @@
 <script>
 import utilities from "@/mixins/utilities";
 import interact from "interactjs";
-require("intersection-observer");
-import VLazyImage from "v-lazy-image";
+
+const LazyImage = () => import("@/components/Game/LazyImage.vue");
+
 import { mapState } from "vuex";
 
 export default {
@@ -33,7 +34,7 @@ export default {
     };
   },
   components: {
-    VLazyImage
+    LazyImage
   },
   computed: {
     ...mapState(["firstTime", "round", "dpiRange"])
