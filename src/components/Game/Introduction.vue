@@ -10,7 +10,7 @@
 
 <style lang="postcss">
 .introduction {
-  color: config("colors.red-light");
+  color: config("colors.red");
   text-align: left;
   @apply font-serif p-4 pb-0;
   & ol {

@@ -46,7 +46,6 @@ const colors = {
 
   'red-dark': 'rgba(87, 0, 31, 1)',
   red: 'rgb(255, 0, 90)',
-  'red-light': 'rgba(255, 0, 90, 1)',
   black: '#000',
   grey: 'rgb(74, 74, 74)',
   'grey-light': '	rgb(74, 74, 74)',
@@ -313,7 +312,13 @@ module.exports = {
   |
   */
 
-  borderColors: global.Object.assign({ default: colors['grey-light'] }, colors),
+  borderColors: global.Object.assign(
+    {
+      default: colors['grey-light']
+    },
+
+    colors
+  ),
 
   /*
   |-----------------------------------------------------------------------------
