@@ -12,7 +12,7 @@
 .introduction {
   color: config("colors.red-light");
   text-align: left;
-  @apply font-serif p-4;
+  @apply font-serif p-4 pb-0;
   & ol {
     padding-top: 5%;
     padding-left: 20px;

@@ -1,16 +1,16 @@
 <template>
   <div class="gameUI">
     <header>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">
+      <router-link to="/" tag="button" class="btn--highlighted">
         {{
-        $t("navigation.ranking")
+        $t("navigation.goBack")
         }}
       </router-link>
       <router-link to="/round" tag="button" class="btn--highlighted">{{ $t("navigation.restart") }}</router-link>
     </header>
 
     <main class="wrapperImg">
-      <swiper>
+      <swiper :options="swiperOption">
         <swiper-slide v-for="(el, index) in imagesDoneLastGame.slice().reverse()" :key="index">
           <a
             :href="'https://www.notrehistoire.ch/medias/' + el.idnh"
@@ -32,8 +32,13 @@
       </swiper>
     </main>
 
-    <footer class="flex justify-center">
-      <h3 class="text-red">{{ $t("game.finish.finalScore") }} {{ lastScore }}</h3>
+    <footer class="flex flex-col justify-center">
+      <h3 class="text-center text-red">{{ $t("game.finish.finalScore") }} {{ lastScore }}</h3>
+      <router-link to="/ranking" tag="button" class="btn--highlighted">
+        {{
+        $t("navigation.ranking")
+        }}
+      </router-link>
     </footer>
   </div>
 </template>
@@ -45,6 +50,16 @@ import { mapState, mapGetters } from "vuex";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
+  static() {
+    return {
+      swiperOption: {
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        }
+      }
+    };
+  },
   computed: {
     ...mapState(["round", "game", "lastScore", "dpiRange"]),
     ...mapGetters(["imagesDoneLastGame"])
