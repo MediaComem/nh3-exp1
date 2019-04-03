@@ -81,8 +81,7 @@ export default {
         },
         autoplay: {
           delay: 2500,
-          disableOnInteraction: false,
-          stopOnLastSlide: true
+          disableOnInteraction: false
         }
       }
     };

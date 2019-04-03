@@ -6,7 +6,18 @@
         $t("navigation.goBack")
         }}
       </router-link>
-      <router-link to="/round" tag="button" class="btn--highlighted">{{ $t("navigation.restart") }}</router-link>
+      <router-link
+        v-if="!game.running"
+        to="/round"
+        tag="button"
+        class="btn--highlighted"
+      >{{ $t("navigation.restart") }}</router-link>
+      <router-link
+        v-if="game.running"
+        to="/round"
+        tag="button"
+        class="btn--highlighted"
+      >{{ $t("navigation.continue") }}</router-link>
     </header>
 
     <main class="wrapperImg">
