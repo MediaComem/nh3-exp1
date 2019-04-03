@@ -88,11 +88,12 @@ body {
   display: flex;
   justify-items: center;
   align-items: center;
-  padding: 4rem;
   text-align: center;
 
   & > main {
     @apply font-serif;
+    margin: auto;
+    padding: 1rem;
     color: config('colors.red');
   }
 }

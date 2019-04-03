@@ -10,7 +10,7 @@
     "ranking": "Classement",
     "viewScore": "Voir le score",
     "offline": {
-      "title": "Désolé, tu es Hors-ligne !",
+      "title": "Oups, tu es Hors-ligne !",
       "description": "Reconnecte-toi pour jouer"
     }
   },
