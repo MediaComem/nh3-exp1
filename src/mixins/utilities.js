@@ -33,6 +33,9 @@ var utilities = {
           reject(url);
         };
         img.src = url;
+        caches.open('preloadImg').then(cache => {
+          cache.add(url);
+        });
       });
     },
     preloadAllThumb(options) {
