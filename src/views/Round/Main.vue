@@ -60,6 +60,7 @@ export default {
 
     this.$store.commit("RESET_ROUND");
     this.$store.commit("SET_ROUND_MEDIA", this.imagesToDo[0]);
+    this.$store.dispatch("getStats");
   },
   methods: {
     startPlay() {

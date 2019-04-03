@@ -45,11 +45,12 @@ const colors = {
   transparent: 'transparent',
 
   'red-dark': 'rgba(87, 0, 31, 1)',
-  red: 'rgb(255, 0, 86)',
+  red: 'rgb(255, 0, 90)',
   'red-light': 'rgba(255, 0, 90, 1)',
   black: '#000',
   grey: 'rgb(74, 74, 74)',
-  'grey-light': '	rgb(74, 74, 74)'
+  'grey-light': '	rgb(74, 74, 74)',
+  'grey-lighter': '	rgb(101, 101, 101)'
 };
 
 module.exports = {

@@ -7,6 +7,11 @@ module.exports = {
       enableInSFC: false
     }
   },
+  configureWebpack: {
+    externals: {
+      moment: 'moment'
+    }
+  },
   pwa: {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {

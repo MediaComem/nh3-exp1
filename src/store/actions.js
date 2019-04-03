@@ -41,6 +41,7 @@ export default {
   async getStats({ commit, state }) {
     let res = await axios.post('/collections/get/exp1_stats', {
       simple: 1,
+      yearsInterval: state.round.stats.yearsInterval,
       filter: { idnh: state.round.media.idnh }
     });
 

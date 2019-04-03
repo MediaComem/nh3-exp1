@@ -37,14 +37,21 @@ const getDefaultState = () => {
           _id: null
         }
       },
-      stat: {}
+      stats: {
+        yearsInterval: 5,
+        countPerPeriod: {
+          data: [],
+          labels: []
+        },
+        total: null
+      }
     },
     game: {
       running: false,
       number: 0,
       chrono: {
         init: 60, //sec
-        bonus: 1, //sec
+        bonus: 10, //sec
         penalty: -1, //sec
         penaltyCoefficient: 10,
         currentVal: 0, //sec
@@ -118,7 +125,7 @@ export default new Vuex.Store({
       state.round.year.selected = payload;
     },
     [types.SET_ROUND_STATS](state, payload) {
-      state.round.stat = payload;
+      state.round.stats = payload;
     },
     [types.ADD_ROUND_DONE](state, payload) {
       state.roundDone.push(payload);

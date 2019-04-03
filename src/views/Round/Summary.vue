@@ -19,9 +19,10 @@
 
     <main class="wrapperImg wrapperImg--finish">
       <img
-        :src="generateImgSrc(round.media.image._id)"
-        :srcset="generateImgSrcSet(round.media.image._id, dpiRange)"
-        class="imageFit"
+        :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
+        :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
+        class="imageFit lazy"
+        :alt="round.media.title"
       >
       <p class="imgRights">{{ round.media.author }} - {{ round.media.rights }}</p>
       <p class="imgDesc">
@@ -30,12 +31,29 @@
       </p>
     </main>
 
-    <div class="flex justify-center" v-if="comeFromPlay">
-      <h3 class="text-red">
-        {{ $t("game.summary.timeBonus") }}
-        {{ game.chrono.currentBonusPenalty }}s
-      </h3>
-    </div>
+    <aside class="wrapperAside">
+      <swiper :options="swiperOption" class="p-4" v-if="comeFromPlay">
+        <swiper-slide>
+          <h3 class="text-center text-red">
+            {{ $t("game.summary.timeBonus") }}
+            {{ game.chrono.currentBonusPenalty }}s
+          </h3>
+        </swiper-slide>
+        <swiper-slide>
+          <round-stats
+            :labels="round.stats.countPerPeriod.labels"
+            :charData="round.stats.countPerPeriod.data"
+          />
+          <text-stats
+            :yearBegin="round.year.begin"
+            :yearSelected="round.year.selected"
+            :yearCorrect="round.media.year"
+            :stats="round.stats"
+            :yearsInterval="round.stats.yearsInterval"
+          />
+        </swiper-slide>
+      </swiper>
+    </aside>
 
     <ShowYears v-if="comeFromPlay"/>
   </div>
@@ -45,14 +63,28 @@
 import utilities from "@/mixins/utilities";
 import { mapState } from "vuex";
 
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+
 const Chrono = () => import("@/components/Game/Chrono.vue");
+const RoundStats = () => import("@/components/Game/RoundStats.vue");
+const TextStats = () => import("@/components/Game/TextStats.vue");
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
-  data: function() {
+  static() {
     return {
       comeFromPlay: true,
-      bonus: 0
+      swiperOption: {
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+          stopOnLastSlide: true
+        }
+      }
     };
   },
   computed: {
@@ -61,7 +93,11 @@ export default {
   mixins: [utilities],
   components: {
     Chrono,
-    ShowYears
+    RoundStats,
+    TextStats,
+    ShowYears,
+    swiper,
+    swiperSlide
   },
   created() {
     // If the user is not coming from play get the image from the server
@@ -69,8 +105,6 @@ export default {
       this.comeFromPlay = false;
       this.$store.dispatch("getSummaryTempImg", this.$route.params.idnh);
     }
-
-    this.$store.dispatch("getStats");
   }
 };
 </script>

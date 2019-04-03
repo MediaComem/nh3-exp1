@@ -22,7 +22,15 @@
     },
     "timesUp": "Temps écoulé...",
     "summary": {
-      "timeBonus": "Bonus de temps:"
+      "timeBonus": "Bonus de temps:",
+      "stats": {
+        "perfect": "Respect sur ce coup ! Tu es l'unique personne à avoir trouvé la date pour l'instant. |Respect sur ce coup ! Tu es la deuxième personne à avoir trouvé la date pour l'instant. | Respect! Sur ce coup, tu es dans les {percent}% qui ont répondu correctement.",
+        "less10Y": "Pas loin! Tu es le seul à avoir répondu à moins de 10 ans près | Pas loin! Vous êtes deux à avoir répondu à moins de 10 ans près | Pas loin! Seul {percent}% ont répondu à moins de 10 ans près",
+        "less30Y": "Hasard ou savoir ? À peine {yearsDiff} ans d’écart.",
+        "less50Y": "{yearsDiff} ans d’écart… l’important c’est de participer.",
+        "less100Y": "Mode OKLM… {yearsDiff} ans d’écart.",
+        "more100Y": "Arrête de jouer avec tes pieds! | Arrête de jouer avec tes pieds! | Arrête de jouer avec tes pieds! T’es aussi mauvais que {percent}% des joueurs."
+      }
     },
     "finish": {
       "finalScore": "Ton score:"
