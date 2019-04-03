@@ -23,14 +23,22 @@ var utilities = {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    preloadImg(url) {
+    preloadImg(url, numRetry) {
+      if (!numRetry) {
+        let numRetry = 0;
+      }
+
       return new Promise(function(resolve, reject) {
         let img = new Image();
         img.onload = function() {
           resolve(url);
         };
         img.onerror = function() {
-          reject(url);
+          if (numRetry < 5) {
+            this.preloadImg(url, numRetry++);
+          } else {
+            reject(url);
+          }
         };
         img.src = url;
         caches.open('preloadImg').then(cache => {
