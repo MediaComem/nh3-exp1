@@ -34,12 +34,6 @@
     <aside class="wrapperAside">
       <swiper :options="swiperOption" class="p-4" v-if="comeFromPlay">
         <swiper-slide>
-          <h3 class="text-center text-red">
-            {{ $t("game.summary.timeBonus") }}
-            {{ game.chrono.currentBonusPenalty }}s
-          </h3>
-        </swiper-slide>
-        <swiper-slide>
           <round-stats
             :labels="round.stats.countPerPeriod.labels"
             :charData="round.stats.countPerPeriod.data"
@@ -51,6 +45,12 @@
             :stats="round.stats"
             :yearsInterval="round.stats.yearsInterval"
           />
+        </swiper-slide>
+        <swiper-slide>
+          <h3 class="text-center text-red">
+            {{ $t("game.summary.timeBonus") }}
+            {{ game.chrono.currentBonusPenalty }}s
+          </h3>
         </swiper-slide>
       </swiper>
     </aside>
