@@ -5,6 +5,7 @@
       :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
       class="dragImg lazy"
+      :alt="round.media.title"
     />
     <div class="wrapperBackgroundImg">
       <LazyImage
@@ -12,6 +13,7 @@
         :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
         class="backgroundImg lazy"
+        :alt="round.media.title"
       />
     </div>
     <slot></slot>
