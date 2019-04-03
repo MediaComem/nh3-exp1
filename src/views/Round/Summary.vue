@@ -47,7 +47,7 @@
           />
         </swiper-slide>
         <swiper-slide>
-          <h3 class="text-center text-red">
+          <h3 class="text-center text-red centeredContentSlide">
             {{ $t("game.summary.timeBonus") }}
             {{ game.chrono.currentBonusPenalty }}s
           </h3>
@@ -80,7 +80,7 @@ export default {
           crossFade: true
         },
         autoplay: {
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false
         }
       }
@@ -107,3 +107,15 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+.swiper-container {
+  height: 100%;
+}
+.centeredContentSlide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
