@@ -1,43 +1,43 @@
 /* Fonts */
 
 @font-face {
-    font-family: 'PT Serif';
-    src: url('../fonts/pt_serif-web-regular-webfont.woff2') format('woff2'),
-        url('../fonts/pt_serif-web-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'PT Serif';
+  src: url('../fonts/pt_serif-web-regular-webfont.woff2') format('woff2'),
+    url('../fonts/pt_serif-web-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'PT Serif';
-    src: url('../fonts/pt_serif-web-bold-webfont.woff2') format('woff2'),
-        url('../fonts/pt_serif-web-bold-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'PT Serif';
+  src: url('../fonts/pt_serif-web-bold-webfont.woff2') format('woff2'),
+    url('../fonts/pt_serif-web-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 #app {
-    @apply font-sans;
+  @apply font-sans;
 }
 
 .fserif {
-    font-family: 'PT Serif';
-    letter-spacing: 0.05em;
+  font-family: 'PT Serif';
+  letter-spacing: 0.05em;
 }
 
 h1,
 h2,
 h3 {
-    @apply font-serif;
-    letter-spacing: 0.05em;
+  @apply font-serif;
+  letter-spacing: 0.05em;
 }
 
 /* Basic */
 
 h1 {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2.8em;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.8em;
 }
 
 #app,
@@ -47,88 +47,88 @@ a:hover,
 a:visited,
 a:focus,
 a:active {
-    color: #fff;
+  color: #fff;
 }
 
 .btn--highlighted {
-    @apply text-red;
+  @apply text-red;
 }
 
 html,
 body,
 #app {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .flex-basis-100 {
-    flex-basis: 100%;
+  flex-basis: 100%;
 }
 
 /* Source: https://css-tricks.com/keyboard-only-focus-styles/ */
 
 *:focus:not(.focus-visible) {
-    outline: none;
+  outline: none;
 }
 
 /* Source https://medium.com/appscope/designing-native-like-progressive-web-apps-for-ios-1b3cdda1d0e8 */
 body {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
 }
 
 #offlineOverlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    z-index: 10;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
 
-    &>main {
-        @apply font-serif;
-        margin: auto;
-        padding: 1rem;
-        color: config('colors.red');
-    }
+  & > main {
+    @apply font-serif;
+    margin: auto;
+    padding: 1rem;
+    color: config('colors.red');
+  }
 }
 
 :root {
-    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+  font-size: calc(15px + 6 * ((100vw - 320px) / 680));
 }
 
 .btn--close {
-    position: absolute;
-    right: 0;
-    width: 32px;
-    height: 32px;
-    background: #fff;
+  position: absolute;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: #fff;
 }
 
 .btn--close:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .btn--close:before,
 .btn--close:after {
-    position: absolute;
-    top: 4px;
-    left: 15px;
-    content: ' ';
-    height: 24px;
-    width: 2px;
-    @apply bg-red;
+  position: absolute;
+  top: 4px;
+  left: 15px;
+  content: ' ';
+  height: 24px;
+  width: 2px;
+  @apply bg-red;
 }
 
 .btn--close:before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .btn--close:after {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
