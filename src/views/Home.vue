@@ -1,7 +1,7 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col">
-    <h1 class="pt-32">{{ $t("title") }}</h1>
-    <main class="flex pt-12 justify-center relative">
+    <h1 class="mt-auto">{{ $t("title") }}</h1>
+    <main class="flex mt-auto justify-center relative">
       <transition name="fade">
         <router-link
           v-if="!loading && !game.running"
@@ -71,13 +71,5 @@ export default {
   border: 2px solid #fff;
   padding: 0.5em 1.5em;
   text-transform: uppercase;
-}
-@media (orientation: landscape) {
-  h1 {
-    @apply pt-24;
-  }
-  main {
-    @apply pt-6;
-  }
 }
 </style>
