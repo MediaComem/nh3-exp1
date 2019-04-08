@@ -86,24 +86,13 @@ export default {
         userName: this.user.name
       });
     },
-    yearsDiffCoeff() {
-      return Math.round(
-        Math.abs(this.round.media.year - this.round.year.selected) /
-          this.game.chrono.penaltyCoefficient
-      );
-    },
-    penalty() {
-      return this.game.chrono.penalty * this.yearsDiffCoeff();
+    yearsDiff() {
+      return Math.abs(this.round.media.year - this.round.year.selected);
     },
     calcBonus() {
-      /* --- Bonus / Penalty --- */
+      /* --- Bonus --- */
 
-      if (parseInt(this.round.media.year) === this.round.year.selected) {
-        this.$store.commit("ADD_CHRONO_BONUS");
-      } else {
-        // Penalty
-        this.$store.commit("ADD_CHRONO_PENALTY", this.penalty());
-      }
+      this.$store.commit("ADD_CHRONO_BONUS", this.yearsDiff());
 
       /* --- TimesUp / Continue --- */
 

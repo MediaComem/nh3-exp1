@@ -51,9 +51,9 @@ const getDefaultState = () => {
       number: 0,
       chrono: {
         init: 60, //sec
-        bonus: 10, //sec
+        bonus: 15, //sec
         penalty: -1, //sec
-        penaltyCoefficient: 10,
+        penaltyCoefficient: 3, // penalty per year
         currentVal: 0, //sec
         currentBonusPenalty: 0, //sec
         timesUp: false,
@@ -130,13 +130,17 @@ export default new Vuex.Store({
     [types.ADD_ROUND_DONE](state, payload) {
       state.roundDone.push(payload);
     },
-    [types.ADD_CHRONO_BONUS](state) {
-      state.game.chrono.currentBonusPenalty = state.game.chrono.bonus;
-      state.game.chrono.currentVal += state.game.chrono.bonus;
-    },
-    [types.ADD_CHRONO_PENALTY](state, penalty) {
-      state.game.chrono.currentBonusPenalty = penalty;
-      state.game.chrono.currentVal += penalty;
+    [types.ADD_CHRONO_BONUS](state, yearsDiff) {
+      let penalty = Math.abs(
+        yearsDiff *
+          state.game.chrono.penalty *
+          state.game.chrono.penaltyCoefficient
+      );
+      let limitedPenalty = Math.min(penalty, state.game.chrono.bonus);
+
+      state.game.chrono.currentBonusPenalty =
+        state.game.chrono.bonus - limitedPenalty;
+      state.game.chrono.currentVal += state.game.chrono.currentBonusPenalty;
     },
     [types.SET_LAST_GAME_SCORE](state, score) {
       state.lastScore = score;

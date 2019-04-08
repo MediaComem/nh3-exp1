@@ -37,7 +37,6 @@ export const SET_ROUND_STATS = 'SET_ROUND_STATS';
 
 export const ADD_ROUND_DONE = 'ADD_ROUND_DONE';
 export const ADD_CHRONO_BONUS = 'ADD_CHRONO_BONUS';
-export const ADD_CHRONO_PENALTY = 'ADD_CHRONO_PENALTY';
 
 // Game Score
 
