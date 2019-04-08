@@ -51,7 +51,7 @@
         $t("navigation.ranking")
         }}
       </router-link>
-      <button class="share" v-if="checkWebShareAPI">
+      <button class="share" v-if="checkWebShareAPI" @click="shareApp">
         <img src="@/assets/icons/shareIcon.svg" class="shareIcon">
       </button>
     </footer>
