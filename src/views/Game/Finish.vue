@@ -44,13 +44,16 @@
       </swiper>
     </main>
 
-    <footer class="flex flex-col justify-center">
+    <footer>
       <h3 class="text-center text-red">{{ $t("game.finish.finalScore") }} {{ lastScore }}</h3>
-      <router-link to="/ranking" tag="button" class="btn--highlighted">
+      <router-link to="/ranking" tag="button" class="btn--highlighted p-1">
         {{
         $t("navigation.ranking")
         }}
       </router-link>
+      <button class="share" v-if="checkWebShareAPI">
+        <img src="@/assets/icons/shareIcon.svg" class="shareIcon">
+      </button>
     </footer>
   </div>
 </template>
@@ -74,7 +77,10 @@ export default {
   },
   computed: {
     ...mapState(["round", "game", "lastScore", "dpiRange"]),
-    ...mapGetters(["imagesDoneLastGame"])
+    ...mapGetters(["imagesDoneLastGame"]),
+    checkWebShareAPI() {
+      return navigator.share !== undefined ? true : false;
+    }
   },
   mixins: [utilities],
   components: {
@@ -87,6 +93,13 @@ export default {
     }
   },
   methods: {
+    shareApp() {
+      navigator.share({
+        title: document.title,
+        text: this.$t("shareSlogan"),
+        url: window.location.origin
+      });
+    },
     calcFinalScore() {
       let yearsDiff = this.imagesDoneLastGame.reduce(
         (acc, img) => acc + Math.abs(parseInt(img.year) - img.yearSelected),
@@ -109,7 +122,29 @@ export default {
 .gameUI header *:nth-child(2) {
   justify-self: end;
 }
+.gameUI footer {
+  @apply pb-8;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  & button,
+  & h3 {
+    grid-column: 2/3;
+  }
+
+  & .share {
+    grid-column: 3/4;
+    grid-row: 1/3;
+    justify-self: end;
+    align-self: end;
+  }
+}
 .imageFit {
   max-height: 60vh;
+}
+.shareIcon {
+  @apply p-1;
+  height: 3rem;
 }
 </style>
