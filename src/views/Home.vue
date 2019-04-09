@@ -61,7 +61,13 @@ export default {
   },
   beforeRouteLeave(to, from, next) {
     this.clearBGImg();
-    next();
+    /* --- No more images to do --- */
+
+    if (to.name === "round" && this.imagesToDo.length == 0) {
+      next("/game/replay");
+    } else {
+      next();
+    }
   }
 };
 </script>
