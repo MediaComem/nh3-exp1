@@ -1,3 +1,5 @@
+import loadImage from 'image-promise';
+
 var BGImg = {
   static() {
     return {

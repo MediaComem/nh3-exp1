@@ -10,7 +10,7 @@
 
     <main class="wrapperImg wrapperImg--finish">
       <video
-        ref="videoBravo"
+        playsinline
         class="video-js vjs-big-play-centered"
         preload="auto"
         :data-setup="stringifyVideoSetup"

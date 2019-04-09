@@ -14,8 +14,4 @@
 
 <style lang="postcss">
 @import "assets/styles/tailwind.postcss";
-
-#preloadImg {
-  display: none;
-}
 </style>
