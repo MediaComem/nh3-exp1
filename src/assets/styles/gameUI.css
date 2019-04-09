@@ -101,6 +101,29 @@
             text-align: left;
         }
     }
+
+    .wrapperImg--bravo {
+        max-width: 80vw !important;
+        width: 80vw !important;
+    }
+
+    .wrapperImg--bravo {
+        flex: 0 1 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        & .video-js,
+        & .imgRights {
+            grid-column: 1;
+        }
+
+        & .col_landscape {
+            grid-column: 2;
+            grid-row: 1/2;
+            align-self: center;
+        }
+
+    }
 }
 
 .imgDesc,

@@ -8,8 +8,9 @@
       </router-link>
     </header>
 
-    <main class="wrapperImg wrapperImg--finish">
+    <main class="wrapperImg wrapperImg--bravo">
       <video
+        ref="videoBravo"
         playsinline
         class="video-js vjs-big-play-centered"
         preload="auto"
@@ -29,14 +30,16 @@
           rel="noopener noreferrer"
         >Radio Television Suisse - Creative Commons BY-NC-ND</a>
       </p>
-      <h1 class="text-red p-2">{{ $t("game.replay.title") }}</h1>
-      <p
-        class="text-red pr-8 pl-8 text-sm"
-      >{{ $t("game.replay.description", {imageSetLength: this.imagesSet.length }) }}</p>
-      <button
-        @click="replay"
-        class="btn btn__primary btn__primary--red m-6"
-      >{{ $t("game.replay.button") }}</button>
+      <div class="col_landscape">
+        <h1 class="bravo__title text-red p-2">{{ $t("game.replay.title") }}</h1>
+        <p
+          class="bravo__desc text-red pr-8 pl-8 text-sm"
+        >{{ $t("game.replay.description", {imageSetLength: this.imagesSet.length }) }}</p>
+        <button
+          @click="replay"
+          class="btn btn__primary btn__primary--red m-6"
+        >{{ $t("game.replay.button") }}</button>
+      </div>
     </main>
   </div>
 </template>

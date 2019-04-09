@@ -1,39 +1,39 @@
-const IN_PRODUCTION = process.env.NODE_ENV === "production";
+const IN_PRODUCTION = process.env.NODE_ENV === 'production';
 
 class TailwindVueExtractor {
   static extract(content) {
     const contentWithoutStyleBlocks = content.replace(
       /<style[^]+?<\/style>/gi,
-      ""
+      ''
     );
     return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_:/]+/g) || [];
   }
 }
 
-const extensionsUsingCSS = ["vue", "html"];
+const extensionsUsingCSS = ['vue', 'html'];
 const extensionsOfCSS = [
-  "css",
-  "less",
-  "pcss",
-  "postcss",
-  "sass",
-  "scss",
-  "styl"
+  'css',
+  'less',
+  'pcss',
+  'postcss',
+  'sass',
+  'scss',
+  'styl'
 ];
 
 module.exports = {
   plugins: [
-    require("postcss-preset-env")({
+    require('postcss-preset-env')({
       stage: 2,
       features: {
-        "nesting-rules": true
+        'nesting-rules': true
       }
     }),
-    require("tailwindcss")("./tailwind.config.js"),
+    require('tailwindcss')('./tailwind.config.js'),
     IN_PRODUCTION &&
-      require("@fullhuman/postcss-purgecss")({
-        content: [`./@(public|src)/**/*.@(${extensionsUsingCSS.join("|")})`],
-        css: [`./src/**/*.@(${extensionsOfCSS.join("|")})`],
+      require('@fullhuman/postcss-purgecss')({
+        content: [`./@(public|src)/**/*.@(${extensionsUsingCSS.join('|')})`],
+        css: [`./src/**/*.@(${extensionsOfCSS.join('|')})`],
         extractors: [
           {
             extractor: TailwindVueExtractor,
@@ -46,8 +46,8 @@ module.exports = {
           /^(?!(|.*?:)cursor-move).+-move$/,
           /^router-link(|-exact)-active$/
         ],
-        whitelistPatternsChildren: [/swiper/, /spinner/]
+        whitelistPatternsChildren: [/swiper/, /spinner/, /video/, /vjs/]
       }),
-    require("autoprefixer")()
+    require('autoprefixer')()
   ]
 };
