@@ -13,6 +13,7 @@ export const LOAD_IMAGES = 'LOAD_IMAGES';
 
 // Game
 
+export const RESET_GAME = 'RESET_GAME';
 export const SET_NEW_GAME = 'SET_NEW_GAME';
 export const SET_GAME_STATE = 'SET_GAME_STATE';
 export const SET_FIRST_TIME = 'SET_FIRST_TIME';
@@ -45,3 +46,7 @@ export const SET_LAST_GAME_SCORE = 'SET_LAST_GAME_SCORE';
 // Ranking
 
 export const SET_TOP10 = 'SET_TOP10';
+
+// replay
+
+export const SET_NEW_REPLAY = 'SET_NEW_REPLAY';

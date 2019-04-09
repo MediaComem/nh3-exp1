@@ -32,7 +32,7 @@ const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
   computed: {
-    ...mapState(["firstTime", "game", "round", "user"]),
+    ...mapState(["firstTime", "game", "round", "user", "replayCount"]),
     ...mapGetters(["imagesToDo"])
   },
   mixins: [utilities],
@@ -46,21 +46,25 @@ export default {
     /* --- No more images to do --- */
 
     if (this.imagesToDo.length == 0) {
-      this.noMore();
+      if (this.game.running) {
+        this.noMore();
+      } else {
+        this.replay();
+      }
+    } else {
+      /* --- New Game --- */
+      if (!this.game.running) {
+        this.$store.commit("RESET_CHRONO");
+        this.$store.commit("INIT_CHRONO");
+        this.$store.commit("SET_GAME_STATE", true);
+      }
+
+      /* --- New Round --- */
+
+      this.$store.commit("RESET_ROUND");
+      this.$store.commit("SET_ROUND_MEDIA", this.imagesToDo[0]);
+      this.$store.dispatch("getStats");
     }
-
-    /* --- New Game --- */
-    if (!this.game.running) {
-      this.$store.commit("RESET_CHRONO");
-      this.$store.commit("INIT_CHRONO");
-      this.$store.commit("SET_GAME_STATE", true);
-    }
-
-    /* --- New Round --- */
-
-    this.$store.commit("RESET_ROUND");
-    this.$store.commit("SET_ROUND_MEDIA", this.imagesToDo[0]);
-    this.$store.dispatch("getStats");
   },
   methods: {
     startPlay() {
@@ -80,6 +84,7 @@ export default {
     storeRoundDone() {
       this.$store.dispatch("storeRoundDone", {
         idnh: this.round.media.idnh,
+        replayCount: this.replayCount,
         yearSelected: this.round.year.selected,
         gameNumber: this.game.number,
         userId: this.user.id,
@@ -105,8 +110,13 @@ export default {
         });
       }
     },
+    replay() {
+      this.$router.push({ name: "gamereplay" });
+    },
     noMore() {
-      this.$router.push({ name: "gamenomore" });
+      this.$router.replace({ name: "gamenomore" });
+      this.$store.commit("SET_GAME_STATE", false);
+      this.$store.commit("SET_NEW_GAME"); // Not necessary but don't to develop specific finish state
     },
     timesUp() {
       this.$router.replace({ name: "gametimesup" });

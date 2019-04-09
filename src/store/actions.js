@@ -31,7 +31,7 @@ export default {
         rights: 1,
         image: 1
       },
-      limit: 100,
+      limit: state.imagesSetLimit,
       skip: 0,
       lang: state.lang
     });

@@ -61,6 +61,8 @@ const getDefaultState = () => {
         instance: null
       }
     },
+    replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
+    imagesSetLimit: 3,
     imagesSet: [],
     roundDone: [],
     lastScore: null,
@@ -93,6 +95,9 @@ export default new Vuex.Store({
     },
     [types.SET_GAME_STATE](state, payload) {
       state.game.running = payload;
+    },
+    [types.RESET_GAME](state) {
+      state.game.number = 0;
     },
     [types.SET_NEW_GAME](state) {
       state.game.number += 1;
@@ -147,6 +152,9 @@ export default new Vuex.Store({
     },
     [types.SET_TOP10](state, payload) {
       state.ranking = payload;
+    },
+    [types.SET_NEW_REPLAY](state) {
+      state.replayCount += 1;
     }
   },
   actions: actions,

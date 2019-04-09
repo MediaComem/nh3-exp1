@@ -7,7 +7,7 @@
           v-if="!loading && !game.running"
           to="/round"
           tag="button"
-          class="btn btn--main"
+          class="btn btn__primary"
         >{{ $t("navigation.start") }}</router-link>
       </transition>
       <transition name="fade">
@@ -15,7 +15,7 @@
           v-if="!loading && game.running"
           to="/round"
           tag="button"
-          class="btn btn--main"
+          class="btn btn__primary"
         >{{ $t("navigation.continue") }}</router-link>
       </transition>
     </main>
@@ -66,10 +66,3 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-.btn--main {
-  border: 2px solid #fff;
-  padding: 0.5em 1.5em;
-  text-transform: uppercase;
-}
-</style>

@@ -1,7 +1,11 @@
 export default {
   imagesDoneLastGame: state => {
     return state.roundDone
-      .filter(image => image.gameNumber === state.game.number - 1)
+      .filter(
+        image =>
+          image.gameNumber === state.game.number - 1 &&
+          image.replayCount === state.replayCount
+      )
       .map(a => ({
         ...state.imagesSet.find(b => a.idnh === b.idnh),
         ...a
@@ -9,12 +13,19 @@ export default {
   },
   imagesDone: state => {
     return state.imagesSet.filter(image =>
-      state.roundDone.find(score => score.idnh === image.idnh)
+      state.roundDone.find(
+        score =>
+          score.idnh === image.idnh && score.replayCount === state.replayCount
+      )
     );
   },
   imagesToDo: state => {
     return state.imagesSet.filter(
-      image => !state.roundDone.find(score => score.idnh === image.idnh)
+      image =>
+        !state.roundDone.find(
+          score =>
+            score.idnh === image.idnh && score.replayCount === state.replayCount
+        )
     );
   }
 };
