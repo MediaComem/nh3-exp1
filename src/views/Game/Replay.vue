@@ -11,10 +11,9 @@
     <main class="wrapperImg wrapperImg--finish">
       <video
         ref="videoBravo"
-        autoplay
+        class="video-js vjs-big-play-centered"
         preload="auto"
         :data-setup="stringifyVideoSetup"
-        :src="this.$t('game.replay.video.src')"
       >
         <source
           v-for="(source, i) in this.$t('game.replay.video.sources')"
@@ -53,10 +52,13 @@ export default {
         controls: true,
         controlBar: false,
         loadingSpinner: false,
-        bigPlayButton: false,
+        bigPlayButton: true,
         textTrackDisplay: false,
         errorDisplay: false,
         textTrackSettings: false,
+        autoplay: true,
+        fluid: true,
+        aspectRatio: "4:3",
         techOrder: ["html5"]
       }
     };
@@ -80,8 +82,6 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-video {
-  width: 100%;
-}
+<style lang="postcss">
+@import "~video.js/dist/video-js.css";
 </style>

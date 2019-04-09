@@ -142,3 +142,24 @@ body {
 .btn--close:after {
     transform: rotate(-45deg);
 }
+
+
+/* Video player */
+/* purgecss start ignore */
+
+.video-js .vjs-big-play-button {
+    border: 0 !important;
+    background: 0 !important;
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    content: "";
+    background-image: url("../icons/playIcon.svg");
+    background-repeat: no-repeat;
+    background-size: 46px;
+    background-position: 55% calc(50% - 0px);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* purgecss end ignore */
