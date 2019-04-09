@@ -62,7 +62,7 @@ const getDefaultState = () => {
       }
     },
     replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
-    imagesSetLimit: 3,
+    imagesSetLimit: 100,
     imagesSet: [],
     roundDone: [],
     lastScore: null,
