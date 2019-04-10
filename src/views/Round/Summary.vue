@@ -17,7 +17,7 @@
       >{{ $t("navigation.nextImage") }}</router-link>
     </header>
 
-    <main class="wrapperImg wrapperImg--finish">
+    <main class="wrapperImg wrapperImg--summary">
       <img
         :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"

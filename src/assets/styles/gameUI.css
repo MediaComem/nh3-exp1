@@ -75,7 +75,7 @@
 }
 
 @media screen and (orientation:landscape) {
-    .wrapperImg--finish {
+    .wrapperImg--summary {
         flex: 0 1 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -124,6 +124,7 @@
         }
 
     }
+
 }
 
 .imgDesc,
