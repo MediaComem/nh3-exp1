@@ -47,11 +47,11 @@ a:hover,
 a:visited,
 a:focus,
 a:active {
-    color: #fff;
+    @apply text-white;
 }
 
 .btn__primary {
-    border: 2px solid #fff;
+    border: 2px solid config('colors.white');
     padding: 0.5em 1.5em;
     text-transform: uppercase;
 }
@@ -113,11 +113,11 @@ body {
 }
 
 .btn--close {
+    @apply bg-white;
     position: absolute;
     right: 0;
     width: 32px;
     height: 32px;
-    background: #fff;
 }
 
 .btn--close:hover {

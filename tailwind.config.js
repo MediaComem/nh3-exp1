@@ -47,6 +47,7 @@ const colors = {
   'red-dark': 'rgba(87, 0, 31, 1)',
   red: 'rgb(255, 0, 90)',
   black: '#000',
+  white: '#fff',
   grey: 'rgb(74, 74, 74)',
   'grey-light': '	rgb(74, 74, 74)',
   'grey-lighter': '	rgb(101, 101, 101)'

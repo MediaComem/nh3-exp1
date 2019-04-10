@@ -53,7 +53,7 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
   & h3 {
     text-align: center;
-    border: 2px solid #fff;
+    border: 2px solid config("colors.white");
     border-right: none;
     padding: 0.4em 0.3em;
     & a {
@@ -61,7 +61,7 @@ h3 {
     }
   }
   & li:last-child h3 {
-    border: 2px solid #fff;
+    border: 2px solid config("colors.white");
   }
 }
 .slogan {

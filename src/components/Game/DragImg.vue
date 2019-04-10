@@ -112,7 +112,7 @@ export default {
 }
 
 .wrapperBackgroundImg {
-  background: #fff;
+  @apply bg-white;
 }
 .backgroundImg {
   z-index: 2;

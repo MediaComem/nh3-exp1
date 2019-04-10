@@ -26,7 +26,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: #fff;
+  @apply bg-white;
 }
 .dragYear {
   @apply text-red;

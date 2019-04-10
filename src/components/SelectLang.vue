@@ -44,9 +44,9 @@ export default {
 
 <style lang="postcss" scoped>
 select {
+  @apply text-white;
   background: none;
   border: none;
-  color: #fff;
   appearance: none;
   box-sizing: border-box;
   line-height: 1.3;

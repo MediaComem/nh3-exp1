@@ -1,6 +1,7 @@
 {
   "name": "nh3-exp1",
   "version": "0.1.0",
+  "author": "imagoiq",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

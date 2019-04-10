@@ -1,10 +1,10 @@
 .gameUI {
     & header {
+        @apply bg-white;
         width: 100%;
         align-items: center;
         display: grid;
         grid-template-columns: 1fr auto 1fr;
-        background: #fff;
     }
 
     & header button {
@@ -40,7 +40,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #fff;
+    @apply bg-white;
     width: 100%;
 }
 
