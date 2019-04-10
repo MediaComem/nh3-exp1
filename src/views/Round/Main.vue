@@ -11,11 +11,14 @@
         }"
       >{{ $t("navigation.goBack") }}</router-link>
       <Chrono ref="chrono" @timesUp="timesUp"/>
+      <h1 class="hidden">{{ $t('accessibility.youPlay')}}</h1>
     </header>
 
-    <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
-      <Introduction v-if="this.firstTime"/>
-    </DragImg>
+    <main>
+      <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
+        <Introduction v-if="this.firstTime"/>
+      </DragImg>
+    </main>
 
     <ShowYears/>
   </div>

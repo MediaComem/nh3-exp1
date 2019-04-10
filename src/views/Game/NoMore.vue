@@ -9,8 +9,8 @@
       >{{ $t("navigation.viewScore") }}</router-link>
     </header>
 
-    <main class="flex justify-center items-center flex-basis-100">
-      <h3 class="text-red p-8 text-center">{{ $t("game.noMore") }}</h3>
+    <main class="wrapperMsgCenter">
+      <h1 class="msgCenter">{{ $t("game.noMore") }}</h1>
     </main>
 
     <ShowYears/>

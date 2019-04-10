@@ -1,10 +1,18 @@
 {
   "title": "Date My Romandie",
   "shareSlogan": "{myScore} points à Date My Romandie, tu crois que tu peux faire mieux ?😉",
+  "accessibility": {
+    "selectLang": "Choisis une langue",
+    "inputUsername": "Entre ton nom d'utilisateur",
+    "imagesReview": "Revue des images",
+    "youPlay": "A toi de jouer !",
+    "reviewStats": "Statistique l'image jouée"
+  },
   "navigation": {
     "start": "Commencer",
     "continue": "Continuer",
     "goBack": "Retour",
+    "playAgin": "Rejouer",
     "stop": "Arrêter",
     "nextImage": "Image suivante",
     "restart": "Recommencer",

@@ -18,6 +18,7 @@
         tag="button"
         class="btn--highlighted"
       >{{ $t("navigation.continue") }}</router-link>
+      <h1 class="hidden">{{ $t('navigation.imagesReview')}}</h1>
     </header>
 
     <main class="wrapperImg">
@@ -45,7 +46,7 @@
     </main>
 
     <footer>
-      <h3 class="text-center text-red">{{ scoreMsg }} {{ lastScore }}</h3>
+      <h2 class="text-center text-red text-xl">{{ scoreMsg }} {{ lastScore }}</h2>
       <router-link to="/ranking" tag="button" class="btn--highlighted p-1">
         {{
         $t("navigation.ranking")
@@ -166,7 +167,7 @@ export default {
   grid-template-rows: 1fr 1fr;
 
   & button,
-  & h3 {
+  & h2 {
     grid-column: 2/3;
   }
 

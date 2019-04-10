@@ -6,6 +6,7 @@
         $t("navigation.goBack")
         }}
       </router-link>
+      <h1 class="hidden">{{ $t('navigation.Rejouer')}}</h1>
     </header>
 
     <main class="wrapperImg wrapperImg--bravo">

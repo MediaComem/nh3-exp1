@@ -6,6 +6,7 @@
         $t("navigation.goBack")
         }}
       </router-link>
+      <h1 class="hidden">{{ $t('navigation.ranking')}}</h1>
     </header>
 
     <main class="flex p-4" :class="{ 'mb-custom': displayForm }">
@@ -20,14 +21,20 @@
       </dl>
     </main>
     <transition name="fade">
-      <section v-if="displayForm" class="formTop10">
-        <h3 class="text-red">{{ $t('page.ranking.title')}}</h3>
+      <aside v-if="displayForm" class="formTop10">
+        <h2 class="text-red">{{ $t('page.ranking.title')}}</h2>
         <p class="text-red">{{ $t('page.ranking.description')}}</p>
         <form @submit="submitScore">
-          <input type="text" v-model.trim="username" minlength="1" maxlength="20">
+          <input
+            type="text"
+            v-model.trim="username"
+            minlength="1"
+            maxlength="20"
+            :aria-label="$t('accessibility.inputUsername')"
+          >
           <input type="submit" :value="$t('page.ranking.submit')">
         </form>
-      </section>
+      </aside>
     </transition>
   </div>
 </template>

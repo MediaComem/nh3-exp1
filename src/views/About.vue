@@ -1,38 +1,45 @@
 <template functional>
   <div class="fullBG flex flex-col justify-between text-center">
-    <div class="relative">
-      <router-link to="/" tag="button" class="btn btn--close"></router-link>
-    </div>
-    <h2>{{ parent.$t("page.about.mainTitle") }}</h2>
-    <section>
-      <h3>{{ parent.$t("page.about.buildBy") }}</h3>
+    <nav class="relative">
+      <router-link
+        to="/"
+        tag="button"
+        class="btn btn--close"
+        :aria-label="parent.$t('navigation.goBack')"
+      ></router-link>
+    </nav>
+    <header>
+      <h1 class="text-2xl">{{ parent.$t("page.about.mainTitle") }}</h1>
+    </header>
+    <aside>
+      <h2>{{ parent.$t("page.about.buildBy") }}</h2>
       <p>
         <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
         <br>
         <a href="https://heig-vd.ch">HEIG-VD</a>
       </p>
       <p>2019</p>
-    </section>
-    <section>
-      <h3>{{ parent.$t("page.about.univers.title") }}</h3>
-      <ul class="nh3-univers">
+    </aside>
+    <main>
+      <h2>{{ parent.$t("page.about.univers.title") }}</h2>
+      <ul class="nh2-univers">
         <li>
-          <h3>
+          <h2>
             <a href="#">{{ parent.$t("page.about.univers.archive") }}</a>
-          </h3>
+          </h2>
         </li>
         <li>
-          <h3>
+          <h2>
             <a href="#">{{ parent.$t("page.about.univers.mag") }}</a>
-          </h3>
+          </h2>
         </li>
         <li>
-          <h3>
+          <h2>
             <a href="#">{{ parent.$t("page.about.univers.lab") }}</a>
-          </h3>
+          </h2>
         </li>
       </ul>
-    </section>
+    </main>
     <footer>
       <p>{{ parent.$t("page.about.copyright") }}</p>
       <p class="slogan">{{ parent.$t("page.about.slogan") }}</p>
@@ -41,17 +48,20 @@
 </template>
 
 <style lang="postcss" scoped>
+h2 {
+  @apply text-xl;
+}
 p,
-h3 {
+h2 {
   @apply mb-4;
 }
-.nh3-univers {
+.nh2-univers {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  & h3 {
+  & h2 {
     text-align: center;
     border: 2px solid config("colors.white");
     border-right: none;
@@ -60,7 +70,7 @@ h3 {
       text-decoration: none;
     }
   }
-  & li:last-child h3 {
+  & li:last-child h2 {
     border: 2px solid config("colors.white");
   }
 }

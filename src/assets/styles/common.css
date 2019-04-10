@@ -73,10 +73,6 @@ body,
     height: 100%;
 }
 
-.flex-basis-100 {
-    flex-basis: 100%;
-}
-
 /* Source: https://css-tricks.com/keyboard-only-focus-styles/ */
 
 *:focus:not(.focus-visible) {
@@ -163,3 +159,14 @@ body {
 }
 
 /* purgecss end ignore */
+
+.hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}

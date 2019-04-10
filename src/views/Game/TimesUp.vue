@@ -1,17 +1,19 @@
 <template>
   <div class="gameUI">
     <header>
-      <Chrono ref="chrono" />
-      <router-link to="/game/finish" tag="button" class="btn--highlighted">
-        {{ $t("navigation.viewScore") }}
-      </router-link>
+      <Chrono ref="chrono"/>
+      <router-link
+        to="/game/finish"
+        tag="button"
+        class="btn--highlighted"
+      >{{ $t("navigation.viewScore") }}</router-link>
     </header>
 
-    <main class="flex justify-center items-center flex-basis-100">
-      <h3 class="text-red">{{ $t("game.timesUp") }}</h3>
+    <main class="wrapperMsgCenter">
+      <h1 class="msgCenter">{{ $t("game.timesUp") }}</h1>
     </main>
 
-    <ShowYears />
+    <ShowYears/>
   </div>
 </template>
 

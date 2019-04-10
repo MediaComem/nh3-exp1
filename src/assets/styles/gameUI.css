@@ -44,6 +44,15 @@
     width: 100%;
 }
 
+.gameUI .wrapperMsgCenter {
+    @apply flex justify-center items-center;
+    flex-basis: 100%;
+}
+
+.gameUI .msgCenter {
+    @apply text-red font-normal p-8 text-center text-xl normal-case;
+}
+
 .gameUI--scroll {
     overflow: auto;
     height: auto;

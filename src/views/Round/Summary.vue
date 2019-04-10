@@ -15,6 +15,7 @@
         class="btn--highlighted"
         v-if="comeFromPlay"
       >{{ $t("navigation.nextImage") }}</router-link>
+      <h1 class="hidden">{{ $t('accessibility.reviewStats')}}</h1>
     </header>
 
     <main class="wrapperImg wrapperImg--summary">

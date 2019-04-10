@@ -1,6 +1,8 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col">
-    <h1 class="mt-auto">{{ $t("title") }}</h1>
+    <header class="mt-auto">
+      <h1>{{ $t("title") }}</h1>
+    </header>
     <main class="flex mt-auto justify-center relative">
       <transition name="fade">
         <router-link
