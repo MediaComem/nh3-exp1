@@ -74,7 +74,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
+    ...mapState(["imagesSet", "loading", "game", "user"]),
     ...mapGetters(["imagesToDo", "imagesDoneLastGame"]),
     showScoreLink() {
       return this.game.number > 0 && this.imagesDoneLastGame.length > 0;

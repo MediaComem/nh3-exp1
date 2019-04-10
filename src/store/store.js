@@ -14,5 +14,19 @@ export default new Vuex.Store({
   getters: getters,
   mutations: mutations,
   actions: actions,
-  plugins: [new VuexPersistence({ storage: window.localStorage }).plugin]
+  plugins: [
+    new VuexPersistence({
+      reducer: state => ({
+        lang: state.lang,
+        user: state.user,
+        replayCount: state.replayCount,
+        round: state.round,
+        game: state.game,
+        imagesSet: state.imagesSet,
+        roundDone: state.roundDone,
+        score: state.score
+      }),
+      storage: window.localStorage
+    }).plugin
+  ]
 });

@@ -31,7 +31,7 @@ export default {
         rights: 1,
         image: 1
       },
-      limit: state.imagesSetLimit,
+      limit: state.options.imagesSetLimit,
       skip: 0,
       lang: state.lang
     });
@@ -76,7 +76,7 @@ export default {
   async getTop({ commit, state }) {
     let res = await axios.post('/collections/get/exp1_classement', {
       simple: 1,
-      limit: state.rankingLimit,
+      limit: state.options.rankingLimit,
       sort: { score: -1 }
     });
 
@@ -89,7 +89,7 @@ export default {
       data: {
         userId: state.user.id,
         username: state.user.name,
-        score: state.lastScore
+        score: state.score.last
       }
     });
   }

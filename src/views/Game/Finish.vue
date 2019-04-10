@@ -31,7 +31,7 @@
           >
             <img
               :src="generateImgSrc(el.image._id)"
-              :srcset="generateImgSrcSet(el.image._id, dpiRange)"
+              :srcset="generateImgSrcSet(el.image._id, options.dpiRange)"
               class="imageFit"
               :alt="el.title"
             >
@@ -46,7 +46,7 @@
     </main>
 
     <footer>
-      <h2 class="text-center text-red text-xl">{{ scoreMsg }} {{ lastScore }}</h2>
+      <h2 class="text-center text-red text-xl">{{ scoreMsg }} {{ score.last }}</h2>
       <router-link to="/ranking" tag="button" class="btn--highlighted p-1">
         {{
         $t("navigation.ranking")
@@ -82,7 +82,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["round", "game", "lastScore", "dpiRange"]),
+    ...mapState(["round", "game", "score", "options"]),
     ...mapGetters(["imagesToDo", "imagesDone", "imagesDoneLastGame"]),
     checkWebShareAPI() {
       return navigator.share !== undefined ? true : false;
@@ -134,7 +134,7 @@ export default {
     shareApp() {
       navigator.share({
         title: document.title,
-        text: this.$t("shareSlogan", { myScore: this.lastScore }),
+        text: this.$t("shareSlogan", { myScore: this.score.last }),
         url: window.location.origin
       });
     },

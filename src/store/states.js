@@ -5,10 +5,10 @@ export default () => {
       navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
     user: {
       name: null,
-      id: null
+      id: null,
+      firstTime: true
     },
-    loading: false,
-    firstTime: true,
+    replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
     round: {
       year: {
         begin: new Date().getFullYear() - 200,
@@ -49,14 +49,18 @@ export default () => {
         instance: null
       }
     },
-    replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
-    imagesSetLimit: 200,
     imagesSet: [],
     roundDone: [],
-    lastScore: null,
-    lastScoreSubmitted: false,
+    score: {
+      last: null,
+      submitted: false
+    },
     ranking: [],
-    rankingLimit: 10, // Get top 10
-    dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4]
+    options: {
+      imagesSetLimit: 200,
+      rankingLimit: 10, // Get top 10
+      dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4]
+    },
+    loading: false
   };
 };

@@ -24,7 +24,7 @@ export default {
     state.imagesSet = payload;
   },
   [types.SET_FIRST_TIME](state, payload) {
-    state.firstTime = payload;
+    state.user.firstTime = payload;
   },
   [types.SET_GAME_STATE](state, payload) {
     state.game.running = payload;
@@ -81,13 +81,13 @@ export default {
     state.game.chrono.currentVal += state.game.chrono.currentBonusPenalty;
   },
   [types.SET_LAST_GAME_SCORE](state, score) {
-    state.lastScore = score;
+    state.score.last = score;
   },
   [types.SET_TOP](state, payload) {
     state.ranking = payload;
   },
   [types.SET_SCORE_SUBMITTED](state, payload) {
-    state.lastScoreSubmitted = payload;
+    state.score.submitted = payload;
   },
   [types.SET_NEW_REPLAY](state) {
     state.replayCount += 1;

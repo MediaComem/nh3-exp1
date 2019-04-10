@@ -21,7 +21,7 @@
     <main class="wrapperImg wrapperImg--summary">
       <img
         :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
-        :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
+        :srcset="generateImgSrcSet(round.media.image._id, options.dpiRange)"
         class="imageFit lazy"
         :alt="round.media.title"
       >
@@ -104,7 +104,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["round", "game", "lang", "dpiRange"])
+    ...mapState(["round", "game", "lang", "options"])
   },
   methods: {
     ...mapActions(["getSummaryTempImg"])

@@ -16,7 +16,7 @@
             :key="i + 'dt'"
             :class="{ 'font-bold': (rank.username === username) }"
           >{{ rank.username }}</dt>
-          <dd :key="i + 'dd'" :class="{ 'font-bold': (rank.score === lastScore) }">{{ rank.score }}</dd>
+          <dd :key="i + 'dd'" :class="{ 'font-bold': (rank.score === score.last) }">{{ rank.score }}</dd>
         </template>
       </dl>
     </main>
@@ -51,10 +51,10 @@ export default {
   created() {
     this.getTop().then(res => {
       // If ranking is not empty
-      if (this.ranking.length === this.rankingLimit) {
+      if (this.ranking.length === this.options.rankingLimit) {
         this.canScoreEnterTop =
-          this.lastScore >= this.ranking[this.ranking.length - 1].score;
-      } else if (this.lastScore === null) {
+          this.score.last >= this.ranking[this.ranking.length - 1].score;
+      } else if (this.score.last === null) {
         this.canScoreEnterTop = false;
       } else {
         this.canScoreEnterTop = true;
@@ -62,9 +62,9 @@ export default {
     });
   },
   computed: {
-    ...mapState(["ranking", "rankingLimit", "lastScore", "user"]),
+    ...mapState(["ranking", "options", "score", "user"]),
     displayForm() {
-      return this.canScoreEnterTop && !this.$store.state.lastScoreSubmitted;
+      return this.canScoreEnterTop && !this.$store.state.score.submitted;
     },
     username: {
       get() {

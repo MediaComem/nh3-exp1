@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.firstTime }">
+  <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !this.user.firstTime }">
     <LazyImage
       :placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
-      :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
+      :srcset="generateImgSrcSet(round.media.image._id, options.dpiRange)"
       class="dragImg lazy"
       :alt="round.media.title"
     />
@@ -11,7 +11,7 @@
       <LazyImage
         :placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
         :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
-        :srcset="generateImgSrcSet(round.media.image._id, this.dpiRange)"
+        :srcset="generateImgSrcSet(round.media.image._id, options.dpiRange)"
         class="backgroundImg lazy"
         :alt="round.media.title"
       />
@@ -56,7 +56,7 @@ export default {
     });
   },
   computed: {
-    ...mapState(["firstTime", "round", "dpiRange"])
+    ...mapState(["user", "round", "options"])
   },
   methods: {
     ...mapMutations(["SET_YEAR_SELECTED"]),

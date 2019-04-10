@@ -16,7 +16,7 @@
 
     <main>
       <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
-        <Introduction v-if="this.firstTime"/>
+        <Introduction v-if="this.user.firstTime"/>
       </DragImg>
     </main>
 
@@ -67,7 +67,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["firstTime", "game", "round", "user", "replayCount"]),
+    ...mapState(["game", "round", "user", "replayCount"]),
     ...mapGetters(["imagesToDo"])
   },
   methods: {
@@ -89,7 +89,7 @@ export default {
       this.$refs.chrono.start();
     },
     isFirstTimeEver() {
-      if (this.firstTime) {
+      if (this.user.firstTime) {
         this.SET_FIRST_TIME(false);
       }
     },
