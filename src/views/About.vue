@@ -25,17 +25,29 @@
       <ul class="nh2-univers">
         <li>
           <h2>
-            <a href="#">{{ parent.$t("page.about.univers.archive") }}</a>
+            <a
+              :href="parent.$t('page.about.univers.archive.url')"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ parent.$t("page.about.univers.archive.title") }}</a>
           </h2>
         </li>
         <li>
           <h2>
-            <a href="#">{{ parent.$t("page.about.univers.mag") }}</a>
+            <a
+              :href="parent.$t('page.about.univers.mag.url')"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ parent.$t("page.about.univers.mag.title") }}</a>
           </h2>
         </li>
         <li>
           <h2>
-            <a href="#">{{ parent.$t("page.about.univers.lab") }}</a>
+            <a
+              :href="parent.$t('page.about.univers.lab.url')"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ parent.$t("page.about.univers.lab.title") }}</a>
           </h2>
         </li>
       </ul>
