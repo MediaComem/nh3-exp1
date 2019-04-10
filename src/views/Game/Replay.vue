@@ -31,13 +31,13 @@
         >Radio Television Suisse - Creative Commons BY-NC-ND</a>
       </p>
       <div class="col_landscape">
-        <h1 class="bravo__title text-red p-2">{{ $t("game.replay.title") }}</h1>
+        <h1 class="bravo__title text-red p-2 text-3xl">{{ $t("game.replay.title") }}</h1>
         <p
           class="bravo__desc text-red pr-8 pl-8 text-sm"
         >{{ $t("game.replay.description", {imageSetLength: this.imagesSet.length }) }}</p>
         <button
           @click="replay"
-          class="btn btn__primary btn__primary--red m-6"
+          class="btn btn__primary btn__primary--red m-6 mb-0 text-sm"
         >{{ $t("game.replay.button") }}</button>
       </div>
     </main>
@@ -61,7 +61,7 @@ export default {
         textTrackSettings: false,
         autoplay: true,
         fluid: true,
-        aspectRatio: "4:3",
+        aspectRatio: this.$t("game.replay.video.aspectRatio"),
         techOrder: ["html5"]
       }
     };

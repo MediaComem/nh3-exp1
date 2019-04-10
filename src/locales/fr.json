@@ -47,6 +47,7 @@
       "button": "Recommencer une partie",
       "video": {
         "idnh": "67455",
+        "aspectRatio": "4:3",
         "sources": [
           {
             "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
@@ -69,6 +70,9 @@
       },
       "copyright": "© Fonsart - 2019",
       "slogan": "« Des histoires d’archives »"
+    },
+    "ranking": {
+      "description": "Bravo! Ecris un pseudo pour entrer dans le top10"
     }
   }
 }
