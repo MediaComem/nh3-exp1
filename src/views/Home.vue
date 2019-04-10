@@ -19,13 +19,13 @@
         >{{ $t("navigation.continue") }}</router-link>
       </transition>
     </main>
-    <footer class="flex justify-between">
+    <footer :class="{ score: game.number > 0 }">
       <router-link to="/about" tag="button" class="btn">{{ $t("page.about.title") }}</router-link>
       <router-link
         to="/game/finish"
         tag="a"
         class="text-white no-underline"
-        v-if="imagesDone.length > 0"
+        v-if="game.number > 0"
       >{{ $t("navigation.score") }}</router-link>
       <SelectLang/>
     </footer>
@@ -42,7 +42,7 @@ import BGImg from "@/mixins/BGImg";
 export default {
   computed: {
     ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
-    ...mapGetters(["imagesDone", "imagesToDo"])
+    ...mapGetters(["imagesToDo"])
   },
   mixins: [utilities, BGImg],
   components: {
@@ -77,4 +77,23 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+.fullBG footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+
+  & :first-child {
+    justify-self: start;
+  }
+  & :last-child {
+    justify-self: end;
+  }
+}
+.fullBG footer.score {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+</style>
+
 
