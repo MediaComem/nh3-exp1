@@ -19,33 +19,40 @@ export default {
   },
   async loadImages({ commit, state }) {
     commit('SET_GLOBAL_LOADING', true);
+    try {
+      let res = await axios.post('/collections/get/exp1_images', {
+        simple: 1,
+        fields: {
+          _id: 0,
+          idnh: 1,
+          title: 1,
+          year: 1,
+          author: 1,
+          rights: 1,
+          image: 1
+        },
+        limit: state.options.imagesSetLimit,
+        skip: 0,
+        lang: state.lang
+      });
 
-    let res = await axios.post('/collections/get/exp1_images', {
-      simple: 1,
-      fields: {
-        _id: 0,
-        idnh: 1,
-        title: 1,
-        year: 1,
-        author: 1,
-        rights: 1,
-        image: 1
-      },
-      limit: state.options.imagesSetLimit,
-      skip: 0,
-      lang: state.lang
-    });
-
-    commit('LOAD_IMAGES', await res.data);
+      commit('LOAD_IMAGES', await res.data);
+    } catch (err) {
+      console.log('loadImages', err);
+    }
   },
   async getStats({ commit, state }) {
-    let res = await axios.post('/collections/get/exp1_stats', {
-      simple: 1,
-      yearsInterval: state.round.stats.yearsInterval,
-      filter: { idnh: state.round.media.idnh }
-    });
+    try {
+      let res = await axios.post('/collections/get/exp1_stats', {
+        simple: 1,
+        yearsInterval: state.round.stats.yearsInterval,
+        filter: { idnh: state.round.media.idnh }
+      });
 
-    commit('SET_ROUND_STATS', await res.data);
+      commit('SET_ROUND_STATS', await res.data);
+    } catch (err) {
+      console.log('getStats', err);
+    }
   },
   storeRoundDone({ commit }, payload) {
     commit('ADD_ROUND_DONE', payload);
@@ -58,39 +65,49 @@ export default {
     commit('SET_USER_ID', unidid());
   },
   async getSummaryTempImg({ commit, state }, imgId) {
-    let res = await axios.post('/collections/get/exp1_images', {
-      filter: { idnh: imgId },
-      simple: 1,
-      fields: {
-        title: 1,
-        year: 1,
-        author: 1,
-        rights: 1,
-        image: 1
-      },
-      lang: state.lang
-    });
-
-    commit('SET_ROUND_MEDIA', await res.data[0]);
+    try {
+      let res = await axios.post('/collections/get/exp1_images', {
+        filter: { idnh: imgId },
+        simple: 1,
+        fields: {
+          title: 1,
+          year: 1,
+          author: 1,
+          rights: 1,
+          image: 1
+        },
+        lang: state.lang
+      });
+      commit('SET_ROUND_MEDIA', await res.data[0]);
+    } catch (err) {
+      console.log('getSummaryTempImg', err);
+    }
   },
   async getTop({ commit, state }) {
-    let res = await axios.post('/collections/get/exp1_classement', {
-      simple: 1,
-      limit: state.options.rankingLimit,
-      sort: { score: -1 }
-    });
+    try {
+      let res = await axios.post('/collections/get/exp1_classement', {
+        simple: 1,
+        limit: state.options.rankingLimit,
+        sort: { score: -1 }
+      });
 
-    commit('SET_TOP', await res.data);
+      commit('SET_TOP', await res.data);
+    } catch (err) {
+      console.log('getTop', err);
+    }
   },
   async storeScoreTop({ commit, state }) {
     commit('SET_SCORE_SUBMITTED', true);
-
-    await axios.post('/collections/save/exp1_classement', {
-      data: {
-        userId: state.user.id,
-        username: state.user.name,
-        score: state.score.last
-      }
-    });
+    try {
+      await axios.post('/collections/save/exp1_classement', {
+        data: {
+          userId: state.user.id,
+          username: state.user.name,
+          score: state.score.last
+        }
+      });
+    } catch (err) {
+      console.log('storeScoreTop', err);
+    }
   }
 };
