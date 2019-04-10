@@ -73,16 +73,16 @@ export default {
 
     commit('SET_ROUND_MEDIA', await res.data[0]);
   },
-  async getTop10({ commit }) {
+  async getTop({ commit, state }) {
     let res = await axios.post('/collections/get/exp1_classement', {
       simple: 1,
-      limit: 10,
+      limit: state.rankingLimit,
       sort: { score: -1 }
     });
 
-    commit('SET_TOP10', await res.data);
+    commit('SET_TOP', await res.data);
   },
-  async storeScoreTop10({ commit, state }) {
+  async storeScoreTop({ commit, state }) {
     commit('SET_SCORE_SUBMITTED', true);
 
     await axios.post('/collections/save/exp1_classement', {

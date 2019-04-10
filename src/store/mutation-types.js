@@ -46,7 +46,7 @@ export const SET_LAST_GAME_SCORE = 'SET_LAST_GAME_SCORE';
 
 // Ranking
 
-export const SET_TOP10 = 'SET_TOP10';
+export const SET_TOP = 'SET_TOP';
 export const SET_SCORE_SUBMITTED = 'SET_SCORE_SUBMITTED';
 
 // replay

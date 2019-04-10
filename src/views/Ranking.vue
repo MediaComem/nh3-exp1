@@ -21,7 +21,7 @@
       </dl>
     </main>
     <transition name="fade">
-      <aside v-if="displayForm" class="formTop10">
+      <aside v-if="displayForm" class="formTop">
         <h2 class="text-red">{{ $t('page.ranking.title')}}</h2>
         <p class="text-red">{{ $t('page.ranking.description')}}</p>
         <form @submit="submitScore">
@@ -45,19 +45,26 @@ import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      canScoreEnterTop10: false
+      canScoreEnterTop: false
     };
   },
   created() {
-    this.getTop10().then(res => {
-      this.canScoreEnterTop10 =
-        this.lastScore >= this.ranking[this.ranking.length - 1].score;
+    this.getTop().then(res => {
+      // If ranking is not empty
+      if (this.ranking.length === this.rankingLimit) {
+        this.canScoreEnterTop =
+          this.lastScore >= this.ranking[this.ranking.length - 1].score;
+      } else if (this.lastScore === null) {
+        this.canScoreEnterTop = false;
+      } else {
+        this.canScoreEnterTop = true;
+      }
     });
   },
   computed: {
-    ...mapState(["ranking", "lastScore", "user"]),
+    ...mapState(["ranking", "rankingLimit", "lastScore", "user"]),
     displayForm() {
-      return this.canScoreEnterTop10 && !this.$store.state.lastScoreSubmitted;
+      return this.canScoreEnterTop && !this.$store.state.lastScoreSubmitted;
     },
     username: {
       get() {
@@ -70,11 +77,11 @@ export default {
   },
   methods: {
     ...mapMutations(["SET_USER_NAME"]),
-    ...mapActions(["getTop10", "storeScoreTop10"]),
+    ...mapActions(["getTop", "storeScoreTop"]),
     submitScore(e) {
       e.preventDefault();
-      this.storeScoreTop10().then(res => {
-        this.getTop10();
+      this.storeScoreTop().then(res => {
+        this.getTop();
       });
     }
   }
@@ -100,7 +107,7 @@ dd {
   @apply pt-4 pb-4;
   width: 50%;
 }
-.formTop10 {
+.formTop {
   @apply p-8 bg-white;
   position: fixed;
   bottom: 0;

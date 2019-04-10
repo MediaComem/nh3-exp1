@@ -83,7 +83,7 @@ export default {
   [types.SET_LAST_GAME_SCORE](state, score) {
     state.lastScore = score;
   },
-  [types.SET_TOP10](state, payload) {
+  [types.SET_TOP](state, payload) {
     state.ranking = payload;
   },
   [types.SET_SCORE_SUBMITTED](state, payload) {
