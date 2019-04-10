@@ -44,9 +44,14 @@ var utilities = {
 
         if ('caches' in window) {
           // Has support!
-          caches.open('preloadImg').then(cache => {
-            cache.add(url);
-          });
+          caches
+            .open('preloadImg')
+            .then(cache => {
+              cache.add(url);
+            })
+            .catch(err => {
+              console.log('Error in caching image', err);
+            });
         }
       });
     },

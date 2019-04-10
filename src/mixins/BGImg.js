@@ -13,7 +13,11 @@ var BGImg = {
       let imgId = this.imagesSet[randImageId]['image']['_id'];
       let imgUrl = this.generateImgSrc(imgId, { f: 'desaturate' });
 
-      this.preloadImg(imgUrl).then(() => this.changeBGURL(imgUrl));
+      this.preloadImg(imgUrl)
+        .then(() => this.changeBGURL(imgUrl))
+        .catch(err => {
+          console.log('Error in preloading image', err);
+        });
     },
     changeBGURL(imgUrl) {
       document.documentElement.style.setProperty('--url', `url(${imgUrl})`);
