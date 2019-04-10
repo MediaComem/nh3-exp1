@@ -36,15 +36,15 @@
 import { mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      canScoreEnterTop10: false
+    };
+  },
   computed: {
     ...mapState(["ranking", "lastScore", "lastScoreSubmitted", "user"]),
     displayForm() {
       return this.canScoreEnterTop10 && !this.$store.state.lastScoreSubmitted;
-    },
-    canScoreEnterTop10() {
-      let ranking = this.$store.state.ranking;
-      let lastScore = this.$store.state.lastScore;
-      return lastScore >= ranking[ranking.length - 1].score;
     },
     username: {
       get() {
@@ -56,7 +56,10 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getTop10");
+    this.$store.dispatch("getTop10").then(res => {
+      this.canScoreEnterTop10 =
+        this.lastScore >= this.ranking[this.ranking.length - 1].score;
+    });
   },
   methods: {
     submitScore(e) {
