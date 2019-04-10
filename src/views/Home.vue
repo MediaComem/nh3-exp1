@@ -19,13 +19,13 @@
         >{{ $t("navigation.continue") }}</router-link>
       </transition>
     </main>
-    <footer :class="{ score: game.number > 0 }">
+    <footer :class="{ score: showScoreLink }">
       <router-link to="/about" tag="button" class="btn">{{ $t("page.about.title") }}</router-link>
       <router-link
         to="/game/finish"
         tag="a"
         class="text-white no-underline"
-        v-if="game.number > 0"
+        v-if="showScoreLink"
       >{{ $t("navigation.score") }}</router-link>
       <SelectLang/>
     </footer>
@@ -42,7 +42,10 @@ import BGImg from "@/mixins/BGImg";
 export default {
   computed: {
     ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
-    ...mapGetters(["imagesToDo"])
+    ...mapGetters(["imagesToDo", "imagesDoneLastGame"]),
+    showScoreLink() {
+      return this.game.number > 0 && this.imagesDoneLastGame.length > 0;
+    }
   },
   mixins: [utilities, BGImg],
   components: {

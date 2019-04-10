@@ -39,7 +39,8 @@
       }
     },
     "finish": {
-      "finalScore": "Ton dernier score:"
+      "yourScore": "Ton score:",
+      "lastScore": "Dernier score:"
     },
     "noMore": "C'était la dernière image à dater !",
     "replay": {

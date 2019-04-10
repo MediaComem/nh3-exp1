@@ -45,7 +45,7 @@
     </main>
 
     <footer>
-      <h3 class="text-center text-red">{{ $t("game.finish.finalScore") }} {{ lastScore }}</h3>
+      <h3 class="text-center text-red">{{ scoreMsg }} {{ lastScore }}</h3>
       <router-link to="/ranking" tag="button" class="btn--highlighted p-1">
         {{
         $t("navigation.ranking")
@@ -75,11 +75,22 @@ export default {
       }
     };
   },
+  data() {
+    return {
+      prevRouteName: null
+    };
+  },
   computed: {
     ...mapState(["round", "game", "lastScore", "dpiRange"]),
     ...mapGetters(["imagesToDo", "imagesDone", "imagesDoneLastGame"]),
     checkWebShareAPI() {
       return navigator.share !== undefined ? true : false;
+    },
+    scoreMsg() {
+      return this.prevRouteName === "gamenomore" ||
+        this.prevRouteName === "gametimesup"
+        ? this.$t("game.finish.yourScore")
+        : this.$t("game.finish.lastScore");
     }
   },
   mixins: [utilities],
@@ -90,13 +101,23 @@ export default {
   created() {
     // Redirect if no images have been played
     if (this.imagesDone.length === 0) {
-      this.$router.replace({ name: "home" });
+      // For funny-hacker
+      if (this.imagesDoneLastGame.length === 0) {
+        this.$router.replace({ name: "round" });
+      } else {
+        this.$router.replace({ name: "home" });
+      }
     }
   },
   beforeMount() {
     if (!this.game.running) {
       this.calcFinalScore();
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.prevRouteName = from.name;
+    });
   },
   beforeRouteLeave(to, from, next) {
     /* --- No more images to do --- */
