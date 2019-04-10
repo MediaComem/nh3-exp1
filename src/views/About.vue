@@ -9,7 +9,7 @@
       ></router-link>
     </nav>
     <header>
-      <h1 class="text-2xl">{{ parent.$t("page.about.mainTitle") }}</h1>
+      <h1 class="text-2xl normal-case">{{ parent.$t("page.about.mainTitle") }}</h1>
     </header>
     <aside>
       <h2>{{ parent.$t("page.about.buildBy") }}</h2>
