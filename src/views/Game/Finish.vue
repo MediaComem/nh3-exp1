@@ -144,7 +144,7 @@ export default {
         0
       );
       let score = Math.floor(
-        (yearsDiff / (this.imagesDoneLastGame.length * 1.3)) * 10
+        this.imagesDoneLastGame.length * 100 - yearsDiff / 2.1
       );
 
       this.SET_LAST_GAME_SCORE(score);

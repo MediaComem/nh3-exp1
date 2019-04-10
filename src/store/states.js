@@ -38,7 +38,7 @@ export default () => {
       running: false,
       number: 0,
       chrono: {
-        init: 5, //sec
+        init: 60, //sec
         bonus: 15, //sec
         penalty: -1, //sec
         penaltyCoefficient: 3, // penalty per year

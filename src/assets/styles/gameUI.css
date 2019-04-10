@@ -50,7 +50,7 @@
 }
 
 .gameUI .msgCenter {
-    @apply text-red font-normal p-8 text-center text-xl normal-case;
+    @apply text-red font-normal p-10 text-center text-xl normal-case;
 }
 
 .gameUI--scroll {
