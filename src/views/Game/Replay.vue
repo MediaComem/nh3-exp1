@@ -17,7 +17,7 @@
         :data-setup="stringifyVideoSetup"
       >
         <source
-          v-for="(source, i) in this.$t('game.replay.video.sources')"
+          v-for="(source, i) in $t('game.replay.video.sources')"
           v-bind:key="i"
           :src="source.src"
           :type="source.type"
@@ -25,7 +25,7 @@
       </video>
       <p class="imgRights">
         <a
-          :href="'https://www.notrehistoire.ch/medias/' + this.$t('game.replay.video.idnh')"
+          :href="'https://www.notrehistoire.ch/medias/' + $t('game.replay.video.idnh')"
           target="_blank"
           rel="noopener noreferrer"
         >Radio Television Suisse - Creative Commons BY-NC-ND</a>
