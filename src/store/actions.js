@@ -85,7 +85,7 @@ export default {
   async storeScoreTop10({ commit, state }) {
     commit('SET_SCORE_SUBMITTED', true);
 
-    axios.post('/collections/save/exp1_classement', {
+    await axios.post('/collections/save/exp1_classement', {
       data: {
         userId: state.user.id,
         username: state.user.name,
