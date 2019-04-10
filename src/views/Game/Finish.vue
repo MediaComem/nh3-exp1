@@ -132,7 +132,7 @@ export default {
     shareApp() {
       navigator.share({
         title: document.title,
-        text: this.$t("shareSlogan"),
+        text: this.$t("shareSlogan", { myScore: this.lastScore }),
         url: window.location.origin
       });
     },
