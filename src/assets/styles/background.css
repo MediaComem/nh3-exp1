@@ -25,4 +25,34 @@
         config('colors.red-dark') 0%,
         config('colors.red') 100%),
         var(--url);
+
+    & footer>* {
+        @apply p-2;
+    }
+
+    & .selectDiv {
+        @apply pr-0;
+    }
+
+    & .selectDiv::after {
+        @apply pt-4 pb-2;
+    }
+
+    & footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+
+        & :first-child {
+            justify-self: start;
+        }
+
+        & :last-child {
+            justify-self: end;
+        }
+    }
+
+    & footer.score {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }

@@ -78,22 +78,3 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-.fullBG footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-
-  & :first-child {
-    justify-self: start;
-  }
-  & :last-child {
-    justify-self: end;
-  }
-}
-.fullBG footer.score {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-</style>
-
-
