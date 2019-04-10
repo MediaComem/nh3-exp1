@@ -57,6 +57,7 @@ export default {
         this.$store.commit("RESET_CHRONO");
         this.$store.commit("INIT_CHRONO");
         this.$store.commit("SET_GAME_STATE", true);
+        this.$store.commit("SET_SCORE_SUBMITTED", false);
       }
 
       /* --- New Round --- */

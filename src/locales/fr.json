@@ -10,6 +10,7 @@
     "restart": "Recommencer",
     "ranking": "Classement",
     "viewScore": "Voir le score",
+    "score": "Score",
     "offline": {
       "title": "Oups, tu es Hors-ligne !",
       "description": "Reconnecte-toi pour jouer"
@@ -38,7 +39,7 @@
       }
     },
     "finish": {
-      "finalScore": "Ton score:"
+      "finalScore": "Ton dernier score:"
     },
     "noMore": "C'était la dernière image à dater !",
     "replay": {
@@ -72,7 +73,9 @@
       "slogan": "« Des histoires d’archives »"
     },
     "ranking": {
-      "description": "Bravo! Ecris un pseudo pour entrer dans le top10"
+      "title": "Bien joué !",
+      "description": "Entre dans le top10 en écrivant ton pseudo",
+      "submit": "Confirmer"
     }
   }
 }

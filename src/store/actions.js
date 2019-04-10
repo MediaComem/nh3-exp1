@@ -81,5 +81,16 @@ export default {
     });
 
     commit('SET_TOP10', await res.data);
+  },
+  async storeScoreTop10({ commit, state }) {
+    commit('SET_SCORE_SUBMITTED', true);
+
+    axios.post('/collections/save/exp1_classement', {
+      data: {
+        userId: state.user.id,
+        username: state.user.name,
+        score: state.lastScore
+      }
+    });
   }
 };

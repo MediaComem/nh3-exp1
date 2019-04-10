@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     ...mapState(["round", "game", "lastScore", "dpiRange"]),
-    ...mapGetters(["imagesDoneLastGame"]),
+    ...mapGetters(["imagesToDo", "imagesDone", "imagesDoneLastGame"]),
     checkWebShareAPI() {
       return navigator.share !== undefined ? true : false;
     }
@@ -87,9 +87,24 @@ export default {
     swiper,
     swiperSlide
   },
+  created() {
+    // Redirect if no images have been played
+    if (this.imagesDone.length === 0) {
+      this.$router.replace({ name: "home" });
+    }
+  },
   beforeMount() {
     if (!this.game.running) {
       this.calcFinalScore();
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    /* --- No more images to do --- */
+
+    if (to.name === "round" && this.imagesToDo.length == 0) {
+      next("/game/replay");
+    } else {
+      next();
     }
   },
   methods: {
@@ -125,7 +140,7 @@ export default {
 .gameUI footer {
   @apply pb-8;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;
 
   & button,

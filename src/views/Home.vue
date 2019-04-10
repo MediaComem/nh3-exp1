@@ -21,6 +21,12 @@
     </main>
     <footer class="flex justify-between">
       <router-link to="/about" tag="button" class="btn">{{ $t("page.about.title") }}</router-link>
+      <router-link
+        to="/game/finish"
+        tag="a"
+        class="text-white no-underline"
+        v-if="imagesDone.length > 0"
+      >{{ $t("navigation.score") }}</router-link>
       <SelectLang/>
     </footer>
   </div>

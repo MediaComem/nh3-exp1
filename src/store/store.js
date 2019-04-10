@@ -66,6 +66,7 @@ const getDefaultState = () => {
     imagesSet: [],
     roundDone: [],
     lastScore: null,
+    lastScoreSubmitted: false,
     ranking: [],
     dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4]
   };
@@ -86,6 +87,9 @@ export default new Vuex.Store({
     },
     [types.SET_USER_ID](state, payload) {
       state.user.id = payload;
+    },
+    [types.SET_USER_NAME](state, payload) {
+      state.user.name = payload;
     },
     [types.LOAD_IMAGES](state, payload) {
       state.imagesSet = payload;
@@ -152,6 +156,9 @@ export default new Vuex.Store({
     },
     [types.SET_TOP10](state, payload) {
       state.ranking = payload;
+    },
+    [types.SET_SCORE_SUBMITTED](state, payload) {
+      state.lastScoreSubmitted = payload;
     },
     [types.SET_NEW_REPLAY](state) {
       state.replayCount += 1;
