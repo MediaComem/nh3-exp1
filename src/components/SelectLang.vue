@@ -1,17 +1,14 @@
 <template>
   <div class="selectDiv">
-    <select :id="name" v-model="selected" @change="setLang">
-      <option
-        :selected="selected === lang.abbr"
-        :value="lang.abbr"
-        v-for="lang in langs"
-        :key="lang.abbr"
-      >{{ lang.text }}</option>
+    <select :id="name" v-model="langSelected">
+      <option :value="lang.abbr" v-for="lang in langs" :key="lang.abbr">{{ lang.text }}</option>
     </select>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   props: ["name"],
   static() {
@@ -28,16 +25,18 @@ export default {
       ]
     };
   },
-  data: function() {
-    return {
-      selected: this.$store.state.lang,
-      value: ""
-    };
+  computed: {
+    langSelected: {
+      get() {
+        return this.$store.state.lang;
+      },
+      set(value) {
+        this.setLang(value);
+      }
+    }
   },
   methods: {
-    setLang() {
-      this.$store.dispatch("setLang", this.selected);
-    }
+    ...mapActions(["setLang"])
   }
 };
 </script>

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import videojs from "video.js";
 
 export default {
@@ -76,9 +76,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["SET_NEW_REPLAY", "RESET_GAME"]),
     replay() {
-      this.$store.commit("SET_NEW_REPLAY");
-      this.$store.commit("RESET_GAME");
+      this.SET_NEW_REPLAY();
+      this.RESET_GAME();
       this.$router.replace({ name: "round" });
     }
   }

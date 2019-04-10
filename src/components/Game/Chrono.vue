@@ -3,35 +3,41 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
-  computed: mapState(["game"]),
   mounted() {
     this.checkTimesUp();
   },
+  computed: mapState(["game"]),
   methods: {
+    ...mapMutations([
+      "SET_CHRONO_RUNNING",
+      "SET_INTERVAL_CHRONO",
+      "STORE_CHRONO",
+      "TIMESUP"
+    ]),
     start() {
-      this.$store.commit("SET_CHRONO_RUNNING", true);
+      this.SET_CHRONO_RUNNING(true);
 
       // Remove at init 1 second to hurry up the user
-      this.$store.commit("SET_INTERVAL_CHRONO");
+      this.SET_INTERVAL_CHRONO();
       let instance = window.setInterval(() => {
-        this.$store.commit("SET_INTERVAL_CHRONO");
+        this.SET_INTERVAL_CHRONO();
         this.checkTimesUp();
       }, 1000);
 
-      this.$store.commit("STORE_CHRONO", instance);
+      this.STORE_CHRONO(instance);
     },
     checkTimesUp() {
       if (this.game.chrono.currentVal <= 0) {
-        this.$store.commit("TIMESUP", true);
+        this.TIMESUP(true);
         this.stop();
         this.$emit("timesUp");
       }
     },
     stop() {
-      this.$store.commit("SET_CHRONO_RUNNING", false);
+      this.SET_CHRONO_RUNNING(false);
       clearInterval(this.game.chrono.instance);
     }
   }

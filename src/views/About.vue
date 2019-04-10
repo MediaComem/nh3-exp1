@@ -1,11 +1,11 @@
-<template>
+<template functional>
   <div class="fullBG flex flex-col justify-between text-center">
     <div class="relative">
       <router-link to="/" tag="button" class="btn btn--close"></router-link>
     </div>
-    <h2>{{ $t("page.about.mainTitle") }}</h2>
+    <h2>{{ parent.$t("page.about.mainTitle") }}</h2>
     <section>
-      <h3>{{ $t("page.about.buildBy") }}</h3>
+      <h3>{{ parent.$t("page.about.buildBy") }}</h3>
       <p>
         <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
         <br>
@@ -14,28 +14,28 @@
       <p>2019</p>
     </section>
     <section>
-      <h3>{{ $t("page.about.univers.title") }}</h3>
+      <h3>{{ parent.$t("page.about.univers.title") }}</h3>
       <ul class="nh3-univers">
         <li>
           <h3>
-            <a href="#">{{ $t("page.about.univers.archive") }}</a>
+            <a href="#">{{ parent.$t("page.about.univers.archive") }}</a>
           </h3>
         </li>
         <li>
           <h3>
-            <a href="#">{{ $t("page.about.univers.mag") }}</a>
+            <a href="#">{{ parent.$t("page.about.univers.mag") }}</a>
           </h3>
         </li>
         <li>
           <h3>
-            <a href="#">{{ $t("page.about.univers.lab") }}</a>
+            <a href="#">{{ parent.$t("page.about.univers.lab") }}</a>
           </h3>
         </li>
       </ul>
     </section>
     <footer>
-      <p>{{ $t("page.about.copyright") }}</p>
-      <p class="slogan">{{ $t("page.about.slogan") }}</p>
+      <p>{{ parent.$t("page.about.copyright") }}</p>
+      <p class="slogan">{{ parent.$t("page.about.slogan") }}</p>
     </footer>
   </div>
 </template>

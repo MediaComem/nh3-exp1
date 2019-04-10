@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
 
 const Chrono = () => import("@/components/Game/Chrono.vue");
@@ -31,10 +31,6 @@ const DragImg = () => import("@/components/Game/DragImg.vue");
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
-  computed: {
-    ...mapState(["firstTime", "game", "round", "user", "replayCount"]),
-    ...mapGetters(["imagesToDo"])
-  },
   mixins: [utilities],
   components: {
     Chrono,
@@ -54,36 +50,49 @@ export default {
     } else {
       /* --- New Game --- */
       if (!this.game.running) {
-        this.$store.commit("RESET_CHRONO");
-        this.$store.commit("INIT_CHRONO");
-        this.$store.commit("SET_GAME_STATE", true);
-        this.$store.commit("SET_SCORE_SUBMITTED", false);
+        this.RESET_CHRONO();
+        this.INIT_CHRONO();
+        this.SET_GAME_STATE(true);
+        this.SET_SCORE_SUBMITTED(false);
       }
 
       /* --- New Round --- */
 
-      this.$store.commit("RESET_ROUND");
-      this.$store.commit("SET_ROUND_MEDIA", this.imagesToDo[0]);
-      this.$store.dispatch("getStats");
+      this.RESET_ROUND();
+      this.SET_ROUND_MEDIA(this.imagesToDo[0]);
+      this.getStats();
     }
   },
+  computed: {
+    ...mapState(["firstTime", "game", "round", "user", "replayCount"]),
+    ...mapGetters(["imagesToDo"])
+  },
   methods: {
+    ...mapMutations([
+      "RESET_CHRONO",
+      "INIT_CHRONO",
+      "SET_GAME_STATE",
+      "SET_SCORE_SUBMITTED",
+      "RESET_ROUND",
+      "SET_ROUND_MEDIA",
+      "SET_FIRST_TIME",
+      "ADD_CHRONO_BONUS",
+      "SET_GAME_STATE",
+      "SET_NEW_GAME"
+    ]),
+    ...mapActions(["getStats", "storeRoundDone"]),
     startPlay() {
       this.isFirstTimeEver();
       this.$refs.chrono.start();
     },
     isFirstTimeEver() {
       if (this.firstTime) {
-        this.$store.commit("SET_FIRST_TIME", false);
+        this.SET_FIRST_TIME(false);
       }
     },
     stopPlay() {
       this.$refs.chrono.stop();
-      this.storeRoundDone();
-      this.calcBonus();
-    },
-    storeRoundDone() {
-      this.$store.dispatch("storeRoundDone", {
+      this.storeRoundDone({
         idnh: this.round.media.idnh,
         replayCount: this.replayCount,
         yearSelected: this.round.year.selected,
@@ -91,6 +100,7 @@ export default {
         userId: this.user.id,
         userName: this.user.name
       });
+      this.calcBonus();
     },
     yearsDiff() {
       return Math.abs(this.round.media.year - this.round.year.selected);
@@ -98,7 +108,7 @@ export default {
     calcBonus() {
       /* --- Bonus --- */
 
-      this.$store.commit("ADD_CHRONO_BONUS", this.yearsDiff());
+      this.ADD_CHRONO_BONUS(this.yearsDiff());
 
       /* --- TimesUp / Continue --- */
 
@@ -116,13 +126,13 @@ export default {
     },
     noMore() {
       this.$router.replace({ name: "gamenomore" });
-      this.$store.commit("SET_GAME_STATE", false);
-      this.$store.commit("SET_NEW_GAME"); // Not necessary but don't to develop specific finish state
+      this.SET_GAME_STATE(false);
+      this.SET_NEW_GAME(); // Not necessary but don't to develop specific finish state
     },
     timesUp() {
       this.$router.replace({ name: "gametimesup" });
-      this.$store.commit("SET_GAME_STATE", false);
-      this.$store.commit("SET_NEW_GAME");
+      this.SET_GAME_STATE(false);
+      this.SET_NEW_GAME();
     }
   }
 };

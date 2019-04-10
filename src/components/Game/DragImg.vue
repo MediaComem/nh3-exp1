@@ -21,25 +21,21 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
 import interact from "interactjs";
 
 const LazyImage = () => import("@/components/Game/LazyImage.vue");
 
-import { mapState } from "vuex";
-
 export default {
-  mixins: [utilities],
   data: function() {
     return {
       dragInit: false
     };
   },
+  mixins: [utilities],
   components: {
     LazyImage
-  },
-  computed: {
-    ...mapState(["firstTime", "round", "dpiRange"])
   },
   mounted() {
     interact(".dragImg").draggable({
@@ -59,7 +55,11 @@ export default {
       onend: this.dragEndListener
     });
   },
+  computed: {
+    ...mapState(["firstTime", "round", "dpiRange"])
+  },
   methods: {
+    ...mapMutations(["SET_YEAR_SELECTED"]),
     dragStartListener(event) {
       this.dragImgInit = event.target.getBoundingClientRect();
 
@@ -93,7 +93,7 @@ export default {
         0
       );
 
-      this.$store.commit("SET_YEAR_SELECTED", yearSelected);
+      this.SET_YEAR_SELECTED(yearSelected);
     }
   }
 };

@@ -59,8 +59,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
-import { mapState, mapGetters } from "vuex";
 
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
@@ -129,6 +129,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["SET_LAST_GAME_SCORE"]),
     shareApp() {
       navigator.share({
         title: document.title,
@@ -145,7 +146,7 @@ export default {
         (yearsDiff / (this.imagesDoneLastGame.length * 1.3)) * 10
       );
 
-      this.$store.commit("SET_LAST_GAME_SCORE", score);
+      this.SET_LAST_GAME_SCORE(score);
     }
   }
 };

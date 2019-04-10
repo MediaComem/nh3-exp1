@@ -35,18 +35,11 @@
 <script>
 const SelectLang = () => import("@/components/SelectLang.vue");
 
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
 import BGImg from "@/mixins/BGImg";
 
 export default {
-  computed: {
-    ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
-    ...mapGetters(["imagesToDo", "imagesDoneLastGame"]),
-    showScoreLink() {
-      return this.game.number > 0 && this.imagesDoneLastGame.length > 0;
-    }
-  },
   mixins: [utilities, BGImg],
   components: {
     SelectLang
@@ -54,15 +47,15 @@ export default {
   beforeMount() {
     /* --- Load Images --- */
 
-    this.$store.dispatch("loadImages").then(() => {
-      this.$store.commit("SET_GLOBAL_LOADING");
+    this.loadImages().then(() => {
+      this.SET_GLOBAL_LOADING();
       this.startBGImg();
       // Preload thumb
       this.preloadAllThumb({ w: 30, q: 40 });
     });
     /* --- Create User Id --- */
     if (this.user.id === null) {
-      this.$store.dispatch("createUserId");
+      this.createUserId();
     }
   },
   beforeDestroy() {
@@ -77,6 +70,17 @@ export default {
     } else {
       next();
     }
+  },
+  computed: {
+    ...mapState(["imagesSet", "loading", "game", "user", "firstTime"]),
+    ...mapGetters(["imagesToDo", "imagesDoneLastGame"]),
+    showScoreLink() {
+      return this.game.number > 0 && this.imagesDoneLastGame.length > 0;
+    }
+  },
+  methods: {
+    ...mapMutations(["SET_GLOBAL_LOADING"]),
+    ...mapActions(["createUserId", "loadImages"])
   }
 };
 </script>

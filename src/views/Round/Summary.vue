@@ -60,8 +60,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import utilities from "@/mixins/utilities";
-import { mapState } from "vuex";
 
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
@@ -86,9 +86,6 @@ export default {
       }
     };
   },
-  computed: {
-    ...mapState(["round", "game", "lang", "dpiRange"])
-  },
   mixins: [utilities],
   components: {
     Chrono,
@@ -102,8 +99,14 @@ export default {
     // If the user is not coming from play get the image from the server
     if (this.round.media.image._id === null || this.round.year.selected === 0) {
       this.comeFromPlay = false;
-      this.$store.dispatch("getSummaryTempImg", this.$route.params.idnh);
+      this.getSummaryTempImg(this.$route.params.idnh);
     }
+  },
+  computed: {
+    ...mapState(["round", "game", "lang", "dpiRange"])
+  },
+  methods: {
+    ...mapActions(["getSummaryTempImg"])
   }
 };
 </script>

@@ -24,7 +24,7 @@
         <h3 class="text-red">{{ $t('page.ranking.title')}}</h3>
         <p class="text-red">{{ $t('page.ranking.description')}}</p>
         <form @submit="submitScore">
-          <input type="text" v-model="username" minlength="1" maxlength="20">
+          <input type="text" v-model.trim="username" minlength="1" maxlength="20">
           <input type="submit" :value="$t('page.ranking.submit')">
         </form>
       </section>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   data() {
@@ -41,8 +41,14 @@ export default {
       canScoreEnterTop10: false
     };
   },
+  created() {
+    this.getTop10().then(res => {
+      this.canScoreEnterTop10 =
+        this.lastScore >= this.ranking[this.ranking.length - 1].score;
+    });
+  },
   computed: {
-    ...mapState(["ranking", "lastScore", "lastScoreSubmitted", "user"]),
+    ...mapState(["ranking", "lastScore", "user"]),
     displayForm() {
       return this.canScoreEnterTop10 && !this.$store.state.lastScoreSubmitted;
     },
@@ -51,21 +57,17 @@ export default {
         return this.$store.state.user.name;
       },
       set(value) {
-        this.$store.commit("SET_USER_NAME", value);
+        this.SET_USER_NAME(value);
       }
     }
   },
-  created() {
-    this.$store.dispatch("getTop10").then(res => {
-      this.canScoreEnterTop10 =
-        this.lastScore >= this.ranking[this.ranking.length - 1].score;
-    });
-  },
   methods: {
+    ...mapMutations(["SET_USER_NAME"]),
+    ...mapActions(["getTop10", "storeScoreTop10"]),
     submitScore(e) {
       e.preventDefault();
-      this.$store.dispatch("storeScoreTop10").then(res => {
-        this.$store.dispatch("getTop10");
+      this.storeScoreTop10().then(res => {
+        this.getTop10();
       });
     }
   }
