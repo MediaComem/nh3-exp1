@@ -53,7 +53,7 @@
     "noMore": "C'était la dernière image à dater !",
     "replay": {
       "title": "Bravo !",
-      "description": "Tu as daté toutes les {imageSetLength} images...crois-tu que tu pourrais faire mieux ?",
+      "description": "Tu as daté toutes les {imageSetLength} images...penses-tu pouvoir faire mieux ? ",
       "button": "Recommencer une partie",
       "video": {
         "idnh": "67455",
