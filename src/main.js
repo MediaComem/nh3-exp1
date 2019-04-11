@@ -6,7 +6,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store/store';
 import './registerServiceWorker';
-import axios from 'axios';
 
 /* Plugin */
 
@@ -21,10 +20,6 @@ Vue.use(VueOffline);
 /* API */
 
 Vue.config.productionTip = process.env.NODE_ENV === 'production';
-
-axios.defaults.baseURL = process.env.VUE_APP_API_URL;
-axios.defaults.headers.common['Authorization'] =
-  'Bearer ' + process.env.VUE_APP_API_GENERAL_TOKEN;
 
 export const app = new Vue({
   router,
