@@ -19,6 +19,12 @@ Vue.use(VueOffline);
 
 /* API */
 
+import axios from 'axios';
+
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+axios.defaults.headers.common['Authorization'] =
+  'Bearer ' + process.env.VUE_APP_API_GENERAL_TOKEN;
+
 Vue.config.productionTip = process.env.NODE_ENV === 'production';
 
 export const app = new Vue({

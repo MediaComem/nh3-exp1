@@ -2,10 +2,6 @@ import axios from 'axios';
 import { app } from '../main';
 import unidid from 'uniqid';
 
-axios.defaults.baseURL = process.env.VUE_APP_API_URL;
-axios.defaults.headers.common['Authorization'] =
-  'Bearer ' + process.env.VUE_APP_API_GENERAL_TOKEN;
-
 export default {
   async setLang({ commit }, payload) {
     if (payload in app.$i18n.messages) {
