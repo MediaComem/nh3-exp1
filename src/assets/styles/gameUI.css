@@ -42,6 +42,7 @@
     left: 0;
     @apply bg-white;
     width: 100%;
+    overflow-x:hidden;
 }
 
 .gameUI .wrapperMsgCenter {
