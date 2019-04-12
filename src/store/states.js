@@ -38,12 +38,9 @@ export default () => {
       running: false,
       number: 0,
       chrono: {
-        init: 60, //sec
-        bonus: 15, //sec
-        penalty: -1, //sec
-        penaltyCoefficient: 3, // penalty per year
+        init: 30, //sec
         currentVal: 0, //sec
-        currentBonusPenalty: 0, //sec
+        currentBonus: 0, //sec
         timesUp: false,
         running: false,
         instance: null
@@ -59,7 +56,14 @@ export default () => {
     options: {
       imagesSetLimit: 200,
       rankingLimit: 10, // Get top 10
-      dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4]
+      dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4],
+      bonus: {
+        exact: 6, //sec
+        rangeMinYearsDiff: 1, // At ... year difference(s) you get ...
+        rangeMinValue: 3, // ... sec in bonus.
+        rangeMaxYearsDiff: 15, // At ... year difference(s) you get ...
+        rangeMaxValue: 1 // ... sec in bonus.
+      }
     },
     loading: false
   };

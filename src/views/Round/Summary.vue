@@ -50,7 +50,7 @@
         <swiper-slide>
           <h3 class="text-center text-red">
             {{ $t("game.summary.timeBonus") }}
-            {{ game.chrono.currentBonusPenalty }}s
+            {{ game.chrono.currentBonus }}s
           </h3>
         </swiper-slide>
       </swiper>

@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["game", "round", "user", "replayCount"]),
+    ...mapState(["game", "round", "user", "replayCount", "options"]),
     ...mapGetters(["imagesToDo"])
   },
   methods: {
@@ -108,8 +108,20 @@ export default {
     },
     calcBonus() {
       /* --- Bonus --- */
+      let bonus = 0;
+      if (this.yearsDiff() <= this.options.bonus.rangeMaxYearsDiff) {
+        bonus = this.convertRange(
+          this.yearsDiff(),
+          this.options.bonus.rangeMinValue,
+          this.options.bonus.rangeMaxValue,
+          this.options.bonus.rangeMinYearsDiff,
+          this.options.bonus.rangeMaxYearsDiff
+        );
+      } else if (this.yearsDiff() === 0) {
+        bonus = this.options.bonus.exact;
+      }
 
-      this.ADD_CHRONO_BONUS(this.yearsDiff());
+      this.ADD_CHRONO_BONUS(bonus);
 
       /* --- TimesUp / Continue --- */
 

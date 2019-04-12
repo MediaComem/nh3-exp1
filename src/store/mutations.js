@@ -68,17 +68,9 @@ export default {
   [types.ADD_ROUND_DONE](state, payload) {
     state.roundDone.push(payload);
   },
-  [types.ADD_CHRONO_BONUS](state, yearsDiff) {
-    let penalty = Math.abs(
-      yearsDiff *
-        state.game.chrono.penalty *
-        state.game.chrono.penaltyCoefficient
-    );
-    let limitedPenalty = Math.min(penalty, state.game.chrono.bonus);
-
-    state.game.chrono.currentBonusPenalty =
-      state.game.chrono.bonus - limitedPenalty;
-    state.game.chrono.currentVal += state.game.chrono.currentBonusPenalty;
+  [types.ADD_CHRONO_BONUS](state, bonus) {
+    state.game.chrono.currentBonus = bonus;
+    state.game.chrono.currentVal += bonus;
   },
   [types.SET_LAST_GAME_SCORE](state, score) {
     state.score.last = score;
