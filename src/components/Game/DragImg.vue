@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapperImg" :class="{ 'wrapperImg--timeline': !user.firstTime }">
+  <main class="wrapperImg" :class="{ 'wrapperImg--timeline': !user.firstTime }">
     <LazyImage
       :placeholder="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
       :src="generateImgSrc(round.media.image._id, { w: 30, q: 40 })"
@@ -17,7 +17,7 @@
       />
     </div>
     <slot></slot>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -101,7 +101,6 @@ export default {
 
 <style lang="postcss">
 .wrapperImg--timeline {
-  @apply h-full;
   background-image: repeating-linear-gradient(
     -90deg,
     transparent,
