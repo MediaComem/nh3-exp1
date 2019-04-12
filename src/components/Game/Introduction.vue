@@ -1,7 +1,7 @@
 <template functional>
   <div class="introduction">
     <h3>{{ parent.$t("game.introduction.title") }}</h3>
-    <p>{{ parent.$t("game.introduction.description") }}</p>
+    <p>{{ parent.$t("game.introduction.description", {chronoInit: parent.$store.state.options.chronoInit}) }}</p>
     <ol>
       <li v-for="step of parent.$t('game.introduction.steps')" v-bind:key="step">{{ step }}</li>
     </ol>

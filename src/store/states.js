@@ -1,8 +1,8 @@
 export default () => {
   return {
     // By default check navigator lang
-    lang:
-      navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
+    lang: navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
+    loading: false,
     user: {
       name: null,
       id: null,
@@ -10,11 +10,7 @@ export default () => {
     },
     replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
     round: {
-      year: {
-        begin: new Date().getFullYear() - 200,
-        end: new Date().getFullYear(),
-        selected: 0
-      },
+      yearSelected: 0,
       media: {
         author: null,
         title: null,
@@ -38,7 +34,6 @@ export default () => {
       running: false,
       number: 0,
       chrono: {
-        init: 30, //sec
         currentVal: 0, //sec
         currentBonus: 0, //sec
         timesUp: false,
@@ -54,7 +49,12 @@ export default () => {
     },
     ranking: [],
     options: {
-      imagesSetLimit: 200,
+      timeline: {
+        begin: 1818,
+        end: new Date().getFullYear()
+      },
+      chronoInit: 30, //sec
+      imagesSetLimit: 200, //pictures
       rankingLimit: 10, // Get top 10
       dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4],
       bonus: {
@@ -64,7 +64,6 @@ export default () => {
         rangeMaxYearsDiff: 15, // At ... year difference(s) you get ...
         rangeMaxValue: 1 // ... sec in bonus.
       }
-    },
-    loading: false
+    }
   };
 };

@@ -87,8 +87,8 @@ export default {
     updateSelectedYear(elBBOX) {
       let yearSelected = this.convertRange(
         this.clamp(elBBOX.x, 0, window.innerWidth - elBBOX.width),
-        this.$store.state.round.year.end,
-        this.$store.state.round.year.begin,
+        this.options.timeline.end,
+        this.options.timeline.begin,
         window.innerWidth - elBBOX.width,
         0
       );

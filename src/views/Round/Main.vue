@@ -96,7 +96,7 @@ export default {
       this.storeRoundDone({
         idnh: this.round.media.idnh,
         replayCount: this.replayCount,
-        yearSelected: this.round.year.selected,
+        yearSelected: this.round.yearSelected,
         gameNumber: this.game.number,
         userId: this.user.id,
         userName: this.user.name
@@ -104,7 +104,7 @@ export default {
       this.calcBonus();
     },
     yearsDiff() {
-      return Math.abs(this.round.media.year - this.round.year.selected);
+      return Math.abs(this.round.media.year - this.round.yearSelected);
     },
     calcBonus() {
       /* --- Bonus --- */
