@@ -8,6 +8,9 @@
     "youPlay": "A toi de jouer !",
     "reviewStats": "Statistique l'image jouée"
   },
+  "error": {
+    "noImageServer": "Le serveur des images est indisponible, réessaye plus tard !"
+  },
   "navigation": {
     "start": "Commencer",
     "continue": "Continuer",

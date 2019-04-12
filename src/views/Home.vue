@@ -6,7 +6,7 @@
     <main class="flex mt-auto justify-center relative">
       <transition name="fade">
         <router-link
-          v-if="!loading && !game.running"
+          v-if="!loading && !game.running && !errorLoadingImages"
           to="/round"
           tag="button"
           class="btn btn__primary"
@@ -14,12 +14,16 @@
       </transition>
       <transition name="fade">
         <router-link
-          v-if="!loading && game.running"
+          v-if="!loading && game.running && !errorLoadingImages"
           to="/round"
           tag="button"
           class="btn btn__primary"
         >{{ $t("navigation.continue") }}</router-link>
       </transition>
+      <p
+        v-if="errorLoadingImages"
+        class="text-white text-center text-sm"
+      >{{ $t('error.noImageServer')}}</p>
     </main>
     <footer :class="{ score: showScoreLink }">
       <router-link to="/about" tag="button" class="btn">{{ $t("page.about.title") }}</router-link>
@@ -42,6 +46,11 @@ import utilities from "@/mixins/utilities";
 import BGImg from "@/mixins/BGImg";
 
 export default {
+  data() {
+    return {
+      errorLoadingImages: false
+    };
+  },
   mixins: [utilities, BGImg],
   components: {
     SelectLang
@@ -49,12 +58,18 @@ export default {
   beforeMount() {
     /* --- Load Images --- */
 
-    this.loadImages().then(() => {
-      this.SET_GLOBAL_LOADING();
-      this.startBGImg();
-      // Preload thumb
-      this.preloadAllThumb({ w: 30, q: 40 });
-    });
+    this.loadImages()
+      .then(() => {
+        this.errorLoadingImages = false;
+        this.SET_GLOBAL_LOADING();
+        this.startBGImg();
+        // Preload thumb
+        this.preloadAllThumb({ w: 30, q: 40 });
+      })
+      .catch(err => {
+        this.errorLoadingImages = true;
+        console.log("loadImageHome", err);
+      });
     /* --- Create User Id --- */
     if (this.user.id === null) {
       this.createUserId();

@@ -19,27 +19,24 @@ export default {
   },
   async loadImages({ commit, state }) {
     commit('SET_GLOBAL_LOADING', true);
-    try {
-      let res = await axios.post('/collections/get/exp1_images', {
-        simple: 1,
-        fields: {
-          _id: 0,
-          idnh: 1,
-          title: 1,
-          year: 1,
-          author: 1,
-          rights: 1,
-          image: 1
-        },
-        limit: state.options.imagesSetLimit,
-        skip: 0,
-        lang: state.lang
-      });
 
-      commit('LOAD_IMAGES', await res.data);
-    } catch (err) {
-      console.log('loadImages', err);
-    }
+    let res = await axios.post('/collections/get/exp1_images', {
+      simple: 1,
+      fields: {
+        _id: 0,
+        idnh: 1,
+        title: 1,
+        year: 1,
+        author: 1,
+        rights: 1,
+        image: 1
+      },
+      limit: state.options.imagesSetLimit,
+      skip: 0,
+      lang: state.lang
+    });
+
+    commit('LOAD_IMAGES', await res.data);
   },
   async getStats({ commit, state }) {
     try {
