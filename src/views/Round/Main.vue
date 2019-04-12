@@ -14,9 +14,9 @@
       <h1 class="hidden">{{ $t('accessibility.youPlay')}}</h1>
     </header>
 
-    <main>
+    <main class="h-full">
       <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
-        <Introduction v-if="this.user.firstTime"/>
+        <Introduction v-if="user.firstTime"/>
       </DragImg>
     </main>
 
