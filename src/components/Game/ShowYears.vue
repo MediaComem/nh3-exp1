@@ -1,13 +1,13 @@
 <template>
   <footer class="years">
-    <p>{{ round.year.begin }}</p>
+    <p>{{ options.timeline.begin }}</p>
     <p
       class="dragYear fadeFrom0"
       :class="{
-        'fadeFrom0--active': round.year.selected > 0
+        'fadeFrom0--active': round.yearSelected > 0
       }"
-    >{{ round.year.selected }}</p>
-    <p>{{ round.year.end }}</p>
+    >{{ round.yearSelected }}</p>
+    <p>{{ options.timeline.end }}</p>
   </footer>
 </template>
 
@@ -15,7 +15,7 @@
 import { mapState } from "vuex";
 
 export default {
-  computed: mapState(["round"])
+  computed: mapState(["round", "options"])
 };
 </script>
 

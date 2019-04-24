@@ -40,8 +40,8 @@
             :charData="round.stats.countPerPeriod.data"
           />
           <text-stats
-            :yearBegin="round.year.begin"
-            :yearSelected="round.year.selected"
+            :yearBegin="options.timeline.begin"
+            :yearSelected="round.yearSelected"
             :yearCorrect="round.media.year"
             :stats="round.stats"
             :yearsInterval="round.stats.yearsInterval"
@@ -98,7 +98,7 @@ export default {
   },
   created() {
     // If the user is not coming from play get the image from the server
-    if (this.round.media.image._id === null || this.round.year.selected === 0) {
+    if (this.round.media.image._id === null || this.round.yearSelected === 0) {
       this.comeFromPlay = false;
       this.getSummaryTempImg(this.$route.params.idnh);
     }

@@ -30,7 +30,7 @@
   "game": {
     "introduction": {
       "title": "But:",
-      "description": "Dater le plus d’images en 60 secondes",
+      "description": "Dater le plus d’images en {chronoInit} secondes",
       "steps": [
         "Glisser l’image vers le bas",
         "Changer la date en la déplaçant de gauche à droite.",
@@ -61,12 +61,10 @@
       "video": {
         "idnh": "67455",
         "aspectRatio": "4:3",
-        "sources": [
-          {
-            "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
-            "type": "application/x-mpegURL"
-          }
-        ]
+        "sources": [{
+          "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
+          "type": "application/x-mpegURL"
+        }]
       }
     }
   },

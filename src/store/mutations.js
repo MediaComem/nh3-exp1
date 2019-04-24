@@ -1,6 +1,8 @@
 import * as types from './mutation-types';
 import axios from 'axios';
-import { app } from '../main';
+import {
+  app
+} from '../main';
 
 import getDefaultState from './states';
 
@@ -39,7 +41,7 @@ export default {
     state.game.chrono = getDefaultState().game.chrono;
   },
   [types.INIT_CHRONO](state) {
-    state.game.chrono.currentVal = state.game.chrono.init;
+    state.game.chrono.currentVal = state.options.chronoInit;
   },
   [types.SET_CHRONO_RUNNING](state, payload) {
     state.game.chrono.running = payload;
@@ -60,7 +62,7 @@ export default {
     state.round.media = payload;
   },
   [types.SET_YEAR_SELECTED](state, payload) {
-    state.round.year.selected = payload;
+    state.round.yearSelected = payload;
   },
   [types.SET_ROUND_STATS](state, payload) {
     state.round.stats = payload;
