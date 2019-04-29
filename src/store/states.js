@@ -1,7 +1,8 @@
 export default () => {
   return {
     // By default check navigator lang
-    lang: navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
+    lang:
+      navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
     loading: false,
     user: {
       name: null,
@@ -11,6 +12,7 @@ export default () => {
     replayCount: 0, // Number of times the player has finish the all imagesSet and restarted to play
     round: {
       yearSelected: 0,
+      bonusAdded: false,
       media: {
         author: null,
         title: null,

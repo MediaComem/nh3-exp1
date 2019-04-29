@@ -77,7 +77,7 @@ export default {
       "RESET_ROUND",
       "SET_ROUND_MEDIA",
       "SET_FIRST_TIME",
-      "ADD_CHRONO_BONUS",
+      "STORE_CHRONO_BONUS",
       "SET_GAME_STATE",
       "SET_NEW_GAME"
     ]),
@@ -121,7 +121,7 @@ export default {
         bonus = this.options.bonus.exact;
       }
 
-      this.ADD_CHRONO_BONUS(bonus);
+      this.STORE_CHRONO_BONUS(bonus);
 
       /* --- TimesUp / Continue --- */
 

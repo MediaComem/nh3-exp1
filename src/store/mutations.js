@@ -1,8 +1,6 @@
 import * as types from './mutation-types';
 import axios from 'axios';
-import {
-  app
-} from '../main';
+import { app } from '../main';
 
 import getDefaultState from './states';
 
@@ -70,9 +68,11 @@ export default {
   [types.ADD_ROUND_DONE](state, payload) {
     state.roundDone.push(payload);
   },
-  [types.ADD_CHRONO_BONUS](state, bonus) {
+  [types.STORE_CHRONO_BONUS](state, bonus) {
     state.game.chrono.currentBonus = bonus;
-    state.game.chrono.currentVal += bonus;
+  },
+  [types.ADD_CHRONO_BONUS](state) {
+    state.game.chrono.currentVal += state.game.chrono.currentBonus;
   },
   [types.SET_LAST_GAME_SCORE](state, score) {
     state.score.last = score;

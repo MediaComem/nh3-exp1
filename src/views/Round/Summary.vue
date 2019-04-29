@@ -33,7 +33,12 @@
     </main>
 
     <aside class="wrapperAside">
-      <swiper :options="swiperOption" class="p-4" v-if="comeFromPlay">
+      <swiper
+        :options="swiperOption"
+        class="p-4"
+        v-if="comeFromPlay"
+        @slideChange="addBonusToState"
+      >
         <swiper-slide>
           <round-stats
             :labels="round.stats.countPerPeriod.labels"
@@ -61,7 +66,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 import utilities from "@/mixins/utilities";
 
 import { swiper, swiperSlide } from "vue-awesome-swiper";
@@ -72,7 +77,7 @@ const TextStats = () => import("@/components/Game/TextStats.vue");
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
-  static() {
+  data() {
     return {
       comeFromPlay: true,
       swiperOption: {
@@ -107,7 +112,15 @@ export default {
     ...mapState(["round", "game", "lang", "options"])
   },
   methods: {
-    ...mapActions(["getSummaryTempImg"])
+    ...mapMutations(["ADD_CHRONO_BONUS"]),
+    ...mapActions(["getSummaryTempImg"]),
+    addBonusToState() {
+      // Run only one time
+      if (!this.round.bonusAdded) {
+        this.ADD_CHRONO_BONUS();
+        this.round.bonusAdded = true;
+      }
+    }
   }
 };
 </script>

@@ -38,6 +38,7 @@ export const SET_ROUND_STATS = 'SET_ROUND_STATS';
 // Round Score
 
 export const ADD_ROUND_DONE = 'ADD_ROUND_DONE';
+export const STORE_CHRONO_BONUS = 'STORE_CHRONO_BONUS';
 export const ADD_CHRONO_BONUS = 'ADD_CHRONO_BONUS';
 
 // Game Score

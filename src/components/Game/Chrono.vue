@@ -1,5 +1,7 @@
 <template>
-  <p class="chrono">{{ game.chrono.currentVal }}</p>
+  <transition name="fade">
+    <p class="chrono">{{ game.chrono.currentVal }}</p>
+  </transition>
 </template>
 
 <script>
