@@ -12,46 +12,47 @@
       <h1 class="text-2xl normal-case">{{ parent.$t("page.about.mainTitle") }}</h1>
     </header>
     <aside>
-      <h2>{{ parent.$t("page.about.buildBy") }}</h2>
-      <p>
-        <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
-        <br>
-        <a href="https://heig-vd.ch">HEIG-VD</a>
-      </p>
-      <p>2019</p>
+      <h2>
+        <a :href="parent.$t('page.about.lab.url')">{{ parent.$t("page.about.testOtherExp") }}</a>
+      </h2>
     </aside>
     <main>
       <h2>{{ parent.$t("page.about.univers.title") }}</h2>
       <ul class="nh2-univers">
         <li>
-          <h2>
-            <a
-              :href="parent.$t('page.about.univers.archive.url')"
-              target="_blank"
-              rel="noopener noreferrer"
-            >{{ parent.$t("page.about.univers.archive.title") }}</a>
-          </h2>
+          <a
+            :href="parent.$t('page.about.univers.archive.url')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              :alt="parent.$t('page.about.univers.archive.title')"
+              :src="'./img/' + parent.$t('page.about.univers.archive.logo')"
+            >
+          </a>
         </li>
-        <li>
-          <h2>
-            <a
-              :href="parent.$t('page.about.univers.mag.url')"
-              target="_blank"
-              rel="noopener noreferrer"
-            >{{ parent.$t("page.about.univers.mag.title") }}</a>
-          </h2>
-        </li>
-        <li>
-          <h2>
-            <a
-              :href="parent.$t('page.about.univers.lab.url')"
-              target="_blank"
-              rel="noopener noreferrer"
-            >{{ parent.$t("page.about.univers.lab.title") }}</a>
-          </h2>
+        <li class="universMag">
+          <a
+            :href="parent.$t('page.about.univers.mag.url')"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              :alt="parent.$t('page.about.univers.mag.title')"
+              :src="'./img/' + parent.$t('page.about.univers.mag.logo')"
+            >
+          </a>
         </li>
       </ul>
     </main>
+    <aside>
+      <h3>{{ parent.$t("page.about.buildBy") }}</h3>
+      <p>
+        <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
+        <br>
+        <a href="https://heig-vd.ch">HEIG-VD</a>
+      </p>
+    </aside>
     <footer>
       <p>{{ parent.$t("page.about.copyright") }}</p>
       <p class="slogan">{{ parent.$t("page.about.slogan") }}</p>
@@ -60,6 +61,9 @@
 </template>
 
 <style lang="postcss" scoped>
+nav {
+  height: 32px;
+}
 h2 {
   @apply text-xl;
 }
@@ -67,23 +71,34 @@ p,
 h2 {
   @apply mb-4;
 }
+aside h3 {
+  @apply text-sm;
+}
 .nh2-univers {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  align-items: center;
+  & li {
+    width: 50%;
+    margin: 1rem;
+    padding: 1rem;
+    background: white;
+  }
   & h2 {
     text-align: center;
-    border: 2px solid config("colors.white");
-    border-right: none;
     padding: 0.4em 0.3em;
     & a {
       text-decoration: none;
     }
   }
-  & li:last-child h2 {
-    border: 2px solid config("colors.white");
+  & img {
+    padding: 0.1rem;
+    height: 50px;
+  }
+  & .universMag img {
+    padding: 0.3rem;
   }
 }
 .slogan {

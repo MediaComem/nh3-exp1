@@ -61,35 +61,40 @@
       "video": {
         "idnh": "67455",
         "aspectRatio": "4:3",
-        "sources": [{
-          "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
-          "type": "application/x-mpegURL"
-        }]
+        "sources": [
+          {
+            "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
+            "type": "application/x-mpegURL"
+          }
+        ]
       }
     }
   },
   "page": {
     "about": {
       "title": "À propos",
-      "mainTitle": "Une expérience du Lab de notrehistoire.ch",
-      "buildBy": "Conçu et développé par:",
+      "mainTitle": "Une expérience du LAB de notreHistoire.ch",
+      "buildBy": "Conçue et développée par:",
+      "testOtherExp": "Tester nos autres expériences",
+      "lab": {
+        "title": "Le LAB",
+        "url": "#"
+      },
       "univers": {
-        "title": "Découvrez nos autres univers:",
+        "title": "Nos autres univers:",
         "archive": {
           "title": "L'archive",
-          "url": "#"
+          "url": "#",
+          "logo": "logos/logo_notrehistoire.svg"
         },
         "mag": {
           "title": "Le Mag",
-          "url": "#"
-        },
-        "lab": {
-          "title": "Le Lab",
-          "url": "#"
+          "url": "#",
+          "logo": "logos/logo_l'inedit_notrehistoire.svg"
         }
       },
       "copyright": "© Fonsart - 2019",
-      "slogan": "« Des histoires d’archives »"
+      "slogan": "« « Quand les Romands font leur histoire »"
     },
     "ranking": {
       "title": "Bien joué !",
