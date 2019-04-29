@@ -27,6 +27,9 @@ export default {
   align-items: center;
   width: 100%;
   @apply bg-white;
+  & > * {
+    z-index: 10;
+  }
 }
 .dragYear {
   @apply text-red;
