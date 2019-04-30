@@ -1,11 +1,11 @@
-import Vue from "vue";
-import VueI18n from "vue-i18n";
-import store from "../store/store";
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import store from '../store/store';
 
-import fr from "../locales/fr.json";
+import fr from '../locales/fr.json';
 
-Vue.filter("capitalize", function(value) {
-  if (!value) return "";
+Vue.filter('capitalize', function(value) {
+  if (!value) return '';
   value = value.toString();
   return value.charAt(0).toUpperCase() + value.slice(1);
 });
@@ -16,9 +16,9 @@ let locale = store.state.lang;
 let messages = { fr };
 
 // set HTML Attribute at startup
-document.getElementsByTagName("html")[0].lang = locale;
+document.getElementsByTagName('html')[0].lang = locale;
 
-if (locale != "fr") {
+if (locale != 'fr') {
   import(/* webpackChunkName: "lang-[request]" */ `@/locales/${locale}.json`).then(
     res => {
       messages[locale] = res;
@@ -28,7 +28,7 @@ if (locale != "fr") {
 
 const i18n = new VueI18n({
   locale: locale,
-  fallbackLocale: "fr",
+  fallbackLocale: 'fr',
   messages: messages
 });
 

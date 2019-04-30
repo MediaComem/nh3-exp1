@@ -61,7 +61,6 @@ export default {
     this.loadImages()
       .then(() => {
         this.errorLoadingImages = false;
-        this.SET_GLOBAL_LOADING(false);
         this.startBGImg();
         // Preload thumb
         this.preloadAllThumb({ w: 30, q: 40 });

@@ -17,26 +17,37 @@ export default {
       }
     }
   },
-  async loadImages({ commit, state }) {
+  async loadImages({ commit, state, dispatch }, defaultLang) {
     commit('SET_GLOBAL_LOADING', true);
 
-    let res = await axios.post('/collections/get/exp1_images', {
-      simple: 1,
-      fields: {
-        _id: 0,
-        idnh: 1,
-        title: 1,
-        year: 1,
-        author: 1,
-        rights: 1,
-        image: 1
-      },
-      limit: state.options.imagesSetLimit,
-      skip: 0,
-      lang: state.lang
-    });
+    let lang =
+      defaultLang !== undefined && defaultLang === true ? '' : `_${state.lang}`;
 
-    commit('LOAD_IMAGES', await res.data);
+    try {
+      let res = await axios.post(`/collections/get/exp1_images${lang}`, {
+        simple: 1,
+        filter: { published: true },
+        fields: {
+          _id: 0,
+          idnh: 1,
+          title: 1,
+          year: 1,
+          author: 1,
+          rights: 1,
+          image: 1
+        },
+        limit: state.options.imagesSetLimit,
+        skip: 0
+      });
+
+      commit('LOAD_IMAGES', await res.data);
+      await commit('SET_GLOBAL_LOADING', false);
+    } catch (log) {
+      if (log.response.data.error === 'Collection not found') {
+        console.log(`Collection ${state.lang} not found`);
+        await dispatch('loadImages', true);
+      }
+    }
   },
   async getStats({ commit, state }) {
     try {

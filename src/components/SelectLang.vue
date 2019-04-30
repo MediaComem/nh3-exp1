@@ -31,12 +31,12 @@ export default {
         return this.$store.state.lang;
       },
       set(value) {
-        this.setLang(value);
+        this.setLang(value).then(() => this.loadImages());
       }
     }
   },
   methods: {
-    ...mapActions(["setLang"])
+    ...mapActions(["setLang", "loadImages"])
   }
 };
 </script>
