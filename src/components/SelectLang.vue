@@ -19,6 +19,14 @@ export default {
           text: "Français"
         },
         {
+          abbr: "it",
+          text: "Italiano"
+        },
+        {
+          abbr: "rm",
+          text: "Rumansch"
+        },
+        {
           abbr: "en",
           text: "English"
         }
