@@ -2,7 +2,9 @@
 
 import { register } from 'register-service-worker';
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' &&
+('https:' === location.protocol || location.host.match(/(localhost|127.0.0.1)/)) &&
+navigator.serviceWorker) {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
