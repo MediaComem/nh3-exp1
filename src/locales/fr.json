@@ -78,18 +78,18 @@
       "testOtherExp": "Tester nos autres expériences",
       "lab": {
         "title": "Le LAB",
-        "url": "#"
+        "url": "https://lab.notrehistoire.ch/"
       },
       "univers": {
         "title": "Nos autres univers:",
         "archive": {
           "title": "L'archive",
-          "url": "#",
+          "url": "https://www.notrehistoire.ch/",
           "logo": "logos/logo_notrehistoire.svg"
         },
         "mag": {
           "title": "Le Mag",
-          "url": "#",
+          "url": "https://mag.notrehistoire.ch",
           "logo": "logos/logo_l'inedit_notrehistoire.svg"
         }
       },
