@@ -1,137 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="<%= BASE_URL %>img/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="<%= BASE_URL %>img/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="<%= BASE_URL %>img/icons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="manifest" href="manifest.json" />
-    <link
-      rel="mask-icon"
-      href="<%= BASE_URL %>img/icons/safari-pinned-tab.svg"
-      color="#c8003a"
-    />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="Date My Romandie" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="apple-mobile-web-app-title" content="Date My Romandie" />
-    <link rel="icon" sizes="192x192" href="/img/icons/DateMyRomandie192.png" />
-    <link rel="apple-touch-icon" href="/img/icons/DateMyRomandie192.png" />
-    <meta name="msapplication-TileImage" content="/img/mstile-310x150.png" />
-    <meta name="msapplication-TileColor" content="#c8003a" />
-    <meta name="theme-color" content="#c8003a" />
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+        <link rel="icon" href="<%= BASE_URL %>favicon.ico"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>img/icons/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>img/icons/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>img/icons/favicon-16x16.png"/>
+        <link rel="manifest" href="<%= BASE_URL %>site.webmanifest"/>
+        <link rel="manifest" href="<%= BASE_URL %>manifest.json"/>
+        <link rel="mask-icon" href="<%= BASE_URL %>img/icons/safari-pinned-tab.svg" color="#c8003a"/>
+        <meta content="yes" name="mobile-web-app-capable"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="Date My Romandie" name="application-name"/>
+        <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="Date My Romandie" name="apple-mobile-web-app-title"/>
+        <link rel="icon" sizes="192x192" href="<%= BASE_URL %>img/icons/DateMyRomandie192.png"/>
+        <link rel="apple-touch-icon" href="<%= BASE_URL %>img/icons/DateMyRomandie192.png"/>
+        <meta name="msapplication-TileImage" content="<%= BASE_URL %>img/mstile-310x150.png"/>
+        <meta content="#c8003a" name="msapplication-TileColor"/>
+        <meta content="#c8003a" name="theme-color"/>
 
-    <link
-      href="/img/splash/apple_splash_2048.png"
-      sizes="2048x2732"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_1668.png"
-      sizes="1668x2224"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_1536.png"
-      sizes="1536x2048"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_1125.png"
-      sizes="1125x2436"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_1242.png"
-      sizes="1242x2208"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_750.png"
-      sizes="750x1334"
-      rel="apple-touch-startup-image"
-    />
-    <link
-      href="/img/splash/apple_splash_640.png"
-      sizes="640x1136"
-      rel="apple-touch-startup-image"
-    />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <title>Date My Romandie</title>
-    <meta
-      name="Description"
-      content="Joue et tente de dater les images de notrehistoire.ch !"
-    />
+        <link href="<%= BASE_URL %>img/splash/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image"/>
+        <link href="<%= BASE_URL %>img/splash/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image"/>
+        <meta content="yes" name="mobile-web-app-capable"/>
+        <title>Date My Romandie</title>
+        <meta
+        content="Joue et tente de dater les images de notrehistoire.ch !" name="Description"/>
 
-    <!-- Search Engine -->
-    <meta
-      name="image"
-      content="https://nh3-exp1-e34750.netlify.com/img/meta/metastandard.jpg"
-    />
-    <!-- Schema.org for Google -->
-    <meta itemprop="name" content="Date My Romandie" />
-    <meta
-      itemprop="image"
-      content="https://nh3-exp1-e34750.netlify.com/img/meta/metastandard.jpg"
-    />
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Date My Romandie" />
-    <meta name="twitter:site" content="@notrehistoirech" />
-    <meta name="twitter:creator" content="@media_heigvd" />
-    <meta
-      name="twitter:image:src"
-      content="https://nh3-exp1-e34750.netlify.com/img/meta/metatwitter.jpg"
-    />
-    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta name="og:title" content="Date My Romandie" />
-    <meta
-      name="og:image"
-      content="https://nh3-exp1-e34750.netlify.com/img/meta/metastandard.jpg"
-    />
-    <meta name="og:url" content="https://nh3-exp1-e34750.netlify.com/" />
-    <meta name="og:site_name" content="Date My Romandie" />
-    <meta name="og:locale" content="fr_CH" />
-    <meta property="og:locale:alternate" content="de_CH" />
-    <meta property="og:locale:alternate" content="it_CH" />
-    <meta property="og:locale:alternate" content="rm_CH" />
-    <meta property="og:locale:alternate" content="en_CH" />
-    <meta name="og:type" content="website" />
-  </head>
-  <body>
-    <noscript>
-      <strong
-        >We're sorry but nh3-exp1 doesn't work properly without JavaScript
-        enabled. Please enable it to continue.</strong
-      >
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <script src="https://unpkg.com/vh-check/dist/vh-check.min.js"></script>
-    <script>
-      vhCheck();
-    </script>
-  </body>
+        <!-- Search Engine -->
+        <meta
+        name="image" content="<%= BASE_URL %>img/meta/metastandard.jpg"/>
+        <!-- Schema.org for Google -->
+        <meta content="Date My Romandie" itemprop="name"/>
+        <meta
+        itemprop="image" content="<%= BASE_URL %>img/meta/metastandard.jpg"/>
+        <!-- Twitter -->
+        <meta content="summary_large_image" name="twitter:card"/>
+        <meta content="Date My Romandie" name="twitter:title"/>
+        <meta content="@notrehistoirech" name="twitter:site"/>
+        <meta content="@media_heigvd" name="twitter:creator"/>
+        <meta
+        name="twitter:image:src" content="<%= BASE_URL %>img/meta/metatwitter.jpg"/>
+        <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+        <meta content="Date My Romandie" name="og:title"/>
+        <meta name="og:image" content="<%= BASE_URL %>img/meta/metastandard.jpg"/>
+        <meta name="og:url" content="<%= BASE_URL %>"/>
+        <meta content="Date My Romandie" name="og:site_name"/>
+        <meta content="fr_CH" name="og:locale"/>
+        <meta content="de_CH" property="og:locale:alternate"/>
+        <meta content="it_CH" property="og:locale:alternate"/>
+        <meta content="rm_CH" property="og:locale:alternate"/>
+        <meta content="en_CH" property="og:locale:alternate"/>
+        <meta content="website" name="og:type"/>
+    </head>
+    <body>
+        <noscript>
+            <strong>We're sorry but nh3-exp1 doesn't work properly without JavaScript
+                        enabled. Please enable it to continue.</strong>
+        </noscript>
+        <div id="app"></div>
+        <!-- built files will be auto injected -->
+        <script src="https://unpkg.com/vh-check/dist/vh-check.min.js"></script>
+        <script>
+            vhCheck();
+        </script>
+    </body>
 </html>
