@@ -1,52 +1,39 @@
-<template functional>
+<template>
   <div class="fullBG flex flex-col justify-between text-center">
     <nav class="relative">
-      <router-link
-        to="/"
-        tag="button"
-        class="btn btn--close"
-        :aria-label="parent.$t('navigation.goBack')"
-      ></router-link>
+      <router-link to="/" tag="button" class="btn btn--close" :aria-label="$t('navigation.goBack')"></router-link>
     </nav>
     <header>
-      <h1 class="text-2xl normal-case">{{ parent.$t("page.about.mainTitle") }}</h1>
+      <h1 class="text-2xl normal-case">{{ $t("page.about.mainTitle") }}</h1>
     </header>
     <aside>
       <h2>
-        <a :href="parent.$t('page.about.lab.url')">{{ parent.$t("page.about.testOtherExp") }}</a>
+        <a :href="$t('page.about.lab.url')">{{ $t("page.about.testOtherExp") }}</a>
       </h2>
     </aside>
     <main>
-      <h2>{{ parent.$t("page.about.univers.title") }}</h2>
+      <h2>{{ $t("page.about.univers.title") }}</h2>
       <ul class="nh2-univers">
         <li>
-          <a
-            :href="parent.$t('page.about.univers.archive.url')"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a :href="$t('page.about.univers.archive.url')" target="_blank" rel="noopener noreferrer">
             <img
-              :alt="parent.$t('page.about.univers.archive.title')"
-              :src="'./img/' + parent.$t('page.about.univers.archive.logo')"
+              :alt="$t('page.about.univers.archive.title')"
+              :src="publicPath + '/img/' + $t('page.about.univers.archive.logo')"
             >
           </a>
         </li>
         <li class="universMag">
-          <a
-            :href="parent.$t('page.about.univers.mag.url')"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a :href="$t('page.about.univers.mag.url')" target="_blank" rel="noopener noreferrer">
             <img
-              :alt="parent.$t('page.about.univers.mag.title')"
-              :src="'./img/' + parent.$t('page.about.univers.mag.logo')"
+              :alt="$t('page.about.univers.mag.title')"
+              :src="publicPath + '/img/' + $t('page.about.univers.mag.logo')"
             >
           </a>
         </li>
       </ul>
     </main>
     <aside>
-      <h3>{{ parent.$t("page.about.buildBy") }}</h3>
+      <h3>{{ $t("page.about.buildBy") }}</h3>
       <p>
         <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
         <br>
@@ -54,11 +41,23 @@
       </p>
     </aside>
     <footer>
-      <p>{{ parent.$t("page.about.copyright") }}</p>
-      <p class="slogan">{{ parent.$t("page.about.slogan") }}</p>
+      <p>{{ $t("page.about.copyright") }}</p>
+      <p class="slogan">{{ $t("page.about.slogan") }}</p>
     </footer>
   </div>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      publicPath: process.env.BASE_URL
+    };
+  }
+};
+</script>
+
 
 <style lang="postcss" scoped>
 nav {

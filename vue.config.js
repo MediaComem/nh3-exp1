@@ -17,5 +17,6 @@ module.exports = {
     workboxOptions: {
       skipWaiting: true
     }
-  }
+  },
+  publicPath: process.env.PUBLIC_PATH || ''
 };
