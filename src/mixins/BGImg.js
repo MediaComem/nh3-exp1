@@ -14,9 +14,10 @@ var BGImg = {
       let imgUrl = this.generateImgSrc(imgId, { f: 'desaturate' });
 
       this.preloadImg(imgUrl)
-        .then(() => this.changeBGURL(imgUrl))
+        .then(url => this.changeBGURL(url))
         .catch(err => {
           console.log('Error in preloading image', err);
+          console.log(err);
         });
     },
     changeBGURL(imgUrl) {

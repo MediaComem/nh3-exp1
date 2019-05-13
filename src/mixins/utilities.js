@@ -23,31 +23,19 @@ var utilities = {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    preloadImg(url, numRetry) {
-      if (!numRetry) {
-        let numRetry = 0;
-      }
-
-      return new Promise(function(resolve, reject) {
+    preloadImg(src) {
+      return new Promise((resolve, reject) => {
         let img = new Image();
-        img.onload = function() {
-          resolve(url);
-        };
-        img.onerror = function() {
-          if (numRetry < 5) {
-            this.preloadImg(url, numRetry++);
-          } else {
-            reject(url);
-          }
-        };
-        img.src = url;
+        img.onload = () => resolve(img.src);
+        img.onerror = reject;
+        img.src = src;
 
         if ('caches' in window) {
           // Has support!
           caches
             .open('preloadImg')
             .then(cache => {
-              cache.add(url);
+              cache.add(src);
             })
             .catch(err => {
               console.log('Error in caching image', err);
