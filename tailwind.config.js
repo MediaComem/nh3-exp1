@@ -45,7 +45,9 @@ const colors = {
   transparent: 'transparent',
 
   'red-dark': 'rgba(87, 0, 31, 1)',
+  'red-dark-semi': 'rgba(87, 0, 31, 0.85)',
   red: 'rgb(235, 0, 82)',
+  'red-semi': 'rgba(235, 0, 82, 0.85)',
   black: '#000',
   white: '#fff',
   grey: 'rgb(74, 74, 74)',

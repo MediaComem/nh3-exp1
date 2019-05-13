@@ -56,3 +56,12 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+
+@supports not (background-blend-mode: multiply) {
+    .fullBG--home {
+        background-image: linear-gradient(0deg,
+            config('colors.red-dark-semi') 0%,
+            config('colors.red-semi') 100%),
+            var(--url);
+    }
+}
