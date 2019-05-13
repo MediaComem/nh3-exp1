@@ -12,6 +12,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: this.$t("title")
+    };
+  }
+};
+</script>
+
 <style lang="postcss">
 @import "assets/styles/tailwind.postcss";
 </style>

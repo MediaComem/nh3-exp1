@@ -17,6 +17,11 @@ Vue.use(VueStatic);
 import VueOffline from 'vue-offline';
 Vue.use(VueOffline);
 
+import VueMeta from 'vue-meta';
+Vue.use(VueMeta, {
+  refreshOnceOnNavigation: true
+});
+
 /* API */
 
 import axios from 'axios';
