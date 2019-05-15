@@ -1,4 +1,4 @@
-var BGImg = {
+const BGImg = {
   static() {
     return {
       BGImgInstance: null
@@ -17,7 +17,6 @@ var BGImg = {
         .then(url => this.changeBGURL(url))
         .catch(err => {
           console.log('Error in preloading image', err);
-          console.log(err);
         });
     },
     changeBGURL(imgUrl) {

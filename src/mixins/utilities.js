@@ -1,4 +1,4 @@
-var utilities = {
+const utilities = {
   static() {
     return {
       defaultImgParams: {

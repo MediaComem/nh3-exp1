@@ -10,11 +10,11 @@
           'fadeFrom100--active': game.chrono.started
         }"
       >{{ $t("navigation.goBack") }}</router-link>
-      <Chrono ref="chrono" @timesUp="timesUp"/>
+      <Chrono/>
       <h1 class="hidden">{{ $t('accessibility.youPlay')}}</h1>
     </header>
 
-    <DragImg @dragStart="startPlay" @dragEnd="stopPlay">
+    <DragImg @dragStart="startPlayDrag" @dragEnd="stopPlay">
       <Introduction v-if="user.firstTime"/>
     </DragImg>
 
@@ -25,6 +25,7 @@
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
+import chrono from "@/mixins/chrono";
 
 const Chrono = () => import("@/components/Game/Chrono.vue");
 const Introduction = () => import("@/components/Game/Introduction.vue");
@@ -32,7 +33,7 @@ const DragImg = () => import("@/components/Game/DragImg.vue");
 const ShowYears = () => import("@/components/Game/ShowYears.vue");
 
 export default {
-  mixins: [utilities],
+  mixins: [utilities, chrono],
   components: {
     Chrono,
     Introduction,
@@ -64,9 +65,24 @@ export default {
       this.getStats();
     }
   },
+  mounted() {
+    /* --- Start automatically Chrono at 2nd image --- */
+
+    if (!this.user.firstTime) {
+      this.startPlay();
+    }
+  },
+  beforeDestroy() {
+    this.chronoStop();
+  },
   computed: {
     ...mapState(["game", "round", "user", "replayCount", "options"]),
-    ...mapGetters(["imagesToDo"])
+    ...mapGetters(["imagesToDo", "imagesDone"])
+  },
+  watch: {
+    "game.chrono.timesUp"(val) {
+      if (val) this.timesUp();
+    }
   },
   methods: {
     ...mapMutations([
@@ -82,9 +98,14 @@ export default {
       "SET_NEW_GAME"
     ]),
     ...mapActions(["getStats", "storeRoundDone"]),
+    startPlayDrag() {
+      if (this.imagesDone.length === 0) {
+        this.startPlay();
+      }
+    },
     startPlay() {
       this.isFirstTimeEver();
-      this.$refs.chrono.start();
+      this.chronoStart();
     },
     isFirstTimeEver() {
       if (this.user.firstTime) {
@@ -92,7 +113,7 @@ export default {
       }
     },
     stopPlay() {
-      this.$refs.chrono.stop();
+      this.chronoStop();
       this.storeRoundDone({
         idnh: this.round.media.idnh,
         replayCount: this.replayCount,
