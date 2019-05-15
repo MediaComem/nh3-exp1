@@ -21,7 +21,9 @@ export default {
     commit('SET_GLOBAL_LOADING', true);
 
     let lang =
-      defaultLang !== undefined && defaultLang === true ? '' : `_${state.lang}`;
+      (defaultLang !== undefined && defaultLang === true) || state.lang === 'fr'
+        ? ''
+        : `_${state.lang}`;
 
     try {
       let res = await axios.post(`/collections/get/exp1_images${lang}`, {
