@@ -18,7 +18,7 @@
         tag="button"
         class="btn--highlighted"
       >{{ $t("navigation.continue") }}</router-link>
-      <h1 class="hidden">{{ $t('navigation.imagesReview')}}</h1>
+      <h1 class="hidden">{{ $t('accessibility.imagesReview')}}</h1>
     </header>
 
     <main class="wrapperImg">
