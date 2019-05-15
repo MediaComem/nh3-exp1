@@ -1,5 +1,105 @@
 {
+  "title": "Date My Ticino",
+  "shareSlogan": "{myScore} punti a Date My Ticino, pensi che puoi fare meglio?😉",
+  "accessibility": {
+    "selectLang": "Scegli una lingua",
+    "inputUsername": "Inserisci il tuo nome utente",
+    "imagesReview": "Galleria fotografica",
+    "youPlay": "Tocca a te!",
+    "reviewStats": "Statistica sull'immagine"
+  },
+  "error": {
+    "noImageServer": "Il server delle immagini non è disponibile, riprova più tardi!"
+  },
   "navigation": {
-    "start": "Inizio"
+    "start": "Comincia",
+    "continue": "Continua",
+    "goBack": "Indietro",
+    "playAgin": "Gioca di nuovo",
+    "stop": "Interrompi",
+    "nextImage": "Immagine successiva",
+    "restart": "Ricomincia",
+    "ranking": "Classifica",
+    "viewScore": "Mostra il punteggio",
+    "score": "Punteggio",
+    "offline": {
+      "title": "Ups, sei offline!",
+      "description": "Connettiti per giocare."
+    }
+  },
+  "game": {
+    "introduction": {
+      "title": "Scopo: ",
+      "description": "Datare più immagini possibili in {chronoInit} secondi.",
+      "steps": [
+        "Trascina l'immagine verso il basso.",
+        "Cambia la data spostando l'immagine.",
+        "Rilascia per confermare."
+      ]
+    },
+    "timesUp": "Tempo scaduto...",
+    "summary": {
+      "timeBonus": "Bonus di tempo:",
+      "stats": {
+        "perfect": "Tanto di cappello! Finora sei l'unica persona ad aver indovinato la data. | Tanto di cappello! Finora sei la seconda persona ad aver indovinato la data. | Complimenti! Rientri così tra i {percent}% giocatori che hanno risposto correttamente.",
+        "less10Y": "C'eri quasi! Sei l'unica persona ad esserti sbagliata di meno di 10 anni. | C'eri quasi! Siete in due ad esservi sbagliati di meno di 10 anni. | C'eri quasi! Solo {percent}% giocatori si sono sbagliati di meno di 10 anni.",
+        "less30Y": "Casualità o bravura? Ti sei sbagliato di appena {yearsDiff} anni.",
+        "less50Y": "{yearsDiff} anni di differenza ¦ l'importante è partecipare.",
+        "less100Y": "{yearsDiff} anni di differenza ¦ l'importante è partecipare.",
+        "more100Y": "Smettila di giocare con i piedi! | Smettila di giocare con i piedi! | Smettila di giocare con i piedi! Ma sei in buona compagnia {percent}% dei giocatori"
+      }
+    },
+    "finish": {
+      "yourScore": "Il tuo punteggio:",
+      "lastScore": "Ultimo punteggio:"
+    },
+    "noMore": "Questa è stata l'ultima immagine da datare!",
+    "replay": {
+      "title": "Bravo !",
+      "description": "Hai datato tutte le {imageSetLength} immagini… pensi di poter fare meglio?",
+      "button": "Nuova partita",
+      "video": {
+        "idnh": "67455",
+        "aspectRatio": "4:3",
+        "sources": [
+          {
+            "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
+            "type": "application/x-mpegURL"
+          }
+        ]
+      }
+    }
+  },
+  "page": {
+    "about": {
+      "title": "Info",
+      "mainTitle": "Un gioco del LAB di notreHistoire.ch",
+      "buildBy": "Ideato e sviluppato da:",
+      "testOtherExp": "Prova gli altri giochi",
+      "lab": {
+        "title": "Il Lab",
+        "url": "https://lab.notrehistoire.ch/it"
+      },
+      "univers": {
+        "title": "I nostri mondi:",
+        "archive": {
+          "title": "L'archivio",
+          "url": "https://www.lanostrastoria.ch/",
+          "logo": "logos/logo_lanostrastoria.svg"
+        },
+        "mag": {
+          "title": "Le Mag",
+          "url": "https://mag.notrehistoire.ch/?uil=it",
+          "logo": "logos/logo_l'inedit_notrehistoire.svg"
+        }
+      },
+      "copyright": "© Fonsart - 2019",
+      "slogan": "« Storia vissuta »"
+    },
+    "ranking": {
+      "title": "Complimenti!",
+      "description": "Scrivi il tuo pseudonimo ed entrerai nella classifica",
+      "submit": "Conferma"
+    }
   }
 }

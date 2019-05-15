@@ -8,7 +8,11 @@
     </header>
     <aside>
       <h2>
-        <a :href="$t('page.about.lab.url')">{{ $t("page.about.testOtherExp") }}</a>
+        <a
+          :href="$t('page.about.lab.url')"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ $t("page.about.testOtherExp") }}</a>
       </h2>
     </aside>
     <main>
@@ -35,9 +39,15 @@
     <aside>
       <h3>{{ $t("page.about.buildBy") }}</h3>
       <p>
-        <a href="https://mei.heig-vd.ch">Media Engineering Institute</a>
-        <br>
-        <a href="https://heig-vd.ch">HEIG-VD</a>
+        <a
+          href="https://mei.heig-vd.ch"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mb-1"
+        >Media Engineering Institute</a>
+      </p>
+      <p>
+        <a href="https://heig-vd.ch" target="_blank" rel="noopener noreferrer">HEIG-VD</a>
       </p>
     </aside>
     <footer>
