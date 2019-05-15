@@ -16,6 +16,12 @@
     font-style: normal;
 }
 
+/* Disable pull-to-refresh */
+body,
+html {
+    overscroll-behavior: none;
+}
+
 #app {
     @apply font-sans;
 }
