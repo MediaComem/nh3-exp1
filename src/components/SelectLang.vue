@@ -27,8 +27,8 @@ export default {
           text: "Rumansch"
         },
         {
-          abbr: "en",
-          text: "English"
+          abbr: "de",
+          text: "Deutsch"
         }
       ]
     };

@@ -1,0 +1,105 @@
+{
+  "title": "Date My Romandie",
+  "shareSlogan": "{myScore} Punkte bei Date My Romandie. Glaubst du, du schaffst mehr?😉",
+  "accessibility": {
+    "selectLang": "Wähle deine Sprache",
+    "inputUsername": "Gib deinen Benutzernamen ein",
+    "imagesReview": "Fotoalbum",
+    "youPlay": "Jetzt bist du dran!",
+    "reviewStats": "Statistik zum Bild"
+  },
+  "error": {
+    "noImageServer": "Der Fotoserver ist nicht verfügbar, probier es später wieder!"
+  },
+  "navigation": {
+    "start": "Los",
+    "continue": "Weiter",
+    "goBack": "Zurück",
+    "playAgin": "Neues Spiel",
+    "stop": "Stop",
+    "nextImage": "Nächstes Bild",
+    "restart": "Neu beginnen",
+    "ranking": "Ranking",
+    "viewScore": "Score anzeigen",
+    "score": "Score",
+    "offline": {
+      "title": "Uups, du bist offline!",
+      "description": "Stell die Verbindung wieder her, um zu spielen"
+    }
+  },
+  "game": {
+    "introduction": {
+      "title": "Ziel:",
+      "description": "Datiere möglichst viele Bilder in {chronoInit} Sekunden",
+      "steps": [
+        "Bild nach unten ziehen",
+        "Datum ändern, indem du es von links nach rechts verschiebst.",
+        "Zum Validieren loslassen."
+      ]
+    },
+    "timesUp": "Die Zeit ist abgelaufen ...",
+    "summary": {
+      "timeBonus": "Zeitbonus:",
+      "stats": {
+        "perfect": "Respekt! Gut gespielt! Nur du allein hast bisher das richtige Datum gewusst. | Respekt! Gut gespielt! Du bist die zweite Person, die das richtige Datum kennt. | Respekt! Damit bist du unter den {percent}%, die richtig geantwortet haben.",
+        "less10Y": "Fast richtig! Du liegst als Einzige(r) weniger als 10 Jahre daneben | Fast richtig! Ihr seid erst zwei, die weniger als 10 Jahre danebengetippt haben | Fast richtig! Nur {percent}% haben sich lediglich um 10 Jahre verschätzt",
+        "less30Y": "Gewusst oder geraten? Du liegst nur {yearsDiff} Jahre daneben.",
+        "less50Y": "{yearsDiff} Jahre daneben ¦ Mitmachen ist alles.",
+        "less100Y": "{yearsDiff} Jahre daneben ¦ Mitmachen ist alles.",
+        "more100Y": "Nimm die Tomaten von den Augen! | Nimm die Tomaten von den Augen! | Nimm die Tomaten von den Augen! Du spielst so grottenschlecht wie {percent}% der Gamer."
+      }
+    },
+    "finish": {
+      "yourScore": "Dein Score:",
+      "lastScore": "Letzter Score:"
+    },
+    "noMore": "Das war das letzte Bild!",
+    "replay": {
+      "title": "Bravo !",
+      "description": "Du hast alle {imageSetLength} Bilder datiert ... Kannst du es besser? ",
+      "button": "Neues Spiel",
+      "video": {
+        "idnh": "67455",
+        "aspectRatio": "4:3",
+        "sources": [
+          {
+            "src": "https://rtsvodww-vh.akamaihd.net/i/1965/5a6je/5a6je_19650505_standard_5a6je_1965-05-05_Arch00_114519-,100k,700k,1200k,.mp4.csmil/master.m3u8",
+            "type": "application/x-mpegURL"
+          }
+        ]
+      }
+    }
+  },
+  "page": {
+    "about": {
+      "title": "Apropos",
+      "mainTitle": "Ein Angebot aus dem LAB notreHistoire.ch",
+      "buildBy": "Gestaltet und entwickelt von: ",
+      "testOtherExp": "Teste unsere anderen Angebote",
+      "lab": {
+        "title": "Le LAB",
+        "url": "https://lab.notrehistoire.ch/de"
+      },
+      "univers": {
+        "title": "Unsere Welten:",
+        "archive": {
+          "title": "Archiv",
+          "url": "https://www.notrehistoire.ch/",
+          "logo": "logos/logo_notrehistoire.svg"
+        },
+        "mag": {
+          "title": "Le Mag",
+          "url": "https://mag.notrehistoire.ch/?uil=de",
+          "logo": "logos/logo_l'inedit_notrehistoire.svg"
+        }
+      },
+      "copyright": "© Fonsart - 2019",
+      "slogan": "« Gelebte Geschichte »"
+    },
+    "ranking": {
+      "title": "Gut gespielt!",
+      "description": "Gibt deinen Benutzernamen an, um gelistet zu werden",
+      "submit": "Bestätige"
+    }
+  }
+}
