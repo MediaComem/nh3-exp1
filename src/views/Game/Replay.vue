@@ -6,7 +6,7 @@
         $t("navigation.goBack")
         }}
       </router-link>
-      <h1 class="hidden">{{ $t('navigation.Rejouer')}}</h1>
+      <h1 class="hidden">{{ $t('navigation.playAgain')}}</h1>
     </header>
 
     <main class="wrapperImg wrapperImg--bravo">
@@ -54,7 +54,6 @@ export default {
     return {
       videoSetup: {
         controls: true,
-        controlBar: false,
         loadingSpinner: false,
         bigPlayButton: true,
         textTrackDisplay: false,
@@ -68,7 +67,9 @@ export default {
     };
   },
   mounted() {
-    videojs(this.$refs.videoBravo).reset();
+    if (this.$refs.videoBravo !== undefined) {
+      videojs(this.$refs.videoBravo).reset();
+    }
   },
   computed: {
     ...mapState(["imagesSet"]),

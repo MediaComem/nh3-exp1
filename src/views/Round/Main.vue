@@ -99,7 +99,7 @@ export default {
     ]),
     ...mapActions(["getStats", "storeRoundDone"]),
     startPlayDrag() {
-      if (this.imagesDone.length === 0) {
+      if (this.user.firstTime) {
         this.startPlay();
       }
     },

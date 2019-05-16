@@ -68,6 +68,9 @@ export default {
   [types.ADD_ROUND_DONE](state, payload) {
     state.roundDone.push(payload);
   },
+  [types.RESET_ROUND_DONE](state, payload) {
+    state.roundDone = [];
+  },
   [types.STORE_CHRONO_BONUS](state, bonus) {
     state.game.chrono.currentBonus = bonus;
   },

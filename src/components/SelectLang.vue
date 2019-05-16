@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   props: ["name"],
@@ -39,12 +39,26 @@ export default {
         return this.$store.state.lang;
       },
       set(value) {
-        this.setLang(value).then(() => this.loadImages());
+        this.setLang(value).then(() => {
+          this.loadImages();
+          this.RESET_GAME();
+          this.SET_GAME_STATE();
+          this.RESET_ROUND();
+          this.RESET_ROUND_DONE();
+          this.INIT_CHRONO();
+        });
       }
     }
   },
   methods: {
-    ...mapActions(["setLang", "loadImages"])
+    ...mapActions(["setLang", "loadImages"]),
+    ...mapMutations([
+      "RESET_GAME",
+      "SET_GAME_STATE",
+      "RESET_ROUND",
+      "RESET_ROUND_DONE",
+      "INIT_CHRONO"
+    ])
   }
 };
 </script>

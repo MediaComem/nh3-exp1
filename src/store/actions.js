@@ -74,9 +74,14 @@ export default {
   createUserId({ commit }) {
     commit('SET_USER_ID', unidid());
   },
-  async getSummaryTempImg({ commit, state }, imgId) {
+  async getSummaryTempImg({ commit, state }, imgId, defaultLang) {
+    let lang =
+      (defaultLang !== undefined && defaultLang === true) || state.lang === 'fr'
+        ? ''
+        : `_${state.lang}`;
+
     try {
-      let res = await axios.post('/collections/get/exp1_images', {
+      let res = await axios.post(`/collections/get/exp1_images${lang}`, {
         filter: { idnh: imgId },
         simple: 1,
         fields: {
@@ -85,12 +90,14 @@ export default {
           author: 1,
           rights: 1,
           image: 1
-        },
-        lang: state.lang
+        }
       });
       commit('SET_ROUND_MEDIA', await res.data[0]);
-    } catch (err) {
-      console.log('getSummaryTempImg', err);
+    } catch (log) {
+      if (log.response.data.error === 'File not found') {
+        console.log(`Item in Collection ${state.lang} not found`);
+        await dispatch('getSummaryTempImg', imgId, true);
+      }
     }
   },
   async getTop({ commit, state }) {
