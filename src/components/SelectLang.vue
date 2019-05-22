@@ -1,7 +1,7 @@
 <template>
   <div class="selectDiv">
     <select :id="name" v-model="langSelected" :aria-label="$t('accessibility.selectLang')">
-      <option :value="lang.abbr" v-for="lang in langs" :key="lang.abbr">{{ lang.text }}</option>
+      <option :lang="lang.abbr" :value="lang.abbr" v-for="lang in langs" :key="lang.abbr">{{ lang.text }}</option>
     </select>
   </div>
 </template>
