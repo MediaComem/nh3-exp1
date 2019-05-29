@@ -26,7 +26,7 @@
             >
           </a>
         </li>
-        <li class="universMag">
+        <li class="universMag hidden">
           <a :href="$t('page.about.univers.mag.url')" target="_blank" rel="noopener noreferrer">
             <img
               :alt="$t('page.about.univers.mag.title')"
@@ -90,7 +90,7 @@ aside h3 {
   display: flex;
   align-items: center;
   & li {
-    width: 50%;
+    width: 100%;
     margin: 1rem;
     padding: 1rem;
     background: white;
