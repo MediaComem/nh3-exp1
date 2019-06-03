@@ -1,6 +1,6 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col">
-    <aside class="bg-white p-1 px-2 w-1/3">
+    <aside class="bg-white p-1 px-2 w-32 max-w-full">
       <a :href="$t('page.about.univers.archive.url')" target="_blank" rel="noopener noreferrer">
         <img
           :alt="$t('page.about.univers.archive.title')"
