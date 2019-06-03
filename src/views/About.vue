@@ -6,7 +6,7 @@
     <header>
       <h1 class="text-2xl normal-case">{{ $t("page.about.mainTitle") }}</h1>
     </header>
-    <aside>
+    <!-- <aside>
       <h2>
         <a
           :href="$t('page.about.lab.url')"
@@ -14,8 +14,8 @@
           rel="noopener noreferrer"
         >{{ $t("page.about.testOtherExp") }}</a>
       </h2>
-    </aside>
-    <main>
+    </aside>-->
+    <!--     <main>
       <h2>{{ $t("page.about.univers.title") }}</h2>
       <ul class="nh2-univers">
         <li>
@@ -35,7 +35,7 @@
           </a>
         </li>
       </ul>
-    </main>
+    </main>-->
     <aside>
       <h3>{{ $t("page.about.buildBy") }}</h3>
       <p>
