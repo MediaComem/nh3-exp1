@@ -165,7 +165,7 @@
 .dragImg,
 .backgroundImg,
 .imageFit {
-    max-height: 50vh;
+    max-height: 48vh;
     width: 100%;
     object-fit: contain;
 }
@@ -175,7 +175,7 @@
     .dragImg,
     .backgroundImg,
     .imageFit {
-        max-height: 52vh;
+        max-height: 50vh;
     }
 }
 
@@ -184,7 +184,7 @@
     .dragImg,
     .backgroundImg,
     .imageFit {
-        max-height: 54vh;
+        max-height: 52vh;
     }
 }
 
@@ -193,7 +193,7 @@
     .dragImg,
     .backgroundImg,
     .imageFit {
-        max-height: 58vh;
+        max-height: 56vh;
     }
 }
 
@@ -202,7 +202,7 @@
     .dragImg,
     .backgroundImg,
     .imageFit {
-        max-height: 64vh;
+        max-height: 62vh;
     }
 }
 
