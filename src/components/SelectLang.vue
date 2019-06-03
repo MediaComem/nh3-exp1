@@ -1,7 +1,12 @@
 <template>
   <div class="selectDiv">
     <select :id="name" v-model="langSelected" :aria-label="$t('accessibility.selectLang')">
-      <option :lang="lang.abbr" :value="lang.abbr" v-for="lang in langs" :key="lang.abbr">{{ lang.text }}</option>
+      <option
+        :lang="lang.abbr"
+        :value="lang.abbr"
+        v-for="lang in langs"
+        :key="lang.abbr"
+      >{{ lang.text }}</option>
     </select>
   </div>
 </template>
@@ -17,8 +22,8 @@ export default {
         {
           abbr: "fr",
           text: "Français"
-        }
-/*         ,{
+        } /* ,
+        {
           abbr: "it",
           text: "Italiano"
         },
@@ -36,7 +41,11 @@ export default {
   computed: {
     langSelected: {
       get() {
-        return this.$store.state.lang;
+        if (Object.values(this.langs).indexOf(this.$store.state.lang) > -1) {
+          return this.$store.state.lang;
+        } else {
+          return this.langs[0].abbr;
+        }
       },
       set(value) {
         this.setLang(value).then(() => {
