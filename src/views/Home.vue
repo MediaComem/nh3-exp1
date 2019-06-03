@@ -1,5 +1,13 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col">
+    <aside class="bg-white p-1 px-2 w-1/3">
+      <a :href="$t('page.about.univers.archive.url')" target="_blank" rel="noopener noreferrer">
+        <img
+          :alt="$t('page.about.univers.archive.title')"
+          :src="publicPath + '/img/' + $t('page.about.univers.archive.logo')"
+        >
+      </a>
+    </aside>
     <header class="mt-auto">
       <h1>{{ $t("title") }}</h1>
     </header>
@@ -48,6 +56,7 @@ import BGImg from "@/mixins/BGImg";
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       errorLoadingImages: false
     };
   },
