@@ -31,7 +31,7 @@
     /* Background */
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 40px);
     /* If you need to support browser without CSS var support (<= IE11) */
     height: calc(100vh - var(--vh-offset, 40px));
     /* enable vh fix */
