@@ -11,7 +11,7 @@
     <header class="mt-auto">
       <h1>{{ $t("title") }}</h1>
     </header>
-    <main class="flex mt-auto justify-center relative">
+    <main class="flex mt-auto justify-center relative" style="min-height:40px;">
       <transition name="fade">
         <router-link
           v-if="!loading && !game.running && !errorLoadingImages"
