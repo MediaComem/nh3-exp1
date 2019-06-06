@@ -30,11 +30,8 @@
 
     /* Background */
     display: flex;
-    height: calc(100vh - 40px);
+    height:100%;
     flex-direction: column;
-    /* If you need to support browser without CSS var support (<= IE11) */
-    height: calc(100vh - var(--vh-offset, 40px));
-    /* enable vh fix */
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
     position: absolute;
