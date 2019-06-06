@@ -27,7 +27,7 @@ import vhCheck from "vh-check";
 
 export default {
   mounted() {
-    vhCheck("vh-offset");
+    vhCheck({ cssVarName: "vh-offset", force: true });
   }
 };
 </script>
