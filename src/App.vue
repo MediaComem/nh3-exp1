@@ -22,6 +22,16 @@ export default {
 };
 </script>
 
+<script>
+import vhCheck from "vh-check";
+
+export default {
+  mounted() {
+    vhCheck("vh-offset");
+  }
+};
+</script>
+
 <style lang="postcss">
 @import "assets/styles/tailwind.postcss";
 </style>

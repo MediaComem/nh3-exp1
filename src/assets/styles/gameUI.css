@@ -33,7 +33,7 @@
     flex-direction: column;
     height: 100vh;
     /* If you need to support browser without CSS var support (<= IE11) */
-    height: calc(100vh - var(--vh-offset, 0px));
+    height: calc(100vh - var(--vh-offset, 40px));
     /* enable vh fix */
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
