@@ -75,11 +75,11 @@ const utilities = {
         .join('&');
     },
     createMediaUrl(id) {
-      if (typeof parseInt(id) === 'number') {
-        return this.$t('navigation.mediaURLv2') + id; // API notrehistoire.ch v2
-      } else {
-        return this.$t('navigation.mediaURLv3') + id; // API notrehistoire v3
-      }
+      const isnum = /^\d+$/.test(id);
+
+      return isnum
+        ? this.$t('navigation.mediaURLv2') + id
+        : this.$t('navigation.mediaURLv3') + id;
     }
   }
 };
