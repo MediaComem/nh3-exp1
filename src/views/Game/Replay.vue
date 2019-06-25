@@ -26,7 +26,7 @@
       </video>
       <p class="imgRights">
         <a
-          :href="'https://www.notrehistoire.ch/medias/' + $t('game.replay.video.idnh')"
+          :href="createMediaUrl(el.idnh)"
           target="_blank"
           rel="noopener noreferrer"
         >Radio Television Suisse - Creative Commons BY-NC-ND</a>
@@ -48,6 +48,7 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import videojs from "video.js";
+import utilities from "@/mixins/utilities";
 
 export default {
   static() {
@@ -77,6 +78,7 @@ export default {
       return JSON.stringify(this.videoSetup);
     }
   },
+  mixins: [utilities],
   methods: {
     ...mapMutations(["SET_NEW_REPLAY", "RESET_GAME"]),
     replay() {

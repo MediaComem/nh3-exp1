@@ -25,7 +25,9 @@
     "offline": {
       "title": "Uups, ti es offline!",
       "description": "Restituescha la colliaziun per giugar"
-    }
+    },
+    "mediaURLv2": "https://www.nossaistorgia.ch/medias/",
+    "mediaURLv3": "https://nossaistorgia.ch/entries/"
   },
   "game": {
     "introduction": {

@@ -1,8 +1,7 @@
 export default () => {
   return {
     // By default check navigator lang
-    lang:
-      navigator.language.split('-')[0] || navigator.userLanguage.split('-')[0],
+    lang: 'fr',
     loading: false,
     user: {
       name: null,

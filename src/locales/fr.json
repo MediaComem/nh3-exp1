@@ -25,7 +25,9 @@
     "offline": {
       "title": "Oups, tu es Hors-ligne !",
       "description": "Reconnecte-toi pour jouer"
-    }
+    },
+    "mediaURLv2": "https://www.notrehistoire.ch/medias/",
+    "mediaURLv3": "https://notrehistoire.ch/entries/"
   },
   "game": {
     "introduction": {

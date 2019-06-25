@@ -73,6 +73,13 @@ const utilities = {
       return Object.entries(obj)
         .map(([key, val]) => `${key}=${val}`)
         .join('&');
+    },
+    createMediaUrl(id) {
+      if (typeof parseInt(id) === 'number') {
+        return this.$t('navigation.mediaURLv2') + id; // API notrehistoire.ch v2
+      } else {
+        return this.$t('navigation.mediaURLv3') + id; // API notrehistoire v3
+      }
     }
   }
 };

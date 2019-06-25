@@ -25,7 +25,9 @@
     "offline": {
       "title": "Uups, du bist offline!",
       "description": "Stell die Verbindung wieder her, um zu spielen"
-    }
+    },
+    "mediaURLv2": "https://www.notrehistoire.ch/medias/",
+    "mediaURLv3": "https://notrehistoire.ch/entries/"
   },
   "game": {
     "introduction": {

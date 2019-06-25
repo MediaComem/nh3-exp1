@@ -25,7 +25,9 @@
     "offline": {
       "title": "Ups, sei offline!",
       "description": "Connettiti per giocare."
-    }
+    },
+    "mediaURLv2": "https://www.lanostrastoria.ch/medias/",
+    "mediaURLv3": "https://lanostrastoria.ch/entries/"
   },
   "game": {
     "introduction": {

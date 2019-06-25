@@ -24,11 +24,7 @@
     <main class="wrapperImg">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(el, index) in imagesDoneLastGame.slice().reverse()" :key="index">
-          <a
-            :href="'https://www.notrehistoire.ch/medias/' + el.idnh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a :href="createMediaUrl(el.idnh)" target="_blank" rel="noopener noreferrer">
             <img
               :src="generateImgSrc(el.image._id)"
               :srcset="generateImgSrcSet(el.image._id, options.dpiRange)"
