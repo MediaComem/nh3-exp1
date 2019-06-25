@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import store from './store/store';
 import Router from 'vue-router';
 
 const Home = () => import('./views/Home.vue');
@@ -22,7 +23,51 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        store.dispatch('setLang', store.state.lang).then(() => {
+          next();
+        });
+      }
+    },
+    {
+      path: '/fr',
+      name: 'homeFr',
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        store.dispatch('setLang', 'fr').then(() => {
+          next();
+        });
+      }
+    },
+    {
+      path: '/it',
+      name: 'homeIt',
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        store.dispatch('setLang', 'it').then(() => {
+          next();
+        });
+      }
+    },
+    {
+      path: '/rm',
+      name: 'homeRm',
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        store.dispatch('setLang', 'rm').then(() => {
+          next();
+        });
+      }
+    },
+    {
+      path: '/de',
+      name: 'homeDe',
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        store.dispatch('setLang', 'de');
+        next();
+      }
     },
     {
       path: '/about',

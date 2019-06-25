@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import store from '../store/store';
 
 import fr from '../locales/fr.json';
 
@@ -12,21 +11,21 @@ Vue.filter('capitalize', function(value) {
 
 Vue.use(VueI18n);
 
-let locale = store.state.lang;
+let locale = process.env.VUE_APP_I18N_LOCALE;
 let messages = { fr };
 
 // set HTML Attribute at startup
 document.getElementsByTagName('html')[0].lang = locale;
 
 if (locale != 'fr') {
-  import(/* webpackChunkName: "lang-[request]" */ `@/locales/${locale}.json`).then(
-    res => {
-      messages[locale] = res;
-    }
-  );
+  import(
+    /* webpackChunkName: "lang-[request]" */ `@/locales/${locale}.json`
+  ).then(res => {
+    messages[locale] = res;
+  });
 }
 
-const i18n = new VueI18n({
+export const i18n = new VueI18n({
   locale: locale,
   fallbackLocale: 'fr',
   messages: messages

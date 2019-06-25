@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { app } from '../main';
+import { i18n } from '../plugins/i18n-setup';
 import unidid from 'uniqid';
 
 export default {
   async setLang({ commit }, payload) {
-    if (payload in app.$i18n.messages) {
+    if (payload in i18n.messages) {
       commit('SET_LANG', payload);
     } else {
       try {
         const res = await import(`../locales/${payload}.json`);
-        app.$i18n.setLocaleMessage(payload, res.default);
+        i18n.setLocaleMessage(payload, res.default);
         commit('SET_LANG', payload);
       } catch (e) {
         // eslint-disable-next-line

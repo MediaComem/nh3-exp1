@@ -26,6 +26,11 @@
         config('colors.red') 100%),
         var(--url);
 
+    &>nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
     & footer>* {
         @apply p-2;
     }
@@ -34,14 +39,14 @@
         @apply pr-0;
     }
 
-    & .selectDiv::after {
-        top: 1rem !important;
-    }
-
     & footer {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         justify-items: center;
+    }
+
+    & footer.score {
+        grid-template-columns: 1fr 1fr 1fr;
 
         & :first-child {
             justify-self: start;
@@ -50,10 +55,6 @@
         & :last-child {
             justify-self: end;
         }
-    }
-
-    & footer.score {
-        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 

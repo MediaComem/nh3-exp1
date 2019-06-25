@@ -13,6 +13,7 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from "vuex";
+import BGImg from "@/mixins/BGImg";
 
 export default {
   props: ["name"],
@@ -21,27 +22,31 @@ export default {
       langs: [
         {
           abbr: "fr",
-          text: "Français"
+          text: "Édition française"
         },
         {
           abbr: "it",
-          text: "Italiano"
+          text: "Edizione italiana"
         },
         {
           abbr: "rm",
-          text: "Rumansch"
+          text: "Rumansche Ausgabe"
         },
         {
           abbr: "de",
-          text: "Deutsch"
+          text: "Deutsche Ausgabe"
         }
       ]
     };
   },
+  mixins: [BGImg],
   computed: {
     langSelected: {
       get() {
-        if (Object.values(this.langs).indexOf(this.$store.state.lang) > -1) {
+        if (
+          this.langs.filter(lang => lang.abbr === this.$store.state.lang)
+            .length > 0
+        ) {
           return this.$store.state.lang;
         } else {
           return this.langs[0].abbr;
@@ -81,6 +86,7 @@ select {
   box-sizing: border-box;
   line-height: 1.3;
   padding-right: 1rem;
+  text-align: right;
 }
 .selectDiv {
   position: relative;

@@ -1,13 +1,13 @@
 import * as types from './mutation-types';
 import axios from 'axios';
-import { app } from '../main';
+import { i18n } from '../plugins/i18n-setup';
 
 import getDefaultState from './states';
 
 export default {
   [types.SET_LANG](state, payload) {
     state.lang = payload;
-    app.$i18n.locale = payload;
+    i18n.locale = payload;
     axios.defaults.headers.common['Accept-Language'] = payload;
     document.querySelector('html').setAttribute('lang', payload);
   },

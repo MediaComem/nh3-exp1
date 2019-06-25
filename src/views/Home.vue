@@ -1,13 +1,16 @@
 <template>
   <div class="fullBG fullBG--home flex flex-col">
-    <aside class="bg-white p-1 px-2 w-32 max-w-full">
-      <a :href="$t('page.about.univers.archive.url')" target="_blank" rel="noopener noreferrer">
-        <img
-          :alt="$t('page.about.univers.archive.title')"
-          :src="publicPath + '/img/' + $t('page.about.univers.archive.logo')"
-        >
-      </a>
-    </aside>
+    <nav>
+      <aside class="bg-white p-1 px-2 w-32 max-w-full">
+        <a :href="$t('page.about.univers.archive.url')" target="_blank" rel="noopener noreferrer">
+          <img
+            :alt="$t('page.about.univers.archive.title')"
+            :src="publicPath + '/img/' + $t('page.about.univers.archive.logo')"
+          >
+        </a>
+      </aside>
+      <SelectEdition/>
+    </nav>
     <header class="mt-auto">
       <h1>{{ $t("title") }}</h1>
     </header>
@@ -41,13 +44,12 @@
         class="text-white no-underline"
         v-if="showScoreLink"
       >{{ $t("navigation.score") }}</router-link>
-      <SelectLang/>
     </footer>
   </div>
 </template>
 
 <script>
-const SelectLang = () => import("@/components/SelectLang.vue");
+const SelectEdition = () => import("@/components/SelectEdition.vue");
 
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import utilities from "@/mixins/utilities";
@@ -62,7 +64,7 @@ export default {
   },
   mixins: [utilities, BGImg],
   components: {
-    SelectLang
+    SelectEdition
   },
   beforeMount() {
     /* --- Load Images --- */
