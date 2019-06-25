@@ -22,7 +22,7 @@ export default {
         {
           abbr: "fr",
           text: "Français"
-        } /* ,
+        },
         {
           abbr: "it",
           text: "Italiano"
@@ -34,7 +34,7 @@ export default {
         {
           abbr: "de",
           text: "Deutsch"
-        } */
+        }
       ]
     };
   },
