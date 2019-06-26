@@ -60,6 +60,7 @@ export default {
           this.RESET_ROUND();
           this.RESET_ROUND_DONE();
           this.INIT_CHRONO();
+          this.$meta().refresh;
         });
       }
     }
