@@ -26,7 +26,7 @@
       </video>
       <p class="imgRights">
         <a
-          :href="createMediaUrl(el.idnh)"
+          :href="createMediaUrl($t('game.replay.video.idnh'))"
           target="_blank"
           rel="noopener noreferrer"
         >Radio Television Suisse - Creative Commons BY-NC-ND</a>
