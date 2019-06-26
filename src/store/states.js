@@ -53,7 +53,7 @@ export default () => {
         begin: 1818,
         end: new Date().getFullYear()
       },
-      chronoInit: 5, //sec
+      chronoInit: 60, //sec
       imagesSetLimit: 500, //pictures
       rankingLimit: 10, // Get top 10
       dpiRange: [0.5, 1, 1.5, 2, 2.5, 3, 4],
