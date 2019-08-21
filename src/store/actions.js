@@ -102,7 +102,7 @@ export default {
   },
   async getTop({ commit, state }) {
     try {
-      let res = await axios.post('/collections/get/exp1_classement', {
+      let res = await axios.post('/collections/get/exp1_classement_digital_day', {
         simple: 1,
         limit: state.options.rankingLimit,
         sort: { score: -1 }
@@ -116,7 +116,7 @@ export default {
   async storeScoreTop({ commit, state }) {
     commit('SET_SCORE_SUBMITTED', true);
     try {
-      await axios.post('/collections/save/exp1_classement', {
+      await axios.post('/collections/save/exp1_classement_digital_day', {
         data: {
           userId: state.user.id,
           username: state.user.name,
