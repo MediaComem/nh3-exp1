@@ -70,8 +70,8 @@ export default {
     },
     dragMoveListener(event) {
       var target = event.target,
-        x = event.pageX - target.offsetWidth / 2 - this.dragImgInit.x,
-        y = event.pageY - target.offsetHeight / 2 - this.dragImgInit.y;
+        x = event.pageX - target.offsetWidth / 2 - this.dragImgInit.left,
+        y = event.pageY - target.offsetHeight / 2 - this.dragImgInit.top;
 
       this.updateSelectedYear(target.getBoundingClientRect());
 
@@ -86,7 +86,7 @@ export default {
     },
     updateSelectedYear(elBBOX) {
       let yearSelected = this.convertRange(
-        this.clamp(elBBOX.x, 0, window.innerWidth - elBBOX.width),
+        this.clamp(elBBOX.left, 0, window.innerWidth - elBBOX.width),
         this.options.timeline.end,
         this.options.timeline.begin,
         window.innerWidth - elBBOX.width,
