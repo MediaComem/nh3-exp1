@@ -6,6 +6,8 @@
       :srcset="generateImgSrcSet(round.media.image._id, options.dpiRange)"
       class="dragImg lazy"
       :alt="round.media.title"
+      :width="calcWidth"
+      :height="calcHeight"
     />
     <div class="wrapperBackgroundImg">
       <LazyImage
@@ -14,6 +16,8 @@
         :srcset="generateImgSrcSet(round.media.image._id, options.dpiRange)"
         class="backgroundImg lazy"
         :alt="round.media.title"
+        :width="calcWidth"
+        :height="calcHeight"
       />
     </div>
     <slot></slot>
@@ -56,7 +60,13 @@ export default {
     });
   },
   computed: {
-    ...mapState(["user", "round", "options"])
+    ...mapState(["user", "round", "options"]),
+    calcWidth(){
+      return isNaN(this.round.media.image.width) ? 0 : this.round.media.image.width;
+    },
+    calcHeight(){
+      return isNaN(this.round.media.image.height) ? 0 : this.round.media.image.height;
+    }
   },
   methods: {
     ...mapMutations(["SET_YEAR_SELECTED"]),
